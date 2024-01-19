@@ -14,15 +14,15 @@
     <header>
         <img src="img/logo.png" alt="Logo elbedi">
         <nav>
-            <a href="">
+            <a href="#">
                 <i class="material-symbols-outlined">monitoring</i>
                 Beneficios
             </a>
-            <a href="">
+            <a href="#">
                 <i class="material-symbols-outlined">web</i>
                 Demos
             </a>
-            <a href="">
+            <a href="#">
                 <i class="material-symbols-outlined">mark_email_read</i>
                 Contratación & Contacto
             </a>
@@ -93,7 +93,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="beneficios">
             <div class="content" style="background-color: #EFF4FF;">
 
                 <div class="caja-beneficios">
@@ -179,36 +179,34 @@
 
         <section id="contacto">
             <div class="content" style="background-color: #FCF7FF;">
-                <form action="">
-                    <div class="card-form">
-                        <h2>Envíe un mensaje para iniciar el proceso de contratación </h2>
-                        <div class="form-item">
-                            <input type="text"  placeholder="" class="form-camp">
-                            <label for="">Nombre</label>
-                        </div>
-                        
-                        <div class="d-flex-form">
-                            <div class="form-item">
-                                <input type="text" placeholder="" class="form-camp">
-                                <label for="">Teléfono</label>
-                            </div>
-                            <div class="form-item">
-                                <input type="text" placeholder="" class="form-camp">
-                                <label for="">Email</label>
-                            </div>
-                        </div>
-
-                        <div class="form-item">
-                            <textarea name="" id="" class="form-camp" placeholder=""></textarea>
-                            <label for="">Describa las necesidades de su pagina web  </label>
-                        </div>
-
-                        <div class="form-item" style="display: block; text-align: end;">
-                            <button>ENVIAR</button>
-                        </div>
-
-                        <img src="img/figuras/f10.png" class="img-decor bottom-left" width="30%" alt="">
+                <form action="" class="card-form">
+                    <h2>Envíe un mensaje para iniciar el proceso de contratación </h2>
+                    <div class="form-item">
+                        <input type="text"  placeholder="" class="form-camp">
+                        <label for="">Nombre</label>
                     </div>
+                    
+                    <div class="d-flex-form">
+                        <div class="form-item">
+                            <input type="text" placeholder="" class="form-camp">
+                            <label for="">Teléfono</label>
+                        </div>
+                        <div class="form-item">
+                            <input type="text" placeholder="" class="form-camp">
+                            <label for="">Email</label>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <textarea name="" id="" class="form-camp" placeholder=""></textarea>
+                        <label for="">Describa las necesidades de su pagina web  </label>
+                    </div>
+
+                    <div class="form-item" style="display: block; text-align: end;">
+                        <button>ENVIAR</button>
+                    </div>
+
+                    <img src="img/figuras/f10.png" class="img-decor bottom-left" width="30%" alt="">
                 </form>
 
                 <img src="img/figuras/f9.png" class="img-decor top-left" width="80%" alt="">
@@ -250,18 +248,30 @@
             html.scrollTop += direccion * html.clientHeight;
         }
 
-        function expeandeScroll(){
-            let seccion = document.getElementById('expande-negocio');
-            let rect = seccion.getBoundingClientRect();
-            if (rect.top <= (window.innerHeight - 600) && rect.bottom >= 600) {
-                document.querySelector('.btns-scroll').classList.add('expande-active-scroll');
+        function btnScrollDifer(){
+            let seccionActiva = false;
+            let btnScrollElemnt = document.querySelector('.btns-scroll');
+            let secciones = ['expande-negocio', 'beneficios', 'demos'];
+            secciones.forEach(element => {
+                let seccion = document.getElementById(element);
+                let rect = seccion.getBoundingClientRect();
+                if (rect.top <= (window.innerHeight - 600) && rect.bottom >= 600) {
+                    seccionActiva = true;
+                    btnScrollElemnt.classList.add(element);
+                }
+            });
+            if (seccionActiva) {
+                btnScrollElemnt.classList.add('btns-scroll-active');
             }
             else{
-                document.querySelector('.btns-scroll').classList.remove('expande-active-scroll');
+                btnScrollElemnt.classList.remove('btns-scroll-active');
+                secciones.forEach(element => {
+                    btnScrollElemnt.classList.remove(element);
+                });
             }
         }
-        window.addEventListener('scroll', expeandeScroll);
-        expeandeScroll();
+        window.addEventListener('scroll', btnScrollDifer);
+        btnScrollDifer();
 
         function slider(sliderDirec) {
             document.querySelector('.caja-items-slider').scrollLeft += document.querySelector('.item-slider').offsetWidth * sliderDirec;
