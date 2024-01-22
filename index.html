@@ -12,21 +12,28 @@
 </head>
 <body>
     <header>
-        <img src="img/logo.png" alt="Logo elbedi">
+        <a href="#inicio">
+            <img src="img/logo.png" alt="Logo elbedi">
+        </a>
         <nav>
-            <a href="#">
+            <a href="#beneficios" onclick="menuHeader();">
                 <i class="material-symbols-outlined">monitoring</i>
                 Beneficios
             </a>
-            <a href="#">
+            <a href="#demos" onclick="menuHeader();">
                 <i class="material-symbols-outlined">web</i>
                 Demos
             </a>
-            <a href="#">
+            <a href="#contacto" onclick="menuHeader();">
                 <i class="material-symbols-outlined">mark_email_read</i>
                 Contratación & Contacto
             </a>
         </nav>
+        <button class="btn-menu-header" onclick="menuHeader();">
+            <div class="line-menu">
+                <hr>
+            </div>
+        </button>
     </header>
     <div class="btns-ad-ret">
 
@@ -199,7 +206,7 @@
 
                     <div class="form-item">
                         <textarea name="" id="" class="form-camp" placeholder=""></textarea>
-                        <label for="">Describa las necesidades de su pagina web  </label>
+                        <label for="">Mensaje  </label>
                     </div>
 
                     <div class="form-item" style="display: block; text-align: end;">
@@ -216,7 +223,9 @@
     <footer>
         
     </footer>
-    <h2></h2>
+    <span class="msj-responsive-none">
+        Tamaño no recomendado
+    </span>
 
     <script>
         let pantallas = document.querySelectorAll('.pantalla'); 
@@ -275,6 +284,11 @@
 
         function slider(sliderDirec) {
             document.querySelector('.caja-items-slider').scrollLeft += document.querySelector('.item-slider').offsetWidth * sliderDirec;
+        }
+
+        function menuHeader() {
+            document.querySelector('.btn-menu-header').classList.toggle('active');
+            document.querySelector('header nav').classList.toggle('active');
         }
     </script>
 </body>

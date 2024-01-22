@@ -41,6 +41,9 @@ button{
 h1{
     font-family: 'Bauhaus_93';
 }
+h1, h2, h3, h4{
+    text-wrap: balance;
+}
 .content *{
     position: relative;
     z-index: 1;
@@ -594,10 +597,6 @@ header nav a{
 .form-item .form-camp:not(:placeholder-shown)+label{
     transform: translate(-12px, -26px) scale(0.9);
 }
-.form-item textarea:focus+label,
-.form-item textarea:not(:placeholder-shown)+label{
-    margin-left: -5px;
-}
 .form-item textarea{
     border: 2px solid #A8BCFE;
     border-radius: 4px;
@@ -737,6 +736,9 @@ header nav a{
     }
 }
 
+.btn-menu-header{
+    display: none;
+}
 @media (max-width: 850px){
     
     :root{
@@ -760,6 +762,37 @@ header nav a{
 
     .beneficio{
         margin: 30px 0;
+    }
+    header{
+        height: 60px;
+    }
+    header img{
+        height: 30px;
+    }
+    .btn-menu-header{
+        width: 40px;
+        height: 40px;
+        display: block;
+    }
+    header nav{
+        margin-right: -300px;
+        transition: 0.3s;
+        padding: 50px 25px;
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        align-items: flex-start;
+        gap: 60px;
+        background-color: #cc83d1;
+        position: absolute;
+        top: 80px;
+        right: 0px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    header nav.active{
+        margin-right: 0px;
     }
 }
 
@@ -807,8 +840,158 @@ header nav a{
     #expande-negocio .content{
         height: 300px;
     }
+    header{
+        padding: 0px 10px;
+    }
 }
 
-@media (max-width: 390px){
+@media (max-width: 395px){
+    :root{
+        --w-cel: 60px;
+        --w-lap: 250px;
+        --w-tablet: 160px;
+    }
+    .cel{
+        transform: translate(-124px, 42px);
+    }
+    .tablet{
+        transform: translate(77px, 74px);
+    }
+    .lap-down{
+        width: calc(var(--w-lap) * 1.23);
+    }
+    .img-ideal{
+        width: 99%;
+    }
+    #ideal .content{
+        padding-top: 50px;
+    }
+    .beneficio{
+        flex-wrap: wrap;
+    }
+    .beneficio img{
+        position: absolute;
+        transform: translateY(-60px);
+    }
+    .info-beneficio{
+        transform: translate(0px) !important;
+    }
+    #expande-negocio .content{
+        height: 270px;
+    }
+    .item-slider{
+        min-width: 250px;
+        width: 250px;
+        scroll-snap-align: center;
+    }
 
+    .card-form{
+        width: 90%;
+    }
+    .card-form button{
+        width: 100%;
+    }
+}
+
+@media (max-width: 350px){
+    :root{
+        --w-cel: 40px;
+        --w-lap: 200px;
+        --w-tablet: 140px;
+    }
+    .cel{
+        transform: translate(-106px, 42px);
+    }
+    .tablet{
+        transform: translate(55px, 58px);
+    }
+    .caja-dispositivos *::after{
+        display: none;
+    }
+    .caja-dispositivos *::before{
+        display: none;
+    }
+
+    #demos h2{
+        font-size: 25px;
+    }
+    #contacto h2{
+        font-size: 22px;
+    }
+    .item-slider{
+        width: 215px;
+        min-width: 215px;
+    }
+}
+
+@media (max-width: 260px){
+    html{
+        zoom: 70%;
+    }
+    .item-slider{
+        width: 180px;
+        min-width: 180px;
+    }
+}
+.msj-responsive-none{
+    display: none;
+}
+@media (max-width: 200px){
+    body *{
+        display: none !important;
+    }
+    .msj-responsive-none{
+        display: block !important;
+        text-align: center;
+        font-size: 30px;
+    }
+}
+
+/* btn menu responsive ------- */
+.line-menu{
+    display: grid;
+    grid-template-areas: "menu";
+    transition: 0.3s;
+}
+.line-menu::before{
+    display: block;
+    content: "";
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    grid-area: menu;
+    transform: translateY(-8px);
+    transition: 0.3s;
+}
+.line-menu hr{
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    border: none;
+    margin: 0;
+    grid-area: menu;
+    transition: 0.3s;
+}
+.line-menu::after{
+    display: block;
+    content: "";
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    grid-area: menu;
+    transform: translateY(8px);
+    transition: 0.3s;
+}
+
+.active .line-menu{
+    gap: 0px;
+}
+.active .line-menu::before{
+    transform: rotate(45deg) translateY(0px);
+}
+.active .line-menu hr{
+    transform: rotate(-45deg);
+}
+.active .line-menu::after{
+    opacity: 0;
 }
