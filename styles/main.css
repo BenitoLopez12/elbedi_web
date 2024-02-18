@@ -118,6 +118,11 @@ header nav a{
     font-weight: bolder;
 }
 
+header nav a img{
+    filter: invert(100%) brightness(3);
+    width: 35px;
+}
+
 .title-main{
     position: absolute;
     top: 180px;
@@ -471,7 +476,7 @@ header nav a{
 
 /* seccion expande --------------- */
 .content-expande{
-    background-image: url('../img/expande.png');
+    background-image: url('../img/expande.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -495,8 +500,9 @@ header nav a{
     align-self: stretch;
     cursor: pointer;
 }
-.slider button i{
-    font-size: 35px;
+.slider button img{
+    width: 50px;
+    opacity: 0.6;
 }
 .caja-items-slider{
     width: 1040px;
@@ -528,6 +534,27 @@ header nav a{
 }
 .item-slider img{
     width: 100%;
+}
+
+.caja-slider-img{
+    width: 100%;
+    animation-duration: 3s;
+    cursor: pointer;
+}
+.caja-slider-img:hover{
+    animation-timing-function: linear;
+    animation-name: pageScroll;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pageScroll {
+    0%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(calc(-100% + 550px));
+    }
 }
 
 /* contacto ---------------- */
