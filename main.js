@@ -78,25 +78,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }, 100);
 });
 
-function formSend() {
+document.getElementById('form-contact').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const datos = new FormData(this);
+    const datosJson = {};
+
+    datos.forEach((value, key) => {
+        datosJson[key] = value;
+    });
+
+    const btnSend = document.getElementById('btn-send-form');
+
+    btnSend.classList.add('enviando');
+
+    document.querySelectorAll('#form-contact input').forEach(input => {
+        input.setAttribute('disabled', true);
+    });
+    btnSend.setAttribute('disabled', true);
+    document.querySelector('#form-contact textarea').setAttribute('disabled', true);
+
     fetch("https://formsubmit.co/ajax/benito.lopez.tecno@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({
-            name: "Ejemplo",
-            age: 30,
-            email: "ejemplo@example.com",
-            address: {
-                city: "Ciudad Ejemplo",
-                country: "País Ejemplo"
-            },
-            interests: ["Programación", "Tecnología", "Viajes"]
-        })
+        body: JSON.stringify(datosJson)
     })
-    .then(response => response.json()) // Parsea la respuesta JSON
-    .then(data => console.log(data)) // Imprime los datos recibidos en la consola
-    .catch(error => console.log(error)); // Maneja cualquier error que ocurra durante la solicitud
-}
+    .then(response => response.json()) 
+    .then(data => {
+        btnSend.classList.add('enviado');
+        btnSend.classList.remove('enviando');
+    })
+    .catch(error => {
+        console.log(error);
+        btnSend.classList.remove('enviando');
+    }); 
+});

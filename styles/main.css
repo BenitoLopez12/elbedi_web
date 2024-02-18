@@ -155,12 +155,8 @@ header nav a img{
     transition: 0.1s;
 }
 
-.btns-scroll button{
-    cursor: pointer;
-    transition: 0.1s;
-}
 .btns-scroll button:hover{
-    transform: scale(1.1);
+    transform: scale(1.04);
 }
 .expande-negocio.btns-scroll-active img{
     filter: grayscale(100%) brightness(4);
@@ -640,18 +636,57 @@ header nav a img{
     width: 100%;
 }
 
-.card-form button{
+.form-item button{
     color: #2EA7FE;
     font-size: 20px;
-    padding: 10px 60px;
+    width: 230px;
+    height: 50px;
+    display: grid;
+    place-items: center;
     border-radius: 6px;
     transition: 0.2s;
     border: 2px solid #92d2ff;
 }
-.card-form button:hover{
+.form-item button:hover{
     /* transform: scale(1.04); */
     border: 2px solid #5f94ff;
     color: #5f94ff;
+}
+
+.form-item button img,
+.form-item button.enviando span,
+.form-item button.enviado span
+{
+    display: none;
+}
+.form-item button.enviando .icon-loading,
+.form-item button.enviado .icon-check
+{
+    display: block;
+    width: 45px;
+}
+.form-item button.enviando .icon-loading{
+    filter: invert(34%) sepia(99%) saturate(386%) hue-rotate(161deg) brightness(107%) contrast(91%);
+    animation: rotar 1.3s infinite linear;
+}
+.form-item button.enviado .icon-check{
+    filter: invert(51%) sepia(66%) saturate(433%) hue-rotate(98deg) brightness(101%) contrast(89%);
+}
+.form-item button.enviando,
+.form-item button.enviado{
+    background-color: #fff;
+    color: #fff;
+    border: 2px solid #fff;
+    width: 50px;
+    transition: 0s;
+}
+@keyframes rotar {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }
 
 @media (max-width: 1625px){
