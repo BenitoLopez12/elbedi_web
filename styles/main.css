@@ -534,7 +534,7 @@ header nav a img{
 
 .caja-slider-img{
     width: 100%;
-    animation-duration: 3s;
+    /* animation-duration: 3s; */
     cursor: pointer;
 }
 .caja-slider-img:hover{
@@ -543,7 +543,6 @@ header nav a img{
     animation-direction: alternate;
     animation-iteration-count: infinite;
 }
-
 @keyframes pageScroll {
     0%{
         transform: translateY(0%);

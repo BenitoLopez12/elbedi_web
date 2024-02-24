@@ -61,21 +61,25 @@ function menuHeader() {
     document.querySelector('header nav').classList.toggle('active');
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
     
-    setTimeout(() => {
-        let cardSlider = document.querySelectorAll('.caja-slider-img');
+let imgPageExample = document.querySelectorAll('.caja-slider-img img');
+
+imgPageExample.forEach(imgPage => {
+    imgPage.onload = function () {
         
-        cardSlider.forEach(card => {
-            let altoCard = card.offsetHeight;
-            let timeTranslate = (altoCard / 100);
-            if ((altoCard / 100) < 9) {
-                timeTranslate = (altoCard / 100) - (altoCard / 180);
-                timeTranslate = timeTranslate.toFixed(2);
-            }
-            card.style.animationDuration = timeTranslate + 's';
-        });
-    }, 100);
+        let cardSlider = imgPage.parentNode;
+        
+        let altoCard = cardSlider.offsetHeight;
+
+        let timeTranslate = altoCard / 100;
+
+        if ((altoCard / 100) < 9) {
+            timeTranslate = (altoCard / 100) - (altoCard / 180);
+            timeTranslate = timeTranslate.toFixed(2);
+        }
+
+        cardSlider.style.animationDuration = timeTranslate + 's';
+    }
 });
 
 document.getElementById('form-contact').addEventListener('submit', function(e) {
@@ -89,6 +93,8 @@ document.getElementById('form-contact').addEventListener('submit', function(e) {
     });
 
     const btnSend = document.getElementById('btn-send-form');
+
+    const titleContact = document.getElementById('title-contactanos');
 
     btnSend.classList.add('enviando');
 
@@ -110,6 +116,10 @@ document.getElementById('form-contact').addEventListener('submit', function(e) {
     .then(data => {
         btnSend.classList.add('enviado');
         btnSend.classList.remove('enviando');
+
+        titleContact.innerHTML = '<strong> ¡Gracias por tu mensaje! </strong> Nos pondremos en contacto pronto';
+        titleContact.style.color = '#a45bac';
+        titleContact.style.fontWeight = 'lighter';
     })
     .catch(error => {
         console.log(error);
