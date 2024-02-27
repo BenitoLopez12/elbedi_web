@@ -11,6 +11,14 @@
     --w-tablet: 500px;
     --border-dispositivo: 3px;
 }
+html{
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+html::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
 html *{
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
@@ -31,7 +39,7 @@ button{
 }
 .content{
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     position: relative;
 }
 .content::-webkit-scrollbar{
@@ -49,18 +57,8 @@ h1, h2, h3, h4{
     z-index: 1;
 }
 
-html{
-    overflow: auto;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    transition: scroll-behavior 5s ease-in;
-}
 section{
     scroll-snap-align: center;
-}
-html::-webkit-scrollbar{
-    width: 0;
-    height: 0;
 }
 
 /* img decora --------------- */

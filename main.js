@@ -17,7 +17,8 @@ pantallas.forEach(function(pantalla){
             }
 
             // Incrementa o decrementa el scrollTop según la dirección
-            caja.scrollTop += orientacion * caja.clientHeight;
+            // caja.scrollTop += orientacion * caja.clientHeight;
+
         }, 3000);
     }, pantallasCount * 1000);
 });
@@ -55,6 +56,43 @@ btnScrollDifer();
 function slider(sliderDirec) {
     document.querySelector('.caja-items-slider').scrollLeft += document.querySelector('.item-slider').offsetWidth * sliderDirec;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function menuHeader() {
     document.querySelector('.btn-menu-header').classList.toggle('active');
