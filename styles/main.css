@@ -403,19 +403,44 @@ header nav a img{
     flex-direction: column;
     align-items: center;
 
-    overflow: auto;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    overflow: hidden;
 }
 .pantalla img{
-    scroll-snap-align: center;
-    
     height: 100%;
     object-fit: contain;
 }
-.pantalla::-webkit-scrollbar{
-    width: 0;
-    height: 0;
+.pantalla img{
+    animation: pantallaScroll 10s linear infinite alternate;
+}
+
+#pantalla-cel img{
+    animation-delay: -4s;
+}
+#pantalla-lap img{
+    animation-delay: -2s;
+}
+#pantalla-tablet img{
+    animation-delay: -8s;
+}
+@keyframes pantallaScroll {
+    0%{
+        transform: translateY(0%);
+    }
+    25%{
+        transform: translateY(0%);
+    }
+    28%{
+        transform: translateY(-100%);
+    }
+    72%{
+        transform: translateY(-100%);
+    }
+    75%{
+        transform: translateY(-200%);
+    }
+    100%{
+        transform: translateY(-200%);
+    }
 }
 
 /* secccion ideal -------------- */
