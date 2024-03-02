@@ -32,6 +32,21 @@ function slider(sliderDirec) {
     document.querySelector('.caja-items-slider').scrollLeft += document.querySelector('.item-slider').offsetWidth * sliderDirec;
 }
 
+function sliderModal(sliderDirec) {
+    document.querySelector('.content-slider-modal').scrollLeft += document.querySelector('.item-slider-modal').offsetWidth * sliderDirec;
+}
+
+function openModal(idVideoDemo) {
+    document.querySelector('.modal').classList.add('active');
+
+    let positionChild = document.getElementById(idVideoDemo).offsetLeft;
+    document.querySelector('.content-slider-modal').scrollLeft = positionChild;
+}
+
+function closeModal() {
+    document.querySelector('.modal:hover').classList.remove('active');
+}
+
 function menuHeader() {
     document.querySelector('.btn-menu-header').classList.toggle('active');
     document.querySelector('header nav').classList.toggle('active');
