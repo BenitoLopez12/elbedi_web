@@ -502,11 +502,12 @@ header nav a img{
 }
 
 /* seccion demos -------------- */
-#demos h2{
+.content-demos h2{
     text-align: center;
     color: #83CBFF;
     font-size: 40px;
     padding-top: 100px;
+    margin-bottom: 0;
 }
 .slider{
     display: flex;
@@ -834,13 +835,40 @@ header nav a img{
     .title-main{
         top: 50px;
     }
+
+    
+    :root{
+        --w-cel: 130px;
+        --w-lap: 480px;
+        --w-tablet: 360px;
+    }
+    
+    .tablet{
+        transform: translate(380px, 0px);
+    }
+    .cel{
+        transform: translate(-237px, 52px);
+    }
+
+    .beneficio img{
+        width: 250px !important;
+    }
+    .info-beneficio h2{
+        font-size: 18px;
+    }
+    .info-beneficio p{
+        font-size: 15px;
+    }
+
+    .slider{
+        margin-top: 20px;
+    }
+    .item-slider{
+        height: 500px;
+    }
 }
 
 @media(max-width: 1280px) {
-    :root{
-        --w-cel: 160px;
-        --w-tablet: 450px;
-    }
     html{
         scroll-snap-type: none;
     }
@@ -862,12 +890,6 @@ header nav a img{
         transform: translate(0px);
         margin-right: 25px;
         margin-top: 40px;
-    }
-    .cel{
-        transform: translate(-311px, 39px);
-    }
-    .tablet{
-        transform: translate(203px, 182px);
     }
     .pantalla{
         overflow: hidden;
@@ -893,7 +915,7 @@ header nav a img{
     .item-slider{
         scroll-snap-align: start;
     }
-    #demos h2{
+    .content-demos h2{
         padding-top: 0px;
     }
     .slider{
@@ -1102,7 +1124,7 @@ header nav a img{
         display: none;
     }
 
-    #demos h2{
+    .content-demos h2{
         font-size: 25px;
     }
     #contacto h2{
