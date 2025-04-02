@@ -1,119 +1,124 @@
 function scrollMain(direccion) {
-    let html = document.querySelector('html');
-    html.scrollTop += direccion * html.clientHeight;
+  let html = document.querySelector("html");
+  html.scrollTop += direccion * html.clientHeight;
 }
 
-function btnScrollDifer(){
-    let seccionActiva = false;
-    let btnScrollElemnt = document.querySelector('.btns-scroll');
-    let secciones = ['expande-negocio', 'beneficios', 'demos'];
-    secciones.forEach(element => {
-        let seccion = document.getElementById(element);
-        let rect = seccion.getBoundingClientRect();
-        if (rect.top <= (window.innerHeight - 600) && rect.bottom >= 600) {
-            seccionActiva = true;
-            btnScrollElemnt.classList.add(element);
-        }
+function btnScrollDifer() {
+  let seccionActiva = false;
+  let btnScrollElemnt = document.querySelector(".btns-scroll");
+  let secciones = ["expande-negocio", "beneficios", "demos"];
+  secciones.forEach((element) => {
+    let seccion = document.getElementById(element);
+    let rect = seccion.getBoundingClientRect();
+    if (rect.top <= window.innerHeight - 600 && rect.bottom >= 600) {
+      seccionActiva = true;
+      btnScrollElemnt.classList.add(element);
+    }
+  });
+  if (seccionActiva) {
+    btnScrollElemnt.classList.add("btns-scroll-active");
+  } else {
+    btnScrollElemnt.classList.remove("btns-scroll-active");
+    secciones.forEach((element) => {
+      btnScrollElemnt.classList.remove(element);
     });
-    if (seccionActiva) {
-        btnScrollElemnt.classList.add('btns-scroll-active');
-    }
-    else{
-        btnScrollElemnt.classList.remove('btns-scroll-active');
-        secciones.forEach(element => {
-            btnScrollElemnt.classList.remove(element);
-        });
-    }
+  }
 }
-window.addEventListener('scroll', btnScrollDifer);
+window.addEventListener("scroll", btnScrollDifer);
 btnScrollDifer();
 
 function slider(sliderDirec) {
-    document.querySelector('.caja-items-slider').scrollLeft += document.querySelector('.item-slider').offsetWidth * sliderDirec;
+  document.querySelector(".caja-items-slider").scrollLeft +=
+    document.querySelector(".item-slider").offsetWidth * sliderDirec;
 }
 
 function sliderModal(sliderDirec) {
-    document.querySelector('.content-slider-modal').scrollLeft += document.querySelector('.item-slider-modal').offsetWidth * sliderDirec;
+  document.querySelector(".content-slider-modal").scrollLeft +=
+    document.querySelector(".item-slider-modal").offsetWidth * sliderDirec;
 }
 
 function openModal(idVideoDemo) {
-    document.querySelector('.modal').classList.add('active');
+  document.querySelector(".modal").classList.add("active");
 
-    let positionChild = document.getElementById(idVideoDemo).offsetLeft;
-    document.querySelector('.content-slider-modal').scrollLeft = positionChild;
+  let positionChild = document.getElementById(idVideoDemo).offsetLeft;
+  document.querySelector(".content-slider-modal").scrollLeft = positionChild;
 }
 
 function closeModal() {
-    document.querySelector('.modal:hover').classList.remove('active');
+  document.querySelector(".modal:hover").classList.remove("active");
 }
 
 function menuHeader() {
-    document.querySelector('.btn-menu-header').classList.toggle('active');
-    document.querySelector('header nav').classList.toggle('active');
+  document.querySelector(".btn-menu-header").classList.toggle("active");
+  document.querySelector("header nav").classList.toggle("active");
 }
 
-    
-let imgPageExample = document.querySelectorAll('.caja-slider-img img');
+let imgPageExample = document.querySelectorAll(".caja-slider-img img");
 
-imgPageExample.forEach(imgPage => {
-    imgPage.onload = function () {
-        
-        let cardSlider = imgPage.parentNode;
-        
-        let altoCard = cardSlider.offsetHeight;
+imgPageExample.forEach((imgPage) => {
+  imgPage.onload = function () {
+    let cardSlider = imgPage.parentNode;
 
-        let timeTranslate = altoCard / 100;
+    let altoCard = cardSlider.offsetHeight;
 
-        if ((altoCard / 100) < 9) {
-            timeTranslate = (altoCard / 100) - (altoCard / 180);
-            timeTranslate = timeTranslate.toFixed(2);
-        }
+    let timeTranslate = altoCard / 100;
 
-        cardSlider.style.animationDuration = timeTranslate + 's';
+    if (altoCard / 100 < 9) {
+      timeTranslate = altoCard / 100 - altoCard / 180;
+      timeTranslate = timeTranslate.toFixed(2);
     }
+
+    cardSlider.style.animationDuration = timeTranslate + "s";
+  };
 });
 
-document.getElementById('form-contact').addEventListener('submit', function(e) {
+document
+  .getElementById("form-contact")
+  .addEventListener("submit", function (e) {
     e.preventDefault();
 
     const datos = new FormData(this);
     const datosJson = {};
 
     datos.forEach((value, key) => {
-        datosJson[key] = value;
+      datosJson[key] = value;
     });
 
-    const btnSend = document.getElementById('btn-send-form');
+    // Añadir el campo _cc con las direcciones de correo adicionales
+    datosJson["_cc"] = "elbedi.admon@gmail.com, benito.lopez.tecno@gmail.com";
 
-    const titleContact = document.getElementById('title-contactanos');
+    const btnSend = document.getElementById("btn-send-form");
+    const titleContact = document.getElementById("title-contactanos");
 
-    btnSend.classList.add('enviando');
+    btnSend.classList.add("enviando");
 
-    document.querySelectorAll('#form-contact input').forEach(input => {
-        input.setAttribute('disabled', true);
-    });
-    btnSend.setAttribute('disabled', true);
-    document.querySelector('#form-contact textarea').setAttribute('disabled', true);
+    document
+      .querySelectorAll("#form-contact input, #form-contact textarea")
+      .forEach((input) => {
+        input.setAttribute("disabled", true);
+      });
+    btnSend.setAttribute("disabled", true);
 
-    fetch("https://formsubmit.co/ajax/benito.lopez.tecno@gmail.com", {
-        method: "POST",
-        headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(datosJson)
+    fetch("https://formsubmit.co/ajax/contact@elbedi.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(datosJson),
     })
-    .then(response => response.json()) 
-    .then(data => {
-        btnSend.classList.add('enviado');
-        btnSend.classList.remove('enviando');
+      .then((response) => response.json())
+      .then((data) => {
+        btnSend.classList.add("enviado");
+        btnSend.classList.remove("enviando");
 
-        titleContact.innerHTML = '<strong> ¡Gracias por tu mensaje! </strong> Nos pondremos en contacto pronto';
-        titleContact.style.color = '#a45bac';
-        titleContact.style.fontWeight = 'lighter';
-    })
-    .catch(error => {
+        titleContact.innerHTML =
+          "<strong>¡Gracias por tu mensaje!</strong> Nos pondremos en contacto pronto";
+        titleContact.style.color = "#a45bac";
+        titleContact.style.fontWeight = "lighter";
+      })
+      .catch((error) => {
         console.log(error);
-        btnSend.classList.remove('enviando');
-    }); 
-});
+        btnSend.classList.remove("enviando");
+      });
+  });
