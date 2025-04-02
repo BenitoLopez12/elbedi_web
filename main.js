@@ -84,22 +84,21 @@ document
       datosJson[key] = value;
     });
 
-    // Añadir el campo _cc con las direcciones de correo adicionales
-    datosJson["_cc"] = "elbedi.admon@gmail.com, benito.lopez.tecno@gmail.com";
-
     const btnSend = document.getElementById("btn-send-form");
+
     const titleContact = document.getElementById("title-contactanos");
 
     btnSend.classList.add("enviando");
 
-    document
-      .querySelectorAll("#form-contact input, #form-contact textarea")
-      .forEach((input) => {
-        input.setAttribute("disabled", true);
-      });
+    document.querySelectorAll("#form-contact input").forEach((input) => {
+      input.setAttribute("disabled", true);
+    });
     btnSend.setAttribute("disabled", true);
+    document
+      .querySelector("#form-contact textarea")
+      .setAttribute("disabled", true);
 
-    fetch("https://formsubmit.co/ajax/contact@elbedi.com", {
+    fetch("https://formsubmit.co/ajax/benito.lopez.tecno@gmail.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -113,7 +112,7 @@ document
         btnSend.classList.remove("enviando");
 
         titleContact.innerHTML =
-          "<strong>¡Gracias por tu mensaje!</strong> Nos pondremos en contacto pronto";
+          "<strong> ¡Gracias por tu mensaje! </strong> Nos pondremos en contacto pronto";
         titleContact.style.color = "#a45bac";
         titleContact.style.fontWeight = "lighter";
       })
