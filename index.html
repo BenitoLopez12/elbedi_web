@@ -35,6 +35,20 @@
 
       gtag("config", "G-06E4X98SPN");
     </script>
+
+    <!-- lenis scroll -->
+    <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+    <script>
+      // Initialize Lenis
+      const lenis = new Lenis({
+        autoRaf: true,
+      });
+
+      // Listen for the scroll event and log the event data
+      lenis.on("scroll", (e) => {
+        console.log(e);
+      });
+    </script>
   </head>
   <body>
     <header>
@@ -77,8 +91,8 @@
       <section id="inicio">
         <div class="content" style="display: grid; place-items: center;">
           <div class="title-main">
-            <h1>CONECTA & CRECE EN LÍNEA</h1>
-            <span>Descubre nuestros servicios web</span>
+            <h1><strong>CONECTA</strong> & CRECE EN LÍNEA</h1>
+            <span class="subtitle">Descubre nuestros servicios web</span>
           </div>
           <div class="caja-dispositivos">
             <div class="lap" style="order: 2;">
