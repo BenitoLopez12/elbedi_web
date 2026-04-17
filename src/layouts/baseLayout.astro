@@ -1,0 +1,24 @@
+---
+import "../styles/global.css";
+import siteConfig from "../config/siteConfig.js";
+import Head from "./partials/head.jsx";
+import site from "../content/site";
+import Header from "./partials/header.jsx";
+import Footer from "./partials/footer.jsx";
+---
+
+<!doctype html>
+<html lang={siteConfig.lang}>
+  <Head />
+  <body
+    class="bg-neutral-950 text-neutral-100 font-sans antialiased selection:bg-white/10">
+    <Header brand={site.name} ctaLabel={site.ctaText} />
+    <slot />
+    <Footer brand={site.name} email={site.email} phone={site.phone} />
+
+    <script>
+      import { initLenis } from "../lib/lenis.js";
+      initLenis();
+    </script>
+  </body>
+</html>
