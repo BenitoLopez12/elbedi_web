@@ -2,7 +2,7 @@ const siteConfig = {
   title: "ELBEDI",
   url: "https://elbedi.com",
   lang: "es-MX",
-  theme: "light",
+  theme: "dark",
   description: "Framework base para sitios modernos y escalables.",
   mainImage: "/og-default.jpg",
   robots:

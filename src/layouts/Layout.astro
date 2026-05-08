@@ -1,24 +1,22 @@
 ---
-import "../styles/global.css";
+import "../styles/app.css";
 import siteConfig from "../config/siteConfig.js";
 import Head from "./partials/head.jsx";
 import site from "../content/site";
 import Header from "./partials/header.jsx";
 import Footer from "./partials/footer.jsx";
+import BgTransition from "../components/motion/bgTransition.jsx";
 ---
 
 <!doctype html>
-<html lang={siteConfig.lang}>
+<html lang={siteConfig.lang} class="dark">
   <Head />
-  <body
-    class="bg-neutral-950 text-neutral-100 font-sans antialiased selection:bg-white/10">
+  <body class="text-white">
+    <BgTransition />
     <Header brand={site.name} ctaLabel={site.ctaText} />
     <slot />
     <Footer brand={site.name} email={site.email} phone={site.phone} />
 
-    <script>
-      import { initLenis } from "../lib/lenis.js";
-      initLenis();
-    </script>
+    <script src="../scripts/lenis-init.js"></script>
   </body>
 </html>

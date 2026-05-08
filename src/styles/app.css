@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Bauhaus93";
+  src: url("/fonts/Bauhaus93.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "avenir";
+  src: url("/fonts/avenir.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+html{
+  scrollbar-width: thin;
+  scrollbar-color: #000000 transparent;
+}
+
+body{
+  font-family: "avenir", sans-serif;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Bauhaus93", sans-serif;
+  text-wrap: balance;
+  font-weight: normal;
+}
+
+p{
+  text-wrap: pretty;
+}
+
+/* Dispositivos css */
+#content-articles-sectors > div{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+#content-articles-sectors article {
+  position: relative;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+#content-articles-sectors article img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.box-info-sector{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  transition:.3s ease-in-out;
+}
+.box-info-sector:hover{
+  background-color: rgba(0,0,0,0.6);
+}
+.box-info-sector h3{
+  position: absolute;
+  text-align: center;
+  font-size: 3rem;
+  transition: 0.3s ease-in-out;
+  line-height: 50px;
+}
+.box-info-sector a{
+  position: absolute;
+  font-size: 1.2rem;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+.box-info-sector:hover h3{
+  margin-top: -75px;
+}
+.box-info-sector:hover a{
+  opacity: 1;
+  margin-bottom: -75px;
+}
+#content-articles-sectors *{
+  min-height: 0;
+}

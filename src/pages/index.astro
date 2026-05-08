@@ -1,10 +1,20 @@
 ---
-import Layout from "../layouts/baseLayout.astro";
-import Hero from "../sections/hero/Hero.jsx";
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/sections/hero/Hero.jsx";
+import Services from "@/sections/services/Services";
+import Sectors from "@/sections/sectors/sectors.jsx";
+import Projects from "@/sections/projects/Projects.jsx";
+import Plans from "@/sections/plans/plans.jsx";
+import Contact from "@/sections/contact/Contact.jsx";
 ---
 
 <Layout
   title="ELBEDI Framework"
   description="Framework base para producir páginas modernas y escalables.">
   <Hero client:load />
+  <Services client:load />
+  <Projects client:load />
+  <Sectors client:load />
+  <Plans client:load />
+  <Contact client:load />
 </Layout>
