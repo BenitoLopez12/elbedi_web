@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import SectionContainer from "@/components/common/SectionContainer";
 import LimitContainer from "@/components/common/LimitContainer";
 import Lottie from "lottie-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SERVICES = [
   {
@@ -36,9 +40,42 @@ const SERVICES = [
 ];
 
 export default function Services() {
+  const sectionRef = useRef(null);
+  const contentRef = useRef(null);
+
   const [animationsByService, setAnimationsByService] = useState({});
 
   useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        contentRef.current,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 50%",
+            end: "top 40%",
+            scrub: true,
+            toggleActions: "play reverse play reverse",
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+
+      requestAnimationFrame(() => ScrollTrigger.refresh());
+    }, sectionRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
+  useEffect(() => {
+    // Animaciones Lottie
     let isMounted = true;
 
     const loadAnimations = async () => {
@@ -72,47 +109,53 @@ export default function Services() {
 
   return (
     <>
-      <SectionContainer>
-        <LimitContainer>
-          <h2 className="text-6xl font-bold text-center mt-30">
-            Nuestros Servicios Web
-          </h2>
-          <div className="mt-10 grid grid-cols-2 ">
-            {SERVICES.map((service, index) => {
-              const reverseOnDesktop = index % 2 !== 0;
-              const isFirst = index === 0;
-              const isLast = index === SERVICES.length - 1;
-              return (
-                <div
-                  key={service.key}
-                  className={`flex items-center gap-2 px-2 
+      <SectionContainer className="mt-150" id="services">
+        <div ref={sectionRef}>
+          <LimitContainer>
+            <div ref={contentRef}>
+              <h2 className="text-6xl font-bold text-center mt-30">
+                Nuestros Servicios Web
+              </h2>
+              <div className="mt-10 grid grid-cols-2 ">
+                {SERVICES.map((service, index) => {
+                  const reverseOnDesktop = index % 2 !== 0;
+                  const isFirst = index === 0;
+                  const isLast = index === SERVICES.length - 1;
+                  return (
+                    <div
+                      key={service.key}
+                      className={`flex items-center gap-2 px-2 
                     ${isFirst ? "border-b border-r border-white/50" : ""} 
                     ${isLast ? "border-t border-l border-white/50" : ""} 
                     ${isFirst ? "translate-y-px" : ""}
                     ${isLast ? "-translate-x-px" : ""}`}>
-                  <div
-                    className={`w-full h-full aspect-square mx-auto flex-1 ${reverseOnDesktop ? "" : "order-2"}`}>
-                    {animationsByService[service.key] ? (
-                      <Lottie
-                        animationData={animationsByService[service.key]}
-                        loop
-                        autoplay
-                        className={`w-full h-full ${service.key === "uxui" ? "scale-110 " : ""}`}
-                      />
-                    ) : (
-                      <div className="w-full aspect-square bg-white/10 rounded-2xl animate-pulse" />
-                    )}
-                  </div>
-                  <div
-                    className={`${reverseOnDesktop ? "md:order-1" : ""} flex-1`}>
-                    <h3 className="text-4xl leading-tight">{service.title}</h3>
-                    <p className="mt-3 text-md ">{service.description}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </LimitContainer>
+                      <div
+                        className={`w-full h-full aspect-square mx-auto flex-1 ${reverseOnDesktop ? "" : "order-2"}`}>
+                        {animationsByService[service.key] ? (
+                          <Lottie
+                            animationData={animationsByService[service.key]}
+                            loop
+                            autoplay
+                            className={`w-full h-full ${service.key === "uxui" ? "scale-110 " : ""}`}
+                          />
+                        ) : (
+                          <div className="w-full aspect-square bg-white/10 rounded-2xl animate-pulse" />
+                        )}
+                      </div>
+                      <div
+                        className={`${reverseOnDesktop ? "md:order-1" : ""} flex-1`}>
+                        <h3 className="text-4xl leading-tight">
+                          {service.title}
+                        </h3>
+                        <p className="mt-3 text-md ">{service.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </LimitContainer>
+        </div>
       </SectionContainer>
     </>
   );

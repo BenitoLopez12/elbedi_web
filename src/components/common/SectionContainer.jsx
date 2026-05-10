@@ -1,3 +1,11 @@
-export default function SectionContainer({ children, className = "" }) {
-  return <section className={`${className}`}>{children}</section>;
+export default function SectionContainer({
+  children,
+  className = "",
+  ...props
+}) {
+  return (
+    <section className={`${className}`} {...props}>
+      {children}
+    </section>
+  );
 }

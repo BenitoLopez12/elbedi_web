@@ -36,6 +36,60 @@ p{
   text-wrap: pretty;
 }
 
+@keyframes float{
+  0% {
+    transform: translateX(14px) translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(0px) translateY(-14px) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-14px) translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateX(0px) translateY(14px) rotate(-3deg);
+  }
+  100% {
+    transform: translateX(14px) translateY(0px) rotate(0deg);
+  } 
+}
+
+.target-float {
+  animation-name: float;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes figures {
+  0% {
+    transform: translateX(70px) translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(0px) translateY(-70px) rotate(90deg);
+  }
+  50% {
+    transform: translateX(-70px) translateY(0px) rotate(180deg);
+  }
+  75% {
+    transform: translateX(0px) translateY(70px) rotate(270deg);
+  }
+  100% {
+    transform: translateX(70px) translateY(0px) rotate(360deg);
+  } 
+}
+.figures{
+  animation-name: figures;
+  animation-duration: 50s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transition: 0.3s;
+}
+.figures-paused {
+  animation-play-state: paused !important;
+  transform: translateX(0px) translateY(0px) !important;
+}
+
 /* Dispositivos css */
 #content-articles-sectors > div{
   width: 500px;

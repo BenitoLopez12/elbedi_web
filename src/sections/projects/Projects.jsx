@@ -212,7 +212,7 @@ export default function Projects() {
   return (
     <SectionContainer>
       <LimitContainer>
-        <div ref={rootRef} className="pt-24 md:pt-30 pb-20">
+        <div ref={rootRef} className="pt-30 md:pt-30 pb-30">
           <div className="mt-12 rounded-3xl border border-white/15 bg-white/5 p-6 md:p-8 lg:p-10 overflow-hidden">
             <div className="flex items-center justify-between mb-6 md:mb-8">
               <div

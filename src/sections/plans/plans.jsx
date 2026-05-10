@@ -138,7 +138,7 @@ export default function Plans() {
 
   return (
     <SectionContainer>
-      <LimitContainer className="py-24 md:py-30">
+      <LimitContainer className="py-24 md:py-35">
         <h2 className="text-4xl md:text-6xl font-bold text-center leading-tight">
           Planes disenados para crecer contigo
         </h2>

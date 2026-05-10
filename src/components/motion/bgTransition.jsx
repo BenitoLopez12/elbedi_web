@@ -5,13 +5,20 @@ export default function BgTransition() {
     <>
       <div className="fixed inset-0 w-full h-full -z-1 overflow-hidden">
         <div className="">
-          <div className="absolute inset-0 w-full h-full bg-[#9970d1]" />
+          <div className="absolute inset-0 w-full h-full bg-[#9b73d4]" />
           <div
             aria-hidden="true"
             className="absolute inset-0 w-full h-full "
             style={{
               background:
-                "linear-gradient(135deg,rgb(75, 100, 240) 0%, rgba(0, 0, 0, 0) 50%)",
+                "linear-gradient(135deg, #3853F0 0%, transparent 50%)",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full "
+            style={{
+              background: "linear-gradient(45deg, #78CEFF 0%, transparent 50%)",
             }}
           />
           <div
@@ -19,7 +26,7 @@ export default function BgTransition() {
             className="absolute inset-0 w-full h-full "
             style={{
               background:
-                "linear-gradient(45deg,rgb(104, 174, 254) 0%, rgba(0, 0, 0, 0) 50%)",
+                "linear-gradient(225deg, #FF9ECF 0%, transparent 50%)",
             }}
           />
           <div
@@ -27,15 +34,7 @@ export default function BgTransition() {
             className="absolute inset-0 w-full h-full "
             style={{
               background:
-                "linear-gradient(225deg,rgba(255, 153, 204, 1) 0%, rgba(0, 0, 0, 0) 50%)",
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full "
-            style={{
-              background:
-                "linear-gradient(315deg,rgba(181, 26, 142, 1) 0%, rgba(0, 0, 0, 0) 50%)",
+                "linear-gradient(315deg, #BD0B91 0%, transparent 50%)",
             }}
           />
         </div>
@@ -44,7 +43,7 @@ export default function BgTransition() {
           className="absolute top-0 right-0 w-full h-full bg-bottom-right bg-no-repeat"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 70% 65%, rgba(0, 0, 0, 0.3), transparent 30%)",
+              "radial-gradient(circle at 70% 65%, rgba(255, 255, 255, 0.5), transparent 40%)",
           }}
         />
       </div>

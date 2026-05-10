@@ -5,7 +5,8 @@ import Head from "./partials/head.jsx";
 import site from "../content/site";
 import Header from "./partials/header.jsx";
 import Footer from "./partials/footer.jsx";
-import BgTransition from "../components/motion/bgTransition.jsx";
+import BgTransition from "@/components/motion/bgTransition.jsx";
+import Figures from "@/components/motion/Figures.jsx";
 ---
 
 <!doctype html>
@@ -13,6 +14,7 @@ import BgTransition from "../components/motion/bgTransition.jsx";
   <Head />
   <body class="text-white">
     <BgTransition />
+    <Figures client:load />
     <Header brand={site.name} ctaLabel={site.ctaText} />
     <slot />
     <Footer brand={site.name} email={site.email} phone={site.phone} />
