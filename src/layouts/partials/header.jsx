@@ -1,23 +1,26 @@
 import LimitContainer from "@/components/common/LimitContainer.jsx";
+import { buildWhatsAppUrl } from "@/lib/whatsapp.js";
 
 const defaultLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Portafolio", href: "#portafolio" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: "#services" },
+  { label: "Portafolio", href: "#portfolio" },
+  { label: "Sectores", href: "#sectors" },
+  { label: "Planes y Precios", href: "#plans" },
 ];
 
 export default function Header({
   brand = "ELBEDI",
-  brandHref = "/",
+  brandHref = "/#",
   links = defaultLinks,
-  ctaLabel = "Hablemos",
-  ctaHref = "#contacto",
 }) {
+  const whatsappHref = buildWhatsAppUrl(
+    "Hola, me gustaria recibir asesosria para mi sitio web",
+  );
+
   return (
     <header className="fixed top-3 w-full z-100">
       <LimitContainer>
-        <div className="flex items-center justify-between bg-white/20 border border-white/30 backdrop-blur-[1px] rounded-full px-8 py-2 shadow-2xl">
+        <div className="flex h-13 items-center justify-between bg-white/20 border border-white/30 backdrop-blur-[1px] rounded-xl px-8 py-2 shadow-2xl">
           <a href={brandHref} className="block h-5 relative">
             <img
               src="/images/logo.png"
@@ -38,11 +41,15 @@ export default function Header({
             </ul>
           </nav>
 
-          <a
-            href={ctaHref}
-            className="inline-flex items-center rounded-full bg-white text-slate-900 px-4 py-2 text-xs">
-            {ctaLabel}
-          </a>
+          <div>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="block items-center rounded-lg bg-white text-slate-900 px-4 py-2 text-xs">
+              ASESORÍA GRATUITA
+            </a>
+          </div>
         </div>
       </LimitContainer>
     </header>

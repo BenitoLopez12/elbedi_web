@@ -131,7 +131,7 @@ export default function Hero() {
 
   return (
     <>
-      <SectionContainer>
+      <SectionContainer id="">
         <div className="">
           <div
             className="min-h-svh w-full flex overflow-hidden"
@@ -149,16 +149,22 @@ export default function Hero() {
                   <p
                     className="text-lg md:text-xl leading-relaxed max-w-xl "
                     ref={descriptionRef}>
-                    Estudio digital especializado en crear sitios modernos,
-                    rápidos y memorables para marcas que buscan destacar.
+                    ELBEDI es un estudio digital especializado en crear sitios
+                    modernos, rápidos y memorables para marcas que buscan
+                    destacar.
                   </p>
-                  <div className="" ref={buttonRef}>
-                    <Button href="#contacto">cotizar mi nueva Web</Button>
+                  <div className="flex gap-3" ref={buttonRef}>
+                    <Button whatsappMessage="Hola, me gustaria cotizar mi sitio web.">
+                      Cotizar mi sitio Web
+                    </Button>
+                    <Button variant="glass" href="#plans">
+                      Planes y Precios
+                    </Button>
                   </div>
                 </div>
               </LimitContainer>
-              <div className="absolute right-[6%] h-svh w-3/5 flex items-end">
-                <div className="absolute z-10 w-full h-full" ref={targetsRef}>
+              <div className="absolute z-0 right-[6%] h-svh w-3/5 flex items-end">
+                <div className="absolute w-full h-full" ref={targetsRef}>
                   <div
                     className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl px-6 py-3 absolute bottom-2/3 right-7/13 z-20 text-shadow-md target-float"
                     style={{ animationDelay: "-7000ms" }}>
@@ -191,23 +197,20 @@ export default function Hero() {
                     <h2
                       className="text-5xl md:text-7xl font-bold leading-tight tracking-tight "
                       ref={titleSecondRef}>
-                      Tu
+                      Tu te enfocas en tus ventas, nosotros en tu sitio{" "}
                       <span className="text-cyan-200"> Web </span>
-                      no termina cuando se publica.
                     </h2>
                     <p
                       className="text-lg md:text-xl leading-relaxed max-w-xl "
                       ref={descriptionSecondRef}>
-                      Ofrecemos{" "}
-                      <span className="font-bold text-white">
-                        {" "}
-                        mantenimiento y mejora continua{" "}
-                      </span>{" "}
-                      para asegurar que tu sitio web se mantenga actualizado,
-                      seguro y funcionando a largo del tiempo.
+                      Nos encargamos de todos los aspectos técnicos y creativos
+                      de tu pagina web, para que tu puedas concentrarte en tu
+                      negocio y tus ventas.
                     </p>
                     <div className="" ref={buttonSecondRef}>
-                      <Button href="#contacto">cotizar mi nueva Web</Button>
+                      <Button whatsappMessage="Hola, me interesa una asesoria personalizada para mi sitio web.">
+                        asesoria personalizada
+                      </Button>
                     </div>
                   </div>
                 </LimitContainer>

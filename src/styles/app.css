@@ -90,7 +90,7 @@ p{
   transform: translateX(0px) translateY(0px) !important;
 }
 
-/* Dispositivos css */
+/* sectores css */
 #content-articles-sectors > div{
   width: 500px;
   display: flex;
@@ -102,11 +102,13 @@ p{
   border-radius: 10px;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 #content-articles-sectors article img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: 0.3s;
 }
 .box-info-sector{
   position: absolute;
@@ -124,7 +126,10 @@ p{
   transition:.3s ease-in-out;
 }
 .box-info-sector:hover{
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.3);
+}
+#content-articles-sectors article:hover img{
+  transform: scale(1.1);
 }
 .box-info-sector h3{
   position: absolute;

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import SectionContainer from "@/components/common/SectionContainer";
 import LimitContainer from "@/components/common/LimitContainer";
@@ -43,6 +43,7 @@ const PROJECTS = [
 ];
 
 const wrapIndex = (index, length) => ((index % length) + length) % length;
+const AUTOPLAY_DELAY = 13000;
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -209,10 +210,22 @@ export default function Projects() {
     };
   }, []);
 
+  useEffect(() => {
+    if (PROJECTS.length <= 1) return;
+
+    const autoplayTimeout = setTimeout(() => {
+      if (!isAnimating) {
+        handleProjectChange(1);
+      }
+    }, AUTOPLAY_DELAY);
+
+    return () => clearTimeout(autoplayTimeout);
+  }, [activeIndex, isAnimating]);
+
   return (
-    <SectionContainer>
+    <SectionContainer id="portfolio">
       <LimitContainer>
-        <div ref={rootRef} className="pt-30 md:pt-30 pb-30">
+        <div ref={rootRef} className="pt-50 pb-30">
           <div className="mt-12 rounded-3xl border border-white/15 bg-white/5 p-6 md:p-8 lg:p-10 overflow-hidden">
             <div className="flex items-center justify-between mb-6 md:mb-8">
               <div
@@ -221,7 +234,7 @@ export default function Projects() {
                 Proyecto {activeIndex + 1} / {PROJECTS.length}
               </div>
               <h2 className="text-4xl md:text-6xl font-bold leading-tight text-center">
-                Nuestros Proyectos
+                Casos de <span className="text-cyan-200"> Éxito </span>
               </h2>
               <div className="flex items-center gap-3">
                 <button

@@ -13,11 +13,16 @@ import Figures from "@/components/motion/Figures.jsx";
 <html lang={siteConfig.lang} class="dark">
   <Head />
   <body class="text-white">
-    <BgTransition />
+    <BgTransition client:load />
     <Figures client:load />
     <Header brand={site.name} ctaLabel={site.ctaText} />
     <slot />
-    <Footer brand={site.name} email={site.email} phone={site.phone} />
+    <Footer
+      client:load
+      brand={site.name}
+      email={site.email}
+      phone={site.phone}
+    />
 
     <script src="../scripts/lenis-init.js"></script>
   </body>

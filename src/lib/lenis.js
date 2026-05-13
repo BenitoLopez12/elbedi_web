@@ -16,6 +16,9 @@ export function initLenis() {
     autoRaf: false,
     anchors: true,
     smoothWheel: true,
+    lerp: 0.1,
+    wheelMultiplier: 1,
+    touchMultiplier: 1.2,
   });
 
   lenis.on("scroll", ScrollTrigger.update);

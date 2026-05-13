@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 
 import SectionContainer from "@/components/common/SectionContainer";
 import LimitContainer from "@/components/common/LimitContainer";
+import Button from "@/components/ui/Button";
 import Lottie from "lottie-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,9 +13,10 @@ const SERVICES = [
   {
     key: "uxui",
     animationPath: "/lottie/uxui.json",
-    title: "Diseño UX/UI",
+    title: "Diseño Profesional",
     description:
       "Diseñamos experiencias profesionales enfocadas en la experiencia de usuario que generan un efecto WOW y son funcionales.",
+    buttonLabel: "Quiero un diseño personalizado",
   },
   {
     key: "seo",
@@ -22,6 +24,7 @@ const SERVICES = [
     title: "SEO y Motores de Busqueda",
     description:
       "Mejoramos la visibilidad de tu sitio web en los motores de busqueda alcanzando a mas clientes potenciales.",
+    buttonLabel: "Quiero mejorar mi SEO",
   },
   {
     key: "security",
@@ -29,6 +32,7 @@ const SERVICES = [
     title: "Certificados de Seguridad",
     description:
       "Implementamos certificados de seguridad para proteger tus datos y garantizar la privacidad de tus usuarios.",
+    buttonLabel: "Quiero seguridad para mi sitio",
   },
   {
     key: "maintenance",
@@ -36,6 +40,7 @@ const SERVICES = [
     title: "Mantenimiento y Mejora Continua",
     description:
       "Mantenimiento, soporte tecnico y mejora continua para asegurar que tu sitio web funcione de manera optima.",
+    buttonLabel: "Quiero soporte técnico",
   },
 ];
 
@@ -111,10 +116,11 @@ export default function Services() {
     <>
       <SectionContainer className="mt-150" id="services">
         <div ref={sectionRef}>
-          <LimitContainer>
+          <LimitContainer className="pt-1">
             <div ref={contentRef}>
               <h2 className="text-6xl font-bold text-center mt-30">
-                Nuestros Servicios Web
+                Servicios para tu sitio{" "}
+                <span className="text-cyan-200"> Web </span>
               </h2>
               <div className="mt-10 grid grid-cols-2 ">
                 {SERVICES.map((service, index) => {
@@ -136,7 +142,7 @@ export default function Services() {
                             animationData={animationsByService[service.key]}
                             loop
                             autoplay
-                            className={`w-full h-full ${service.key === "uxui" ? "scale-110 " : ""}`}
+                            className="w-full h-full"
                           />
                         ) : (
                           <div className="w-full aspect-square bg-white/10 rounded-2xl animate-pulse" />
@@ -148,6 +154,14 @@ export default function Services() {
                           {service.title}
                         </h3>
                         <p className="mt-3 text-md ">{service.description}</p>
+                        <div className="mt-4">
+                          <Button
+                            variant="glass"
+                            size="sm"
+                            whatsappMessage={`Hola, me interesa el servicio de ${service.title.toLowerCase()} para mi sitio web.`}>
+                            {service.buttonLabel}
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   );

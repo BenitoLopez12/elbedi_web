@@ -65,6 +65,8 @@ export default function Figures() {
       const cylinderImage = figure1ImageRef.current;
       const figuresContainer = rootRef.current;
 
+      const diamont = figure2Ref.current;
+
       const pauseCylinderFloat = () => {
         if (!cylinderImage) return;
         gsap.killTweensOf(cylinderImage);
@@ -102,7 +104,7 @@ export default function Figures() {
         const motionTimeline = gsap.timeline({
           scrollTrigger: {
             trigger: servicesSection,
-            start: "top 135%",
+            start: "top 130%",
             end: "bottom bottom",
             scrub: true,
             onEnter: () => {
@@ -128,10 +130,10 @@ export default function Figures() {
 
         motionTimeline
           .to(cylinder, {
-            scale: 20,
+            scale: 18,
             left: "40%",
             top: "50%",
-            rotate: 90,
+            rotate: 120,
             xPercent: -50,
             yPercent: -50,
             ease: "none",
@@ -139,14 +141,28 @@ export default function Figures() {
           })
           .to(cylinder, {
             scale: 1,
-            left: "78%",
+            left: "90%",
             top: "45%",
             rotate: 180,
             xPercent: 0,
             yPercent: 0,
             ease: "none",
             duration: 1,
-          });
+          })
+          .to(
+            diamont,
+            {
+              scale: 1,
+              left: "8%",
+              top: "45%",
+              rotate: 180,
+              xPercent: 0,
+              yPercent: 0,
+              ease: "none",
+              duration: 1,
+            },
+            "-=1",
+          );
       }
 
       const firstActiveSection = sections.find((sectionEl) => {

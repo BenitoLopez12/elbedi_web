@@ -44,7 +44,10 @@ export default function Contact() {
                 Construyamos tu Sitio Web hoy mismo
               </h2>
 
-              <Button href="#" className="relative z-10">
+              <Button
+                size="lg"
+                whatsappMessage="Hola, quiero crear mi sitio web con ustedes."
+                className="relative z-10">
                 Crear mi Sitio Web
               </Button>
             </div>
