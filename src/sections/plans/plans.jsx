@@ -6,13 +6,13 @@ import Button from "@/components/ui/Button";
 const BILLING_OPTIONS = [
   { key: "monthly", label: "Mensual" },
   { key: "yearly", label: "Anual" },
-  { key: "oneTime", label: "Pago unico" },
+  { key: "oneTime", label: "Pago único" },
 ];
 
 const BILLING_CYCLE_MESSAGE_LABEL = {
   monthly: "al mes",
   yearly: "anual",
-  oneTime: "pago unico",
+  oneTime: "pago único",
 };
 
 const BILLING_THEME = {
@@ -58,7 +58,7 @@ const PLANS = [
     key: "ia-express",
     name: "Express",
     subtitle:
-      "Presencia digital rapida y accesible para negocios que necesitan una pagina web profesional sin procesos complejos.",
+      "Presencia digital rápida y accesible para negocios que necesitan una página web profesional sin procesos complejos.",
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
       monthly: { previous: "$69 USD", current: "GRATIS" },
@@ -73,28 +73,28 @@ const PLANS = [
       "Freelancers",
       "Negocios locales",
       "Emprendimientos",
-      "Locales de comida rapida",
-      "Estetica",
+      "Locales de comida rápida",
+      "Estética",
       "Marcas personales",
     ],
     points: [
       "Dominio personalizado sin costo extra",
       "Hosting incluido sin costo extra",
-      "Diseno generado y optimizado con IA",
-      "Tiempo de entrega rapido",
-      "Pagina web que carga rapidamente",
-      "Diseno para dispositivos moviles y escritorio",
+      "Diseño generado y optimizado con IA",
+      "Tiempo de entrega rápido",
+      "Página web que carga rápidamente",
+      "Diseño para dispositivos móviles y escritorio",
       "Certificado de seguridad SSL incluido",
       "Hasta 5 secciones",
-      "Integracion de tu WhatsApp",
+      "Integración de tu WhatsApp",
       "Formulario de contacto",
-      "SEO basico",
-      "Publicacion del sitio",
-      "Mantenimiento y soporte tecnico",
+      "SEO básico",
+      "Publicación del sitio",
+      "Mantenimiento y soporte técnico",
       "Cambios mensuales",
     ],
     excludedPointsByCycle: {
-      oneTime: ["Mantenimiento y soporte tecnico", "Cambios mensuales"],
+      oneTime: ["Mantenimiento y soporte técnico", "Cambios mensuales"],
     },
     cta: "Solicitar plan",
   },
@@ -102,7 +102,7 @@ const PLANS = [
     key: "business",
     name: "Business",
     subtitle:
-      "Una solucion mas solida y personalizada para empresas y negocios que necesitan una presencia digital mas profesional y estrategica.",
+      "Una solución más sólida y personalizada para empresas y negocios que necesitan una presencia digital más profesional y estratégica.",
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
       monthly: { previous: "$329 USD", current: "$299 USD" },
@@ -114,33 +114,33 @@ const PLANS = [
       yearly: { previous: "$32 USD / mes", current: "$29 USD / mes" },
     },
     forWho: [
-      "Empresas pequenas y medianas",
-      "Clinicas",
+      "Empresas pequeñas y medianas",
+      "Clínicas",
       "Despachos",
       "Inmobiliarias",
       "Restaurantes premium",
       "Negocios en crecimiento",
     ],
     points: [
-      "Todo lo incluido en el plan Express y mas",
-      "Diseno profesional personalizado",
+      "Todo lo incluido en el plan Express y más",
+      "Diseño profesional personalizado",
       "Estructura web profesional",
-      "Multiples paginas",
-      "Optimizacion para dispositivos moviles avanzada",
-      "Configuracion de accesibilidad Web: Content Accessibility Guidelines (WCAG)",
-      "SEO optimizado para motores de busqueda, redes sociales y chats de IA",
-      "Multiples formularios avanzados",
-      "Integracion de multiples redes sociales",
+      "Múltiples páginas",
+      "Optimización avanzada para dispositivos móviles",
+      "Configuración de accesibilidad web: Web Content Accessibility Guidelines (WCAG)",
+      "SEO optimizado para motores de búsqueda, redes sociales y chats de IA",
+      "Múltiples formularios avanzados",
+      "Integración de múltiples redes sociales",
       "Soporte y mantenimiento continuo",
       "Cambios y actualizaciones",
-      "Optimizacion continua",
+      "Optimización continua",
       "Velocidad optimizada",
     ],
     excludedPointsByCycle: {
       oneTime: [
         "Soporte y mantenimiento continuo",
         "Cambios y actualizaciones",
-        "Optimizacion continua",
+        "Optimización continua",
       ],
     },
     highlighted: true,
@@ -150,7 +150,7 @@ const PLANS = [
     key: "CORPORATE-PARTNER",
     name: "Corporate Partner",
     subtitle:
-      "Acompanamiento continuo para marcas y empresas que buscan evolucionar constantemente su presencia digital con soporte prioritario y mejoras continuas.",
+      "Acompañamiento continuo para marcas y empresas que buscan evolucionar constantemente su presencia digital con soporte prioritario y mejoras continuas.",
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
       monthly: { previous: "", current: "$699 USD" },
@@ -169,31 +169,31 @@ const PLANS = [
       "Negocios que requieren cambios frecuentes",
     ],
     points: [
-      "Todo lo incluido en el plan Express, Business y mas",
-      "Diseno y direccion visual premium, Rebranding para Sitios Webs",
+      "Todo lo incluido en los planes Express y Business, y más",
+      "Diseño y dirección visual premium, con rebranding para sitios web",
       "Experiencia web avanzada",
       "Animaciones 3D e interacciones personalizadas",
-      "Soporte, mantenimiento y consultoria prioritaria",
+      "Soporte, mantenimiento y consultoría prioritaria",
       "Mejora continua",
       "Cambios recurrentes",
       "Correos corporativos",
       "Rediseños y Campañas digitales con formularios y registros de eventos",
       "Diseño de la UI de correos corporativos para usuarios y clientes",
-      "Mejoras visuales y funcionales segun las ultimas tendencias digitales",
-      "Asesoria estrategica",
-      "Integracion de nuevas secciones",
-      "Seguimiento, monitoreo y evolucion del sitio",
-      "Reportes de rendimiento y analitica avanzada",
+      "Mejoras visuales y funcionales según las últimas tendencias digitales",
+      "Asesoría estratégica",
+      "Integración de nuevas secciones",
+      "Seguimiento, monitoreo y evolución del sitio",
+      "Reportes de rendimiento y analítica avanzada",
     ],
     excludedPointsByCycle: {
       oneTime: [
-        "Soporte, mantenimiento y consultoria prioritaria",
+        "Soporte, mantenimiento y consultoría prioritaria",
         "Mejora continua",
         "Cambios recurrentes",
         "Rediseños y Campañas digitales con formularios y registros de eventos",
-        "Mejoras visuales y funcionales segun las ultimas tendencias digitales",
-        "Integracion de nuevas secciones",
-        "Seguimiento, monitoreo y evolucion del sitio",
+        "Mejoras visuales y funcionales según las últimas tendencias digitales",
+        "Integración de nuevas secciones",
+        "Seguimiento, monitoreo y evolución del sitio",
       ],
     },
     cta: "Agendar una llamada",
@@ -238,12 +238,12 @@ export default function Plans() {
     <SectionContainer id="plans">
       <LimitContainer className="py-24 md:py-35">
         <h2 className="text-4xl md:text-6xl font-bold text-center leading-tight">
-          Planes disenados para crecer contigo
+          Planes diseñados para crecer contigo
         </h2>
         <p className="mt-4 text-center text-white/75 max-w-5xl mx-auto text-base md:text-lg">
-          Estos costos son estimados y pueden variar dependiendo de las
-          necesidades especificas de tu proyecto. Contamos con planes flexibles
-          y personalizados para adaptarnos a diferentes tipos de negocios y
+          Estos costos son estimados y pueden variar según las necesidades
+          específicas de tu proyecto. Contamos con planes flexibles y
+          personalizados para adaptarnos a distintos tipos de negocio y
           presupuestos.
         </p>
 
@@ -274,7 +274,7 @@ export default function Plans() {
             (() => {
               const isOneTimeCycle = displayedBillingCycle === "oneTime";
               const currentSetupLabel = isOneTimeCycle
-                ? "DESARROLLO COMPLETO Y PUBLICACION"
+                ? "DESARROLLO COMPLETO Y PUBLICACIÓN"
                 : plan.setupLabel;
               const excludedPointsInCurrentCycle =
                 plan.excludedPointsByCycle?.[displayedBillingCycle] ?? [];
@@ -289,7 +289,7 @@ export default function Plans() {
                 : null;
               const billingCycleMessageLabel =
                 BILLING_CYCLE_MESSAGE_LABEL[displayedBillingCycle] ?? "al mes";
-              const whatsappPlanMessage = `Hola, me interesa el plan ${plan.name} con modalidad ${billingCycleMessageLabel}. Quiero mas informacion.`;
+              const whatsappPlanMessage = `Hola, me interesa el plan ${plan.name} con modalidad ${billingCycleMessageLabel}. Quiero más información.`;
 
               return (
                 <article
@@ -329,7 +329,7 @@ export default function Plans() {
                     {!isOneTimeCycle ? (
                       <>
                         <p className="mt-3 text-sm text-white">
-                          Soporte técnico y Mejora Continua
+                          Soporte técnico y mejora continua
                         </p>
                         {billingPriceDisplay?.previous ? (
                           <p
@@ -352,8 +352,8 @@ export default function Plans() {
                       </>
                     ) : (
                       <p className="mt-3 text-sm text-white/70">
-                        En Pago Unico no se ofrece servicio de mantenimiento y
-                        mejora continua
+                        En pago único no se incluye servicio de mantenimiento y
+                        mejora continua.
                       </p>
                     )}
                   </div>
@@ -408,7 +408,7 @@ export default function Plans() {
             objetivos.
           </p>
           <Button
-            whatsappMessage="Hola, necesito asesoria para elegir el plan ideal para mi negocio."
+            whatsappMessage="Hola, necesito asesoría para elegir el plan ideal para mi negocio."
             variant="glass"
             size="md"
             className="mt-6">

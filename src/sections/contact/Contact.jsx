@@ -41,14 +41,14 @@ export default function Contact() {
               <h2
                 className="text-4xl md:text-6xl font-bold leading-tight text-center max-w-xl mx-auto "
                 style={{ lineHeight: "65px" }}>
-                Construyamos tu Sitio Web hoy mismo
+                Construyamos tu sitio web hoy mismo
               </h2>
 
               <Button
                 size="lg"
                 whatsappMessage="Hola, quiero crear mi sitio web con ustedes."
                 className="relative z-10">
-                Crear mi Sitio Web
+                Crear mi sitio web
               </Button>
             </div>
             <div className="absolute inset-0 m-auto w-full h-2/3 mx-auto translate-y-10">

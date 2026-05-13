@@ -15,7 +15,7 @@ import Figures from "@/components/motion/Figures.jsx";
   <body class="text-white">
     <BgTransition client:load />
     <Figures client:load />
-    <Header brand={site.name} ctaLabel={site.ctaText} />
+    <Header brand={site.name} />
     <slot />
     <Footer
       client:load

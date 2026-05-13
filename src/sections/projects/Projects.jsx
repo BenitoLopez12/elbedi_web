@@ -8,7 +8,7 @@ const PROJECTS = [
     key: "archive",
     title: "ARCHIVE_01",
     description:
-      "Sitio web para fotografo con una propuesta visual inspirada en la estetica neon de la CDMX. Integra animaciones cinematograficas con scroll, composicion editorial y una experiencia inmersiva que resalta el trabajo fotografico con identidad fuerte y contemporanea.",
+      "Sitio web para fotógrafo con una propuesta visual inspirada en la estética neón de la CDMX. Integra animaciones cinematográficas con scroll, composición editorial y una experiencia inmersiva que resalta el trabajo fotográfico con una identidad fuerte y contemporánea.",
     background: "/images/projects/archive-bg.webp",
     laptop: "/images/projects/archive-lap.png",
     tablet: "/images/projects/archive-tablet.png",
@@ -20,7 +20,7 @@ const PROJECTS = [
     key: "rupture",
     title: "Rupture Technologies",
     description:
-      "Rediseno de sitio web corporativo enfocado en claridad, estructura comercial y percepcion premium. Se reorganizo la informacion de servicios y se construyo una experiencia moderna alineada a una empresa tecnologica orientada a eficiencia y crecimiento.",
+      "Rediseño de sitio web corporativo enfocado en claridad, estructura comercial y percepción premium. Se reorganizó la información de servicios y se construyó una experiencia moderna alineada con una empresa tecnológica orientada a la eficiencia y el crecimiento.",
     background: "/images/projects/rup-bg.jpg",
     laptop: "/images/projects/rup-lap.png",
     tablet: "/images/projects/rup-tablet.png",
@@ -32,7 +32,7 @@ const PROJECTS = [
     key: "horloger",
     title: "Horloger Genevois",
     description:
-      "Sitio web para marca de relojeria de lujo enfocado en transmitir exclusividad, identidad y curaduria de piezas de alto valor. Se trabajo una estetica elegante y minimalista, con narrativa visual y estructura que refuerzan el concepto de tiempo como simbolo de caracter y seleccion intencional.",
+      "Sitio web para una marca de relojería de lujo enfocado en transmitir exclusividad, identidad y curaduría de piezas de alto valor. Se trabajó una estética elegante y minimalista, con narrativa visual y estructura que refuerzan el concepto del tiempo como símbolo de carácter y selección intencional.",
     background: "/images/projects/hg-bg.jpg",
     laptop: "/images/projects/hg-lap.png",
     tablet: "/images/projects/hg-tablet.png",
@@ -288,7 +288,7 @@ export default function Projects() {
                   <img
                     ref={phoneRef}
                     src={activeProject.phone}
-                    alt={`${activeProject.title} vista telefono`}
+                    alt={`${activeProject.title} vista teléfono`}
                     className="h-40 md:h-46 relative z-20 -ml-16"
                   />
                 </div>

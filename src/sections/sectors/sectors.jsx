@@ -80,7 +80,7 @@ export default function Sectors({ children = null }) {
         <div
           ref={sectionRef}
           className="relative overflow-hidden w-full h-svh flex flex-col"
-          aria-label="Seccion con recorrido horizontal por scroll vertical">
+          aria-label="Sección con recorrido horizontal por scroll vertical">
           <h2 className="text-6xl text-center pt-15 pb-3">
             Sectores para los que trabajamos
           </h2>
@@ -92,7 +92,7 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/restaurant.webp"
-                    alt="sector restaurante"
+                    alt="Sector restaurantes"
                   />
                   <div className="box-info-sector">
                     <h3>Restaurantes</h3>
@@ -109,7 +109,7 @@ export default function Sectors({ children = null }) {
               </div>
               <div>
                 <article className="flex-2">
-                  <img src="/images/sectors/hotel.webp" alt="sector hotel" />
+                  <img src="/images/sectors/hotel.webp" alt="Sector hoteles" />
                   <div className="box-info-sector">
                     <h3>Hoteles</h3>
                     <Button
@@ -123,7 +123,7 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/tourism.webp"
-                    alt="sector turismo"
+                    alt="Sector turismo"
                   />
                   <div className="box-info-sector">
                     <h3>Turismo</h3>
@@ -140,7 +140,7 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/freelancer.webp"
-                    alt="sector freelancer"
+                    alt="Sector freelancers"
                   />
                   <div className="box-info-sector">
                     <h3>Freelancers</h3>
@@ -155,7 +155,7 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/influencer.webp"
-                    alt="sector influencer"
+                    alt="Sector influencers"
                   />
                   <div className="box-info-sector">
                     <h3>Influencers</h3>
@@ -168,7 +168,10 @@ export default function Sectors({ children = null }) {
                   </div>
                 </article>
                 <article className="flex-1">
-                  <img src="/images/sectors/artist.webp" alt="sector artist" />
+                  <img
+                    src="/images/sectors/artist.webp"
+                    alt="Sector artistas"
+                  />
                   <div className="box-info-sector">
                     <h3>Artistas</h3>
                     <Button
@@ -184,7 +187,7 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/building.webp"
-                    alt="sector building"
+                    alt="Sector constructoras"
                   />
                   <div className="box-info-sector">
                     <h3>Constructoras</h3>
@@ -201,7 +204,10 @@ export default function Sectors({ children = null }) {
               </div>
               <div>
                 <article className="flex-1">
-                  <img src="/images/sectors/realty.webp" alt="sector realty" />
+                  <img
+                    src="/images/sectors/realty.webp"
+                    alt="Sector inmobiliarias"
+                  />
                   <div className="box-info-sector">
                     <h3>Inmobiliarias</h3>
                     <Button
@@ -217,7 +223,7 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/transport.webp"
-                    alt="sector transport"
+                    alt="Sector transporte"
                   />
                   <div className="box-info-sector">
                     <h3>Transporte</h3>
@@ -232,21 +238,21 @@ export default function Sectors({ children = null }) {
               </div>
               <div>
                 <article className="flex-1">
-                  <img src="/images/sectors/events.webp" alt="sector events" />
+                  <img src="/images/sectors/events.webp" alt="Sector eventos" />
                   <div className="box-info-sector">
                     <h3>Planificación de Eventos</h3>
                     <Button
                       size="sm"
                       variant="glass"
                       whatsappMessage={getSectorWhatsappMessage(
-                        "Planificacion de Eventos",
+                        "Planificación de Eventos",
                       )}>
                       Más información
                     </Button>
                   </div>
                 </article>
                 <article className="flex-1">
-                  <img src="/images/sectors/gym.webp" alt="sector gym" />
+                  <img src="/images/sectors/gym.webp" alt="Sector gimnasios" />
                   <div className="box-info-sector">
                     <h3>Gimnasios</h3>
                     <Button
@@ -258,7 +264,7 @@ export default function Sectors({ children = null }) {
                   </div>
                 </article>
                 <article className="flex-1">
-                  <img src="/images/sectors/salud.webp" alt="sector salud" />
+                  <img src="/images/sectors/salud.webp" alt="Sector salud" />
                   <div className="box-info-sector">
                     <h3>Salud</h3>
                     <Button
@@ -272,7 +278,10 @@ export default function Sectors({ children = null }) {
               </div>
               <div>
                 <article className="flex-1">
-                  <img src="/images/sectors/legal.webp" alt="sector legal" />
+                  <img
+                    src="/images/sectors/legal.webp"
+                    alt="Sector legal y contable"
+                  />
                   <div className="box-info-sector">
                     <h3>
                       Despachos <br /> Legales / Contables
@@ -292,7 +301,7 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/startups.webp"
-                    alt="sector startups"
+                    alt="Sector empresas y startups"
                   />
                   <div className="box-info-sector">
                     <h3>Empresas / Startups</h3>
@@ -307,13 +316,16 @@ export default function Sectors({ children = null }) {
                   </div>
                 </article>
                 <article className="flex-1">
-                  <img src="/images/sectors/school.webp" alt="sector school" />
+                  <img
+                    src="/images/sectors/school.webp"
+                    alt="Sector educación"
+                  />
                   <div className="box-info-sector">
                     <h3>Educación</h3>
                     <Button
                       size="sm"
                       variant="glass"
-                      whatsappMessage={getSectorWhatsappMessage("Educacion")}>
+                      whatsappMessage={getSectorWhatsappMessage("Educación")}>
                       Más información
                     </Button>
                   </div>
@@ -322,7 +334,10 @@ export default function Sectors({ children = null }) {
 
               <div>
                 <article className="flex-1">
-                  <img src="/images/sectors/bar.webp" alt="sector bar" />
+                  <img
+                    src="/images/sectors/bar.webp"
+                    alt="Sector antros y bares"
+                  />
                   <div className="box-info-sector">
                     <h3>Antros / Bares</h3>
                     <Button
@@ -336,19 +351,25 @@ export default function Sectors({ children = null }) {
                   </div>
                 </article>
                 <article className="flex-1">
-                  <img src="/images/sectors/barber.webp" alt="sector barber" />
+                  <img
+                    src="/images/sectors/barber.webp"
+                    alt="Sector barberías"
+                  />
                   <div className="box-info-sector">
                     <h3>Barberías</h3>
                     <Button
                       size="sm"
                       variant="glass"
-                      whatsappMessage={getSectorWhatsappMessage("Barberias")}>
+                      whatsappMessage={getSectorWhatsappMessage("Barberías")}>
                       Más información
                     </Button>
                   </div>
                 </article>
                 <article className="flex-1">
-                  <img src="/images/sectors/tattoo.webp" alt="sector tattoo" />
+                  <img
+                    src="/images/sectors/tattoo.webp"
+                    alt="Sector tatuajes"
+                  />
                   <div className="box-info-sector">
                     <h3>Tatuajes</h3>
                     <Button

@@ -143,7 +143,7 @@ export default function Hero() {
                     className="text-5xl md:text-7xl font-bold leading-tight tracking-tight"
                     ref={titleRef}>
                     Definimos la identidad{" "}
-                    <span className="text-cyan-200"> Web </span>
+                    <span className="text-cyan-200"> web </span>
                     de tu negocio.
                   </h1>
                   <p
@@ -154,11 +154,11 @@ export default function Hero() {
                     destacar.
                   </p>
                   <div className="flex gap-3" ref={buttonRef}>
-                    <Button whatsappMessage="Hola, me gustaria cotizar mi sitio web.">
-                      Cotizar mi sitio Web
+                    <Button whatsappMessage="Hola, me gustaría cotizar mi sitio web.">
+                      Cotizar mi sitio web
                     </Button>
                     <Button variant="glass" href="#plans">
-                      Planes y Precios
+                      Planes y precios
                     </Button>
                   </div>
                 </div>
@@ -181,7 +181,7 @@ export default function Hero() {
                 </div>
                 <img
                   src="/images/hero-lap.png"
-                  alt="Laptop mostrando mi web"
+                  alt="Laptop mostrando tu sitio web"
                   ref={imageRef}
                 />
               </div>
@@ -197,19 +197,19 @@ export default function Hero() {
                     <h2
                       className="text-5xl md:text-7xl font-bold leading-tight tracking-tight "
                       ref={titleSecondRef}>
-                      Tu te enfocas en tus ventas, nosotros en tu sitio{" "}
-                      <span className="text-cyan-200"> Web </span>
+                      Tú te enfocas en tus ventas; nosotros, en tu sitio{" "}
+                      <span className="text-cyan-200"> web </span>
                     </h2>
                     <p
                       className="text-lg md:text-xl leading-relaxed max-w-xl "
                       ref={descriptionSecondRef}>
                       Nos encargamos de todos los aspectos técnicos y creativos
-                      de tu pagina web, para que tu puedas concentrarte en tu
-                      negocio y tus ventas.
+                      de tu página web para que tú puedas concentrarte en tu
+                      negocio y en tus ventas.
                     </p>
                     <div className="" ref={buttonSecondRef}>
-                      <Button whatsappMessage="Hola, me interesa una asesoria personalizada para mi sitio web.">
-                        asesoria personalizada
+                      <Button whatsappMessage="Hola, me interesa una asesoría personalizada para mi sitio web.">
+                        Asesoría personalizada
                       </Button>
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export default function Hero() {
                   </div>
                   <img
                     src="/images/hero-phone.png"
-                    alt="Phone mostrando mi web"
+                    alt="Teléfono mostrando tu sitio web"
                     ref={imageSecondRef}
                     className="w-full h-full object-contain"
                   />

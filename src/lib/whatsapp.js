@@ -1,7 +1,7 @@
 import site from "@/content/site.js";
 
 export const DEFAULT_WHATSAPP_MESSAGE =
-  "Hola, me gustaria recibir asesoria para mi sitio web";
+  "Hola, me gustaría recibir asesoría para mi sitio web";
 
 export function buildWhatsAppUrl(
   message = DEFAULT_WHATSAPP_MESSAGE,

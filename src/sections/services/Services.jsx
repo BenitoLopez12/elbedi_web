@@ -13,23 +13,23 @@ const SERVICES = [
   {
     key: "uxui",
     animationPath: "/lottie/uxui.json",
-    title: "Diseño Profesional",
+    title: "Diseño profesional",
     description:
-      "Diseñamos experiencias profesionales enfocadas en la experiencia de usuario que generan un efecto WOW y son funcionales.",
+      "Diseñamos experiencias centradas en el usuario que generan un efecto wow y, además, son funcionales.",
     buttonLabel: "Quiero un diseño personalizado",
   },
   {
     key: "seo",
     animationPath: "/lottie/seo.json",
-    title: "SEO y Motores de Busqueda",
+    title: "SEO y motores de búsqueda",
     description:
-      "Mejoramos la visibilidad de tu sitio web en los motores de busqueda alcanzando a mas clientes potenciales.",
+      "Mejoramos la visibilidad de tu sitio web en motores de búsqueda para llegar a más clientes potenciales.",
     buttonLabel: "Quiero mejorar mi SEO",
   },
   {
     key: "security",
     animationPath: "/lottie/security.json",
-    title: "Certificados de Seguridad",
+    title: "Certificados de seguridad",
     description:
       "Implementamos certificados de seguridad para proteger tus datos y garantizar la privacidad de tus usuarios.",
     buttonLabel: "Quiero seguridad para mi sitio",
@@ -37,9 +37,9 @@ const SERVICES = [
   {
     key: "maintenance",
     animationPath: "/lottie/maintenance.json",
-    title: "Mantenimiento y Mejora Continua",
+    title: "Mantenimiento y mejora continua",
     description:
-      "Mantenimiento, soporte tecnico y mejora continua para asegurar que tu sitio web funcione de manera optima.",
+      "Mantenimiento, soporte técnico y mejora continua para asegurar que tu sitio web funcione de manera óptima.",
     buttonLabel: "Quiero soporte técnico",
   },
 ];
@@ -120,7 +120,7 @@ export default function Services() {
             <div ref={contentRef}>
               <h2 className="text-6xl font-bold text-center mt-30">
                 Servicios para tu sitio{" "}
-                <span className="text-cyan-200"> Web </span>
+                <span className="text-cyan-200"> web </span>
               </h2>
               <div className="mt-10 grid grid-cols-2 ">
                 {SERVICES.map((service, index) => {

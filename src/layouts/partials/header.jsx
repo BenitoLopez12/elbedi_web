@@ -14,7 +14,7 @@ export default function Header({
   links = defaultLinks,
 }) {
   const whatsappHref = buildWhatsAppUrl(
-    "Hola, me gustaria recibir asesosria para mi sitio web",
+    "Hola, me gustaría recibir asesoría para mi sitio web",
   );
 
   return (
@@ -29,7 +29,7 @@ export default function Header({
             />
           </a>
 
-          <nav aria-label="Navegacion principal" className="hidden md:block">
+          <nav aria-label="Navegación principal" className="hidden md:block">
             <ul className="flex items-center gap-6">
               {links.map((item) => (
                 <li key={`${item.href}-${item.label}`}>

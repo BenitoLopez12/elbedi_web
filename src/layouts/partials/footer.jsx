@@ -19,51 +19,51 @@ const defaultSocials = [
 const legalNotices = {
   privacy: {
     label: "Aviso de privacidad",
-    updatedAt: "Ultima actualizacion: 13 de mayo de 2026",
-    content: `ELBEDI, con operaciones en Mexico y contacto a traves del correo electronico contact@elbedi.com, es responsable del uso, tratamiento y proteccion de los datos personales recopilados a traves de este sitio web y de los servicios relacionados.
+    updatedAt: "Última actualización: 13 de mayo de 2026",
+    content: `ELBEDI, con operaciones en México y contacto a través del correo electrónico contact@elbedi.com, es responsable del uso, tratamiento y protección de los datos personales recopilados a través de este sitio web y de los servicios relacionados.
 
-El presente Aviso de Privacidad tiene como finalidad informar como se recopilan, utilizan, almacenan y protegen los datos personales proporcionados por los usuarios, clientes y visitantes del sitio web.
+El presente Aviso de Privacidad tiene como finalidad informar cómo se recopilan, utilizan, almacenan y protegen los datos personales proporcionados por los usuarios, clientes y visitantes del sitio web.
 
 1. DATOS PERSONALES RECOPILADOS
 
-ELBEDI podra recopilar informacion personal y tecnica, incluyendo pero no limitada a:
+ELBEDI podrá recopilar información personal y técnica, incluyendo, de forma enunciativa más no limitativa:
 
 Nombre completo
 Nombre comercial o empresa
-Correo electronico
-Numero telefonico
+Correo electrónico
+Número telefónico
 WhatsApp
-Direccion IP
-Ciudad o pais
-Informacion de navegacion
+Dirección IP
+Ciudad o país
+Información de navegación
 Datos del dispositivo y navegador
-Informacion enviada mediante formularios
-Informacion relacionada con solicitudes de servicio
-Datos de facturacion cuando sean necesarios
-Cookies y tecnologias de seguimiento
-Informacion estadistica y analitica
+Información enviada mediante formularios
+Información relacionada con solicitudes de servicio
+Datos de facturación cuando sean necesarios
+Cookies y tecnologías de seguimiento
+Información estadística y analítica
 
-Adicionalmente, en el futuro podran recopilarse otros datos relacionados con herramientas digitales, automatizaciones, campanas, formularios, integraciones y plataformas utilizadas por ELBEDI.
+Adicionalmente, en el futuro podrán recopilarse otros datos relacionados con herramientas digitales, automatizaciones, campañas, formularios, integraciones y plataformas utilizadas por ELBEDI.
 
 2. FINALIDAD DEL USO DE DATOS
 
-Los datos recopilados podran utilizarse para:
+Los datos recopilados podrán utilizarse para:
 
 Contactar a usuarios y clientes
 Dar seguimiento a solicitudes y cotizaciones
-Brindar soporte tecnico y atencion al cliente
+Brindar soporte técnico y atención al cliente
 Gestionar proyectos y servicios contratados
 Procesar pagos y suscripciones
-Enviar informacion relacionada con servicios
+Enviar información relacionada con servicios
 Mejorar la experiencia del usuario
-Analizar metricas de rendimiento y comportamiento
-Implementar herramientas analiticas y publicitarias
+Analizar métricas de rendimiento y comportamiento
+Implementar herramientas analíticas y publicitarias
 Cumplir obligaciones legales y contractuales
 Proteger la seguridad del sitio web y los servicios
 
-3. COOKIES Y TECNOLOGIAS DE SEGUIMIENTO
+3. COOKIES Y TECNOLOGÍAS DE SEGUIMIENTO
 
-Este sitio web puede utilizar cookies, herramientas analiticas y tecnologias de terceros para recopilar informacion relacionada con navegacion, comportamiento y rendimiento.
+Este sitio web puede utilizar cookies, herramientas analíticas y tecnologías de terceros para recopilar información relacionada con navegación, comportamiento y rendimiento.
 
 Entre las herramientas que pueden utilizarse se incluyen:
 
@@ -72,134 +72,134 @@ Meta Pixel
 Stripe
 Herramientas de formularios
 Plataformas publicitarias
-Herramientas de automatizacion
-Herramientas de chat y comunicacion
+Herramientas de automatización
+Herramientas de chat y comunicación
 Integraciones de video y contenido multimedia
 
-Estas herramientas pueden recopilar informacion tecnica y estadistica para mejorar los servicios y la experiencia del usuario.
+Estas herramientas pueden recopilar información técnica y estadística para mejorar los servicios y la experiencia del usuario.
 
-4. PROTECCION DE DATOS
+4. PROTECCIÓN DE DATOS
 
-ELBEDI implementa medidas razonables de seguridad para proteger la informacion recopilada y evitar accesos no autorizados, perdida, alteracion o uso indebido de los datos.
+ELBEDI implementa medidas razonables de seguridad para proteger la información recopilada y evitar accesos no autorizados, pérdida, alteración o uso indebido de los datos.
 
-Sin embargo, ningun sistema en internet puede garantizar seguridad absoluta.
+Sin embargo, ningún sistema en internet puede garantizar seguridad absoluta.
 
 5. TRANSFERENCIA DE DATOS
 
-ELBEDI podra compartir informacion con proveedores tecnologicos, plataformas de pago, servicios de hosting, herramientas analiticas y proveedores de soporte unicamente cuando sea necesario para operar los servicios contratados.
+ELBEDI podrá compartir información con proveedores tecnológicos, plataformas de pago, servicios de hosting, herramientas analíticas y proveedores de soporte, únicamente cuando sea necesario para operar los servicios contratados.
 
 ELBEDI no vende datos personales a terceros.
 
 6. DERECHOS DEL USUARIO
 
-Los usuarios podran solicitar acceso, correccion o eliminacion de sus datos personales enviando una solicitud al correo:
+Los usuarios podrán solicitar acceso, corrección, actualización o eliminación de sus datos personales enviando una solicitud al correo:
 
 contact@elbedi.com
 
-ELBEDI podra solicitar informacion adicional para validar la identidad del solicitante.
+ELBEDI podrá solicitar información adicional para validar la identidad del solicitante.
 
 7. CAMBIOS AL AVISO DE PRIVACIDAD
 
-ELBEDI podra modificar el presente Aviso de Privacidad en cualquier momento para adaptarlo a cambios legales, tecnologicos, operativos o comerciales.
+ELBEDI podrá modificar el presente Aviso de Privacidad en cualquier momento para adaptarlo a cambios legales, tecnológicos, operativos o comerciales.
 
-Las modificaciones seran publicadas en este sitio web.`,
+Las modificaciones serán publicadas en este sitio web.`,
   },
   terms: {
     label: "Términos y condiciones",
-    updatedAt: "Ultima actualizacion: 13 de mayo de 2026",
-    content: `El acceso y uso de este sitio web implica la aceptacion total de los presentes Terminos y Condiciones.
+    updatedAt: "Última actualización: 13 de mayo de 2026",
+    content: `El acceso y uso de este sitio web implica la aceptación total de los presentes Términos y Condiciones.
 
-Si el usuario no esta de acuerdo con estos terminos, debera abstenerse de utilizar el sitio web y los servicios ofrecidos.
+Si el usuario no está de acuerdo con estos términos, deberá abstenerse de utilizar el sitio web y los servicios ofrecidos.
 
 1. SOBRE LOS SERVICIOS
 
 ELBEDI ofrece servicios relacionados con:
 
-Diseno web
+Diseño web
 Desarrollo web
 Mantenimiento de sitios web
-Soporte tecnico
-Optimizacion y mejora continua
-Diseno visual y experiencia digital
-Automatizacion y herramientas digitales
+Soporte técnico
+Optimización y mejora continua
+Diseño visual y experiencia digital
+Automatización y herramientas digitales
 Integraciones y soluciones web
 
-Los servicios pueden variar segun el plan contratado.
+Los servicios pueden variar según el plan contratado.
 
 2. PLANES Y SUSCRIPCIONES
 
-Algunos servicios funcionan bajo modalidad de suscripcion mensual o anual.
+Algunos servicios funcionan bajo modalidad de suscripción mensual o anual.
 
-Los planes incluyen permanencia minima de 12 meses cuando asi se especifique.
+Los planes incluyen permanencia mínima de 12 meses cuando así se especifique.
 
-El incumplimiento de pagos podra ocasionar:
+El incumplimiento de pagos podrá ocasionar:
 
-Suspension temporal del servicio
-Limitacion de acceso
-Desactivacion del sitio web
-Cancelacion de servicios relacionados
+Suspensión temporal del servicio
+Limitación de acceso
+Desactivación del sitio web
+Cancelación de servicios relacionados
 
 ELBEDI se reserva el derecho de suspender servicios por falta de pago.
 
 3. PROPIEDAD DEL SITIO WEB
 
-Los sitios web desarrollados por ELBEDI permaneceran bajo administracion y control operativo de ELBEDI durante el periodo activo del servicio.
+Los sitios web desarrollados por ELBEDI permanecerán bajo administración y control operativo de ELBEDI durante el periodo activo del servicio.
 
-La propiedad y entrega de archivos finales podra realizarse unicamente cuando:
+La propiedad y entrega de archivos finales podrá realizarse únicamente cuando:
 
-El cliente haya cumplido el periodo minimo contratado
+El cliente haya cumplido el periodo mínimo contratado
 No existan adeudos pendientes
 El cliente solicite formalmente la entrega
-No exista incumplimiento de terminos y condiciones
+No exista incumplimiento de términos y condiciones
 
 ELBEDI se reserva el derecho de negar la entrega de archivos en casos de incumplimiento contractual, fraude, uso indebido o adeudos pendientes.
 
 4. LIMITACIONES DEL SOPORTE
 
-El soporte tecnico se proporciona unicamente dentro del alcance del plan contratado.
+El soporte técnico se proporciona únicamente dentro del alcance del plan contratado.
 
 Los tiempos de respuesta pueden variar dependiendo de:
 
 Disponibilidad operativa
-Dias habiles
+Días hábiles
 Nivel de prioridad
 Complejidad de la solicitud
 
 El soporte se brinda mediante:
 
 WhatsApp
-Correo electronico
-Llamadas en linea
+Correo electrónico
+Llamadas en línea
 Plataformas de videollamadas
 
-ELBEDI podra limitar o rechazar solicitudes consideradas excesivas, abusivas, fuera del alcance contratado o tecnicamente inviables.
+ELBEDI podrá limitar o rechazar solicitudes consideradas excesivas, abusivas, fuera del alcance contratado o técnicamente inviables.
 
 5. CAMBIOS Y ACTUALIZACIONES
 
-Los planes pueden incluir ajustes, mejoras o actualizaciones periodicas.
+Los planes pueden incluir ajustes, mejoras o actualizaciones periódicas.
 
 No se consideran cambios incluidos:
 
-Redisenos completos
+Rediseños completos
 Reconstrucciones totales
 Nuevos sistemas complejos
 Funcionalidades avanzadas no contempladas originalmente
 Solicitudes fuera del alcance contratado
 
-ELBEDI podra cotizar por separado solicitudes adicionales.
+ELBEDI podrá cotizar por separado solicitudes adicionales.
 
 6. OBLIGACIONES DEL CLIENTE
 
 El cliente se compromete a:
 
-Proporcionar informacion y contenido necesario
+Proporcionar información y contenido necesario
 Entregar materiales en tiempo razonable
-Mantener comunicacion activa
+Mantener comunicación activa
 No utilizar el sitio para actividades ilegales o fraudulentas
-No utilizar los servicios para distribuir malware, spam o contenido danino
+No utilizar los servicios para distribuir malware, spam o contenido dañino
 No infringir derechos de terceros
 
-Los retrasos ocasionados por falta de contenido, respuestas tardias o incumplimientos del cliente podran modificar tiempos de entrega sin responsabilidad para ELBEDI.
+Los retrasos ocasionados por falta de contenido, respuestas tardías o incumplimientos del cliente podrán modificar tiempos de entrega sin responsabilidad para ELBEDI.
 
 7. TIEMPOS DE ENTREGA
 
@@ -210,31 +210,31 @@ Disponibilidad de contenido
 Cambios solicitados
 Tiempo de respuesta del cliente
 
-ELBEDI no sera responsable por retrasos ocasionados por:
+ELBEDI no será responsable por retrasos ocasionados por:
 
-Falta de informacion
+Falta de información
 Cambios excesivos
 Solicitudes fuera del alcance original
 Retrasos del cliente
 Problemas externos o servicios de terceros
 
-8. LIMITACION DE RESPONSABILIDAD
+8. LIMITACIÓN DE RESPONSABILIDAD
 
-ELBEDI no garantiza resultados comerciales especificos, posicionamiento en buscadores, incremento de ventas o resultados financieros derivados del uso del sitio web.
+ELBEDI no garantiza resultados comerciales específicos, posicionamiento en buscadores, incremento de ventas o resultados financieros derivados del uso del sitio web.
 
-ELBEDI no sera responsable por:
+ELBEDI no será responsable por:
 
-Caidas de servicios de terceros
+Caídas de servicios de terceros
 Problemas de proveedores externos
-Ataques informaticos
+Ataques informáticos
 Fallos de internet
 Interrupciones ajenas a su control
-Perdida indirecta de ingresos
+Pérdida indirecta de ingresos
 Problemas ocasionados por modificaciones externas realizadas por terceros
 
 9. USO INDEBIDO
 
-ELBEDI podra suspender o cancelar servicios si detecta:
+ELBEDI podrá suspender o cancelar servicios si detecta:
 
 Actividades ilegales
 Fraude
@@ -246,40 +246,40 @@ Incumplimientos de pago
 
 10. PROPIEDAD INTELECTUAL
 
-Todo el contenido, diseno, estructura, elementos visuales y materiales desarrollados por ELBEDI podran estar protegidos por derechos de autor y propiedad intelectual.
+Todo el contenido, diseño, estructura, elementos visuales y materiales desarrollados por ELBEDI podrán estar protegidos por derechos de autor y propiedad intelectual.
 
-No podran ser revendidos, redistribuidos o reutilizados sin autorizacion.
+No podrán ser revendidos, redistribuidos o reutilizados sin autorización.
 
 11. MODIFICACIONES
 
-ELBEDI podra modificar los presentes terminos y condiciones en cualquier momento.
+ELBEDI podrá modificar los presentes términos y condiciones en cualquier momento.
 
-Las modificaciones seran publicadas en este sitio web.`,
+Las modificaciones serán publicadas en este sitio web.`,
   },
   cookies: {
     label: "Política de cookies",
-    updatedAt: "Ultima actualizacion: 13 de mayo de 2026",
-    content: `Este sitio web utiliza cookies y tecnologias similares para mejorar la experiencia del usuario, analizar el comportamiento del sitio y optimizar servicios.
+    updatedAt: "Última actualización: 13 de mayo de 2026",
+    content: `Este sitio web utiliza cookies y tecnologías similares para mejorar la experiencia del usuario, analizar el comportamiento del sitio y optimizar servicios.
 
-1. QUE SON LAS COOKIES?
+1. ¿QUÉ SON LAS COOKIES?
 
-Las cookies son pequenos archivos almacenados en el dispositivo del usuario que permiten recordar informacion relacionada con navegacion, preferencias y comportamiento dentro del sitio web.
+Las cookies son pequeños archivos almacenados en el dispositivo del usuario que permiten recordar información relacionada con navegación, preferencias y comportamiento dentro del sitio web.
 
 2. TIPOS DE COOKIES UTILIZADAS
 
-ELBEDI podra utilizar:
+ELBEDI podrá utilizar:
 
 Cookies esenciales
 
-Necesarias para el funcionamiento basico del sitio web.
+Necesarias para el funcionamiento básico del sitio web.
 
-Cookies analiticas
+Cookies analíticas
 
-Permiten analizar comportamiento, trafico y rendimiento.
+Permiten analizar comportamiento, tráfico y rendimiento.
 
 Cookies de marketing
 
-Utilizadas para campanas publicitarias y remarketing.
+Utilizadas para campañas publicitarias y remarketing.
 
 Cookies funcionales
 
@@ -300,20 +300,20 @@ Herramientas de formularios
 YouTube
 Google Maps
 Plataformas publicitarias
-Herramientas de automatizacion
+Herramientas de automatización
 Servicios de chat y soporte
 
 4. CONTROL DE COOKIES
 
-El usuario puede modificar la configuracion de cookies desde su navegador.
+El usuario puede modificar la configuración de cookies desde su navegador.
 
-La desactivacion de ciertas cookies puede afectar funcionalidades del sitio web.
+La desactivación de ciertas cookies puede afectar funcionalidades del sitio web.
 
 5. MODIFICACIONES
 
-ELBEDI podra actualizar la presente Politica de Cookies en cualquier momento.
+ELBEDI podrá actualizar la presente Política de Cookies en cualquier momento.
 
-Las modificaciones seran publicadas en este sitio web.`,
+Las modificaciones serán publicadas en este sitio web.`,
   },
 };
 
@@ -360,7 +360,7 @@ export default function Footer({
         </div>
         <div className="flex justify-between">
           <nav>
-            <p className="font-bold">Navegacion</p>
+            <p className="font-bold">Navegación</p>
             <ul className="mt-3 space-y-2">
               {links.map((item) => (
                 <li key={`${item.href}-${item.label}`}>
