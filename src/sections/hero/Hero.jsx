@@ -123,7 +123,12 @@ export default function Hero() {
           },
           "<",
         )
-        .to({}, { duration: 0.5 });
+        .to({}, { duration: 0.5 })
+        .to(sectionSecondRef.current, {
+          autoAlpha: 0,
+          ease: "power1.ease",
+          duration: 0.3,
+        });
     });
 
     return () => ctx.revert();
@@ -134,26 +139,30 @@ export default function Hero() {
       <SectionContainer id="">
         <div className="">
           <div
-            className="min-h-svh w-full flex overflow-hidden"
+            className="min-h-svh w-full flex overflow-hidden "
             ref={sectionRef}>
-            <div className="w-full flex items-center relative" ref={pinRef}>
-              <LimitContainer>
-                <div className="flex flex-col gap-8 max-w-3xl relative z-10">
+            <div
+              className="w-full flex lg:flex-row flex-col lg:items-center lg:justify-center justify-between relative"
+              ref={pinRef}>
+              <LimitContainer className="flex-1 lg:pt-0 pt-20 flex flex-col justify-center">
+                <div className="flex flex-col gap-8 lg:max-w-3xl md:w-full lg:text-left text-center relative z-10">
                   <h1
-                    className="text-5xl md:text-7xl font-bold leading-tight tracking-tight"
+                    className="text-5xl 2xl:text-7xl font-bold leading-tight tracking-tight"
                     ref={titleRef}>
                     Definimos la identidad{" "}
                     <span className="text-cyan-200"> web </span>
                     de tu negocio.
                   </h1>
                   <p
-                    className="text-lg md:text-xl leading-relaxed max-w-xl "
+                    className="text-lg 2xl:text-xl leading-relaxed lg:max-w-xl"
                     ref={descriptionRef}>
                     ELBEDI es un estudio digital especializado en crear sitios
                     modernos, rápidos y memorables para marcas que buscan
                     destacar.
                   </p>
-                  <div className="flex gap-3" ref={buttonRef}>
+                  <div
+                    className="flex gap-3 justify-center lg:justify-start"
+                    ref={buttonRef}>
                     <Button whatsappMessage="Hola, me gustaría cotizar mi sitio web.">
                       Cotizar mi sitio web
                     </Button>
@@ -163,26 +172,33 @@ export default function Hero() {
                   </div>
                 </div>
               </LimitContainer>
-              <div className="absolute z-0 right-[6%] h-svh w-3/5 flex items-end">
-                <div className="absolute w-full h-full" ref={targetsRef}>
+              <div className="lg:absolute flex-1 relative z-0 lg:right-1/20 bottom-0 lg:h-svh 2xl:w-62/100 xl:w-7/11 w-full flex items-end">
+                <div className="absolute z-5 w-full h-full" ref={targetsRef}>
                   <div
-                    className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl px-6 py-3 absolute bottom-2/3 right-7/13 z-20 text-shadow-md target-float"
+                    className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl 2xl:px-6 2xl:py-3 xl:px-4 xl:py-2 px-2 py-1 absolute lg:bottom-3/5 bottom-4/5 right-7/13 z-20 text-shadow-md target-float"
                     style={{ animationDelay: "-7000ms" }}>
-                    <span className="font-bold text-lg">Tu Logo</span>
+                    <span className="font-bold 2xl:text-lg text-sm">
+                      Tu Logo
+                    </span>
                   </div>
                   <div
-                    className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl px-6 py-3 absolute bottom-1/3 right-0 z-20 text-shadow-md target-float"
+                    className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl 2xl:px-6 2xl:py-3 xl:px-4 xl:py-2 px-2 py-1 absolute lg:bottom-1/3 bottom-1/3 lg:right-0 right-10 z-20 text-shadow-md target-float"
                     style={{ animationDelay: "-15000ms" }}>
-                    <span className="font-bold text-lg">Tu Marca</span>
+                    <span className="font-bold 2xl:text-lg text-sm">
+                      Tu Marca
+                    </span>
                   </div>
-                  <div className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl px-6 py-3 absolute bottom-1/3 right-11/18 z-20 text-shadow-md target-float">
-                    <span className="font-bold text-lg">Tu Producto</span>
+                  <div className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl 2xl:px-6 2xl:py-3 xl:px-4 xl:py-2 px-2 py-1 absolute lg:bottom-1/3 bottom-2/4 right-11/18 z-20 text-shadow-md target-float">
+                    <span className="font-bold 2xl:text-lg text-sm">
+                      Tu Producto
+                    </span>
                   </div>
                 </div>
                 <img
                   src="/images/hero-lap.png"
                   alt="Laptop mostrando tu sitio web"
                   ref={imageRef}
+                  className="relative z-2 w-full h-full object-contain object-bottom"
                 />
               </div>
             </div>
@@ -190,18 +206,18 @@ export default function Hero() {
           <div className="min-h-[200svh]" ref={sectionSecondRef}>
             <div className="min-h-svh w-full flex">
               <div
-                className="w-full flex items-center relative"
+                className="w-full flex lg:flex-row flex-col items-center justify-between relative"
                 ref={pinSecondRef}>
-                <LimitContainer>
+                <LimitContainer className="flex-1 lg:pt-0 pt-20 flex flex-col justify-center lg:text-left text-center">
                   <div className="flex flex-col gap-8 max-w-3xl relative z-10">
                     <h2
-                      className="text-5xl md:text-7xl font-bold leading-tight tracking-tight "
+                      className="text-5xl 2xl:text-7xl font-bold leading-tight tracking-tight "
                       ref={titleSecondRef}>
                       Tú te enfocas en tus ventas; nosotros, en tu sitio{" "}
                       <span className="text-cyan-200"> web </span>
                     </h2>
                     <p
-                      className="text-lg md:text-xl leading-relaxed max-w-xl "
+                      className="text-lg 2xl:text-xl leading-relaxed lg:max-w-xl"
                       ref={descriptionSecondRef}>
                       Nos encargamos de todos los aspectos técnicos y creativos
                       de tu página web para que tú puedas concentrarte en tu
@@ -214,29 +230,35 @@ export default function Hero() {
                     </div>
                   </div>
                 </LimitContainer>
-                <div className="absolute right-[6%] bottom-0 h-[80svh] w-3/5 flex justify-end items-end">
+                <div className="lg:absolute relative lg:right-[6%] bottom-0 lg:h-[80svh] lg:w-3/6 w-full flex flex-1 justify-end items-end max-h-[50svh]">
                   <div
                     className="absolute z-10 w-full h-full"
                     ref={targetsSecondRef}>
                     <div
-                      className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl px-6 py-3 absolute bottom-4/5 right-7/14 z-20 text-shadow-md target-float"
+                      className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl 2xl:px-6 2xl:py-3 xl:px-4 xl:py-2 px-2 py-1 absolute bottom-4/5 right-7/14 z-20 text-shadow-md target-float"
                       style={{ animationDelay: "-7000ms" }}>
-                      <span className="font-bold text-lg">Tu Logo</span>
+                      <span className="font-bold 2xl:text-lg text-sm">
+                        Tu Logo
+                      </span>
                     </div>
                     <div
-                      className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl px-6 py-3 absolute bottom-3/5 right-1/4 z-20 text-shadow-md target-float"
+                      className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl 2xl:px-6 2xl:py-3 xl:px-4 xl:py-2 px-2 py-1 absolute bottom-3/5 right-1/5 z-20 text-shadow-md target-float"
                       style={{ animationDelay: "-15000ms" }}>
-                      <span className="font-bold text-lg">Tu Marca</span>
+                      <span className="font-bold 2xl:text-lg text-sm">
+                        Tu Marca
+                      </span>
                     </div>
-                    <div className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl px-6 py-3 absolute bottom-1/3 right-4/7 z-20 text-shadow-md target-float">
-                      <span className="font-bold text-lg">Tu Producto</span>
+                    <div className="w-auto bg-white/20 border border-white/30 backdrop-blur-xs rounded-xl shadow-xl 2xl:px-6 2xl:py-3 xl:px-4 xl:py-2 px-2 py-1 absolute bottom-1/3 right-4/7 z-20 text-shadow-md target-float">
+                      <span className="font-bold 2xl:text-lg text-sm">
+                        Tu Producto
+                      </span>
                     </div>
                   </div>
                   <img
                     src="/images/hero-phone.png"
                     alt="Teléfono mostrando tu sitio web"
                     ref={imageSecondRef}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain object-bottom"
                   />
                 </div>
               </div>

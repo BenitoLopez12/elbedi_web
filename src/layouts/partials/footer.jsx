@@ -350,7 +350,7 @@ export default function Footer({
 
   return (
     <footer className="bg-white/10 border border-white/30 text-lg">
-      <LimitContainer className="min-h-svh flex flex-col justify-between pt-30 pb-10">
+      <LimitContainer className="min-h-svh flex flex-col justify-between 2xl:pt-30 pt-20">
         <div className="w-full">
           <img
             src="/images/logo.png"
@@ -358,13 +358,15 @@ export default function Footer({
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between md:flex-row flex-col gap-10">
           <nav>
-            <p className="font-bold">Navegación</p>
-            <ul className="mt-3 space-y-2">
+            <p className="font-bold 2xl:text-lg lg:text-sm">Navegación</p>
+            <ul className="2xl:mt-3 lg:mt-0 2xl:space-y-2 lg:space-y-0">
               {links.map((item) => (
                 <li key={`${item.href}-${item.label}`}>
-                  <a href={item.href} className="hover:underline transition">
+                  <a
+                    href={item.href}
+                    className="hover:underline transition 2xl:text-md lg:text-sm">
                     {item.label}
                   </a>
                 </li>
@@ -372,18 +374,18 @@ export default function Footer({
             </ul>
           </nav>
           <div>
-            <p className="font-bold	">Contacto</p>
-            <ul className="mt-3 space-y-2">
+            <p className="font-bold 2xl:text-lg lg:text-sm">Contacto</p>
+            <ul className="2xl:mt-3 lg:mt-0 2xl:space-y-2 lg:space-y-0">
               <li>
                 <a
-                  className="transition hover:text-white"
+                  className="transition hover:text-white 2xl:text-md lg:text-sm"
                   href={`mailto:${email}`}>
                   {email}
                 </a>
               </li>
               <li>
                 <a
-                  className="transition hover:text-white"
+                  className="transition hover:text-white 2xl:text-md lg:text-sm"
                   href={`https://wa.me/${phone.replace(/\D/g, "")}`}
                   target="_blank"
                   rel="noreferrer">
@@ -393,34 +395,34 @@ export default function Footer({
             </ul>
           </div>
           <div>
-            <div className="mt-5 flex flex-col items-start gap-2">
-              <p className="font-bold">Legal</p>
+            <div className="flex flex-col items-start gap-2">
+              <p className="font-bold 2xl:text-lg lg:text-sm">Legal</p>
               <button
                 type="button"
                 onClick={() => setActiveNoticeKey("privacy")}
-                className=" transition hover:underline cursor-pointer">
+                className=" transition hover:underline cursor-pointer 2xl:text-md lg:text-sm">
                 Aviso de privacidad
               </button>
               <button
                 type="button"
                 onClick={() => setActiveNoticeKey("terms")}
-                className=" transition hover:underline cursor-pointer">
+                className=" transition hover:underline cursor-pointer 2xl:text-md lg:text-sm">
                 Términos y condiciones
               </button>
               <button
                 type="button"
                 onClick={() => setActiveNoticeKey("cookies")}
-                className=" transition hover:underline cursor-pointer">
+                className=" transition hover:underline cursor-pointer 2xl:text-md lg:text-sm">
                 Política de cookies
               </button>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/20 pt-10">
+        <div className="border-t border-white/20 2xl:py-10 py-5">
           <div className="flex items-center justify-between">
-            <p className="text-sm ">
-              {year} {brand}. Todos los derechos reservados.
+            <p className="2xl:text-sm text-xs">
+              &copy; {year} {brand}. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-3">
               {socials.map((social) => (
@@ -428,13 +430,13 @@ export default function Footer({
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 transition hover:border-white hover:bg-white/10"
+                  className="inline-flex 2xl:h-10 2xl:w-10 w-7 h-7 items-center justify-center rounded-full border border-white/30 transition hover:border-white hover:bg-white/10"
                   target="_blank"
                   rel="noreferrer">
                   <img
                     src={social.icon}
                     alt={social.label}
-                    className="h-6 w-6 object-contain"
+                    className="2xl:h-6 2xl:w-6 h-5 w-5 object-contain"
                   />
                 </a>
               ))}
@@ -455,7 +457,7 @@ export default function Footer({
               role="dialog"
               aria-modal="true"
               aria-labelledby="legal-modal-title"
-              className="relative z-10 w-full max-w-4xl overflow-hidden rounded-2xl border border-white/20 bg-[#0f172a] text-white shadow-2xl">
+              className="relative z-10 w-full max-w-4xl mt-20 h-9/10 overflow-hidden rounded-2xl border border-white/20 bg-[#0f172a] text-white shadow-2xl">
               <div className="flex items-start justify-between gap-4 border-b border-white/15 p-4 sm:p-6">
                 <div>
                   <h3

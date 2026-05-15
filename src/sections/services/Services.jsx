@@ -118,11 +118,11 @@ export default function Services() {
         <div ref={sectionRef}>
           <LimitContainer className="pt-1">
             <div ref={contentRef}>
-              <h2 className="text-6xl font-bold text-center mt-30">
+              <h2 className="2xl:text-6xl xl:text-5xl text-4xl text-center mt-30">
                 Servicios para tu sitio{" "}
                 <span className="text-cyan-200"> web </span>
               </h2>
-              <div className="mt-10 grid grid-cols-2 ">
+              <div className="mt-10 grid lg:grid-cols-2 ">
                 {SERVICES.map((service, index) => {
                   const reverseOnDesktop = index % 2 !== 0;
                   const isFirst = index === 0;
@@ -130,13 +130,14 @@ export default function Services() {
                   return (
                     <div
                       key={service.key}
-                      className={`flex items-center gap-2 px-2 
-                    ${isFirst ? "border-b border-r border-white/50" : ""} 
-                    ${isLast ? "border-t border-l border-white/50" : ""} 
+                      className={`flex items-center gap-2 px-2 sm:flex-row flex-col sm:mt-0 mt-10
+                        ${reverseOnDesktop ? "flex-col-reverse" : ""}
+                    ${isFirst ? "lg:border-b lg:border-r border-white/50" : ""} 
+                    ${isLast ? "lg:border-t lg:border-l border-white/50" : ""} 
                     ${isFirst ? "translate-y-px" : ""}
                     ${isLast ? "-translate-x-px" : ""}`}>
                       <div
-                        className={`w-full h-full aspect-square mx-auto flex-1 ${reverseOnDesktop ? "" : "order-2"}`}>
+                        className={`w-full h-full sm:aspect-square mx-auto flex-1 ${reverseOnDesktop ? "" : "order-2"}`}>
                         {animationsByService[service.key] ? (
                           <Lottie
                             animationData={animationsByService[service.key]}
@@ -145,17 +146,20 @@ export default function Services() {
                             className="w-full h-full"
                           />
                         ) : (
-                          <div className="w-full aspect-square bg-white/10 rounded-2xl animate-pulse" />
+                          <div className="w-full sm:aspect-square bg-white/10 rounded-2xl animate-pulse" />
                         )}
                       </div>
                       <div
                         className={`${reverseOnDesktop ? "md:order-1" : ""} flex-1`}>
-                        <h3 className="text-4xl leading-tight">
+                        <h3 className="2xl:text-4xl xl:text-3xl text-2xl leading-tight">
                           {service.title}
                         </h3>
-                        <p className="mt-3 text-md ">{service.description}</p>
+                        <p className="mt-3 2xl:text-lg xl:text-sm lg:text-xs text-xs text-white/80">
+                          {service.description}
+                        </p>
                         <div className="mt-4">
                           <Button
+                            className="sm:w-auto w-full"
                             variant="glass"
                             size="sm"
                             whatsappMessage={`Hola, me interesa el servicio de ${service.title.toLowerCase()} para mi sitio web.`}>

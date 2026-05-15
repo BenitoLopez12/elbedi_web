@@ -237,10 +237,10 @@ export default function Plans() {
   return (
     <SectionContainer id="plans">
       <LimitContainer className="py-24 md:py-35">
-        <h2 className="text-4xl md:text-6xl font-bold text-center leading-tight">
+        <h2 className="2xl:text-6xl xl:text-5xl text-4xl text-center">
           Planes diseñados para crecer contigo
         </h2>
-        <p className="mt-4 text-center text-white/75 max-w-5xl mx-auto text-base md:text-lg">
+        <p className="mt-4 text-center text-white/75 2xl:max-w-5xl max-w-3xl mx-auto text-base 2xl:text-lg">
           Estos costos son estimados y pueden variar según las necesidades
           específicas de tu proyecto. Contamos con planes flexibles y
           personalizados para adaptarnos a distintos tipos de negocio y

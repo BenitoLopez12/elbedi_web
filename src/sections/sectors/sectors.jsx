@@ -19,7 +19,7 @@ export default function Sectors({ children = null }) {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      mm.add("(min-width: 1024px)", () => {
+      mm.add("(min-width: 640px)", () => {
         const sectionEl = sectionRef.current;
         const trackEl = trackRef.current;
 
@@ -79,9 +79,9 @@ export default function Sectors({ children = null }) {
       <div className="mx-auto w-full">
         <div
           ref={sectionRef}
-          className="relative overflow-hidden w-full h-svh flex flex-col"
+          className="relative sm:overflow-hidden overflow-auto w-full h-svh flex flex-col"
           aria-label="Sección con recorrido horizontal por scroll vertical">
-          <h2 className="text-6xl text-center pt-15 pb-3">
+          <h2 className="2xl:text-6xl xl:text-5xl text-4xl text-center pt-15 pb-3">
             Sectores para los que trabajamos
           </h2>
           <div ref={trackRef} className="w-auto flex-1 min-h-0 flex">

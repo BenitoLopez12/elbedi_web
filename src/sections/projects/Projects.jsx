@@ -43,7 +43,7 @@ const PROJECTS = [
 ];
 
 const wrapIndex = (index, length) => ((index % length) + length) % length;
-const AUTOPLAY_DELAY = 13000;
+const AUTOPLAY_DELAY = 9000;
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -226,14 +226,14 @@ export default function Projects() {
     <SectionContainer id="portfolio">
       <LimitContainer>
         <div ref={rootRef} className="pt-50 pb-30">
-          <div className="mt-12 rounded-3xl border border-white/15 bg-white/5 p-6 md:p-8 lg:p-10 overflow-hidden">
+          <div className="mt-12 rounded-3xl backdrop-blur-xs border border-white/15 bg-white/5 p-6 md:p-8 lg:p-10 overflow-hidden">
             <div className="flex items-center justify-between mb-6 md:mb-8">
               <div
                 ref={badgeRef}
-                className="px-3 py-1 rounded-full border border-cyan-100/60 text-cyan-100 text-xs uppercase tracking-wide">
+                className="sm:block hidden px-3 py-1 rounded-full border border-cyan-100/60 text-cyan-100 text-xs uppercase tracking-wide">
                 Proyecto {activeIndex + 1} / {PROJECTS.length}
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold leading-tight text-center">
+              <h2 className="2xl:text-6xl xl:text-5xl text-4xl text-center">
                 Casos de <span className="text-cyan-200"> Éxito </span>
               </h2>
               <div className="flex items-center gap-3">
@@ -257,10 +257,10 @@ export default function Projects() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-140">
-              <div className="relative h-105 md:h-125">
+              <div className="relative h-85 sm:h-105 md:h-125">
                 <div
                   ref={orbRef}
-                  className="absolute inset-0 m-auto h-full w-full max-w-130 rounded-full overflow-hidden shadow-2xl">
+                  className="absolute inset-0 m-auto h-full max-w-130 rounded-full aspect-square overflow-hidden shadow-2xl">
                   <div
                     className={`absolute inset-0 rounded-full blur-2xl opacity-80 ${activeProject.accent}`}
                   />
@@ -277,19 +277,19 @@ export default function Projects() {
                     ref={tabletRef}
                     src={activeProject.tablet}
                     alt={`${activeProject.title} vista tablet`}
-                    className="h-52 md:h-58 relative z-20 -mr-14"
+                    className="h-39 sm:h-52 2xl:h-58 relative z-20 -mr-14"
                   />
                   <img
                     ref={laptopRef}
                     src={activeProject.laptop}
                     alt={`${activeProject.title} vista laptop`}
-                    className="h-72 md:h-80 relative z-10"
+                    className="h-55 sm:h-72 2xl:h-80 relative z-10"
                   />
                   <img
                     ref={phoneRef}
                     src={activeProject.phone}
                     alt={`${activeProject.title} vista teléfono`}
-                    className="h-40 md:h-46 relative z-20 -ml-16"
+                    className="h-28 sm:h-40 2xl:h-46 relative z-20 -ml-16"
                   />
                 </div>
               </div>
@@ -297,12 +297,12 @@ export default function Projects() {
               <div>
                 <h3
                   ref={titleRef}
-                  className="text-4xl md:text-6xl leading-tight">
+                  className="text-4xl lg:text-5xl 2xl:text-6xl leading-tight">
                   {activeProject.title}
                 </h3>
                 <p
                   ref={descriptionRef}
-                  className="mt-5 text-lg md:text-xl leading-relaxed text-white/85">
+                  className="mt-5 text-lg 2xl:text-xl leading-relaxed text-white/85">
                   {activeProject.description}
                 </p>
 

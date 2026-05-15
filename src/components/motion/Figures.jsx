@@ -105,7 +105,7 @@ export default function Figures() {
           scrollTrigger: {
             trigger: servicesSection,
             start: "top 130%",
-            end: "bottom bottom",
+            end: "top 20%",
             scrub: true,
             onEnter: () => {
               gsap.set(cylinder, { zIndex: 99 });
@@ -130,7 +130,7 @@ export default function Figures() {
 
         motionTimeline
           .to(cylinder, {
-            scale: 18,
+            scale: 19,
             left: "40%",
             top: "50%",
             rotate: 120,
@@ -194,7 +194,7 @@ export default function Figures() {
         className="fixed inset-0 w-full h-full overflow-hidden -z-1 pointer-events-none content-figures">
         <div
           ref={figure1Ref}
-          className="absolute w-1/21 top-45 left-60 will-change-transform">
+          className="absolute 2xl:w-16 w-11 top-45 left-10/100 will-change-transform">
           <img
             ref={figure1ImageRef}
             src="/images/cilindro.png"
@@ -204,7 +204,7 @@ export default function Figures() {
         </div>
         <div
           ref={figure2Ref}
-          className="absolute w-1/21 bottom-45 left-150 will-change-transform">
+          className="absolute 2xl:w-16 w-11 bottom-45 lg:left-30/100 left-10/100 will-change-transform">
           <img
             src="/images/diamante.png"
             alt=""
