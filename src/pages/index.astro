@@ -1,20 +1,107 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import siteConfig from "@/config/siteConfig.js";
+import site from "@/content/site.js";
+import { SEO_FAQS, SEO_SERVICES } from "@/content/seoContent.js";
 import Hero from "@/sections/hero/Hero.jsx";
 import Services from "@/sections/services/Services";
 import Sectors from "@/sections/sectors/sectors.jsx";
 import Projects from "@/sections/projects/Projects.jsx";
 import Plans from "@/sections/plans/plans.jsx";
+import Faq from "@/sections/faq/Faq.jsx";
 import Contact from "@/sections/contact/Contact.jsx";
+
+const canonicalUrl = `${siteConfig.url}/`;
+const serviceOfferList = SEO_SERVICES.map((service, index) => ({
+  "@type": "Offer",
+  position: index + 1,
+  itemOffered: {
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+  },
+}));
+
+const faqSchemaList = SEO_FAQS.map((item) => ({
+  "@type": "Question",
+  name: item.question,
+  acceptedAnswer: {
+    "@type": "Answer",
+    text: item.answer,
+  },
+}));
+
+const homeSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteConfig.url}#organization`,
+    name: siteConfig.siteName,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}${siteConfig.mainImage}`,
+    email: site.email,
+    telephone: site.phone,
+    areaServed: "MX",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: site.email,
+      telephone: site.phone,
+      areaServed: "MX",
+      availableLanguage: ["es-MX"],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteConfig.url}#website`,
+    url: siteConfig.url,
+    name: siteConfig.siteName,
+    inLanguage: siteConfig.lang,
+    publisher: {
+      "@id": `${siteConfig.url}#organization`,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${siteConfig.url}#professional-service`,
+    name: `${siteConfig.siteName} - Diseño Web y SEO`,
+    url: siteConfig.url,
+    description:
+      "Servicios de diseño web, SEO técnico, seguridad y mantenimiento para negocios en México.",
+    inLanguage: siteConfig.lang,
+    areaServed: "MX",
+    telephone: site.phone,
+    email: site.email,
+    brand: {
+      "@id": `${siteConfig.url}#organization`,
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Servicios digitales ELBEDI",
+      itemListElement: serviceOfferList,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${siteConfig.url}#faq`,
+    mainEntity: faqSchemaList,
+  },
+];
 ---
 
 <Layout
-  title="ELBEDI | Diseño y desarrollo web para negocios"
-  description="Creamos sitios web modernos, rápidos y memorables para negocios que quieren crecer en digital.">
+  title="Diseño Web, SEO y Mantenimiento en México | ELBEDI"
+  description="Agencia de diseño web y SEO en México para negocios. Creamos sitios rápidos, seguros y orientados a conversión con soporte continuo."
+  canonicalUrl={canonicalUrl}
+  schema={homeSchema}>
   <Hero client:load />
   <Services client:load />
   <Projects client:load />
   <Sectors client:load />
   <Plans client:load />
+  <Faq />
   <Contact client:load />
 </Layout>

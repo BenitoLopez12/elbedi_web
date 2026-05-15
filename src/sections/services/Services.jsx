@@ -23,7 +23,7 @@ const SERVICES = [
     animationPath: "/lottie/seo.json",
     title: "SEO y motores de búsqueda",
     description:
-      "Mejoramos la visibilidad de tu sitio web en motores de búsqueda para llegar a más clientes potenciales.",
+      "Mejoramos la visibilidad de tu sitio web en Google para atraer clientes potenciales en México y fortalecer tu presencia en resultados de búsqueda y asistentes de IA.",
     buttonLabel: "Quiero mejorar mi SEO",
   },
   {
@@ -49,6 +49,7 @@ export default function Services() {
   const contentRef = useRef(null);
 
   const [animationsByService, setAnimationsByService] = useState({});
+  const [shouldLoadAnimations, setShouldLoadAnimations] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -80,6 +81,30 @@ export default function Services() {
   }, []);
 
   useEffect(() => {
+    const sectionElement = sectionRef.current;
+
+    if (!sectionElement || shouldLoadAnimations) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadAnimations(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: "200px 0px",
+      },
+    );
+
+    observer.observe(sectionElement);
+
+    return () => observer.disconnect();
+  }, [shouldLoadAnimations]);
+
+  useEffect(() => {
+    if (!shouldLoadAnimations) return undefined;
+
     // Animaciones Lottie
     let isMounted = true;
 
@@ -110,7 +135,7 @@ export default function Services() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [shouldLoadAnimations]);
 
   return (
     <>
@@ -122,6 +147,11 @@ export default function Services() {
                 Servicios para tu sitio{" "}
                 <span className="text-cyan-200"> web </span>
               </h2>
+              <p className="mt-4 text-center text-white/75 2xl:max-w-5xl max-w-3xl mx-auto text-base 2xl:text-lg">
+                Impulsamos negocios en México con diseño web, SEO, seguridad y
+                mantenimiento para convertir visitas en oportunidades reales de
+                venta.
+              </p>
               <div className="mt-10 grid lg:grid-cols-2 ">
                 {SERVICES.map((service, index) => {
                   const reverseOnDesktop = index % 2 !== 0;

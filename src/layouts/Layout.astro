@@ -7,16 +7,38 @@ import Header from "./partials/header.jsx";
 import Footer from "./partials/footer.jsx";
 import BgTransition from "@/components/motion/bgTransition.jsx";
 import Figures from "@/components/motion/Figures.jsx";
+
+const currentCanonical = Astro.url
+  ? new URL(Astro.url.pathname, siteConfig.url).toString()
+  : siteConfig.url;
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  canonicalUrl = currentCanonical,
+  ogImage = siteConfig.mainImage,
+  robots = siteConfig.robots,
+  schema = [],
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang={siteConfig.lang} class="dark">
-  <Head />
+  <Head
+    title={title}
+    description={description}
+    canonicalUrl={canonicalUrl}
+    ogImage={ogImage}
+    robots={robots}
+    schema={schema}
+  />
   <body class="text-white">
     <BgTransition client:load />
     <Figures client:load />
     <Header brand={site.name} />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer
       client:load
       brand={site.name}

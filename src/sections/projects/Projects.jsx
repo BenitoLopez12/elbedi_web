@@ -267,7 +267,7 @@ export default function Projects() {
                   <img
                     ref={orbImageRef}
                     src={activeProject.background}
-                    alt=""
+                    alt={`Fondo visual del proyecto ${activeProject.title}`}
                     className={`w-full h-full object-cover blur-xs brightness-50 opacity-75 ${activeProject.backdropClass}`}
                   />
                 </div>

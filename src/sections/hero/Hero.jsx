@@ -136,7 +136,7 @@ export default function Hero() {
 
   return (
     <>
-      <SectionContainer id="">
+      <SectionContainer id="inicio">
         <div className="">
           <div
             className="min-h-svh w-full flex overflow-hidden "
@@ -157,8 +157,8 @@ export default function Hero() {
                     className="text-lg 2xl:text-xl leading-relaxed lg:max-w-xl"
                     ref={descriptionRef}>
                     ELBEDI es un estudio digital especializado en crear sitios
-                    modernos, rápidos y memorables para marcas que buscan
-                    destacar.
+                    web modernos, rápidos y memorables para marcas en México que
+                    buscan destacar, atraer clientes y vender más.
                   </p>
                   <div
                     className="flex gap-3 justify-center lg:justify-start"
@@ -230,7 +230,7 @@ export default function Hero() {
                     </div>
                   </div>
                 </LimitContainer>
-                <div className="lg:absolute relative lg:right-[6%] bottom-0 lg:h-[80svh] lg:w-3/6 w-full flex flex-1 justify-end items-end max-h-[50svh]">
+                <div className="lg:absolute relative lg:right-[6%] bottom-0 lg:h-[80svh] lg:w-3/6 w-full flex flex-1 justify-end items-end lg:max-h-full max-h-[50svh]">
                   <div
                     className="absolute z-10 w-full h-full"
                     ref={targetsSecondRef}>

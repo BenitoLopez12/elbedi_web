@@ -2,15 +2,17 @@ import LimitContainer from "@/components/common/LimitContainer.jsx";
 import { buildWhatsAppUrl } from "@/lib/whatsapp.js";
 
 const defaultLinks = [
+  { label: "Inicio", href: "#inicio" },
   { label: "Servicios", href: "#services" },
   { label: "Portafolio", href: "#portfolio" },
   { label: "Sectores", href: "#sectors" },
   { label: "Planes y Precios", href: "#plans" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export default function Header({
   brand = "ELBEDI",
-  brandHref = "/#",
+  brandHref = "/#inicio",
   links = defaultLinks,
 }) {
   const whatsappHref = buildWhatsAppUrl(
@@ -41,7 +43,27 @@ export default function Header({
             </ul>
           </nav>
 
-          <div>
+          <div className="flex items-center gap-2">
+            <details className="relative md:hidden">
+              <summary className="list-none cursor-pointer rounded-lg border border-white/40 bg-white/10 px-3 py-2 text-xs uppercase tracking-wide">
+                Menu
+              </summary>
+              <nav
+                aria-label="Navegación móvil"
+                className="absolute right-0 mt-2 min-w-55 rounded-xl border border-white/30 bg-slate-900/95 p-3 shadow-2xl">
+                <ul className="flex flex-col gap-2">
+                  {links.map((item) => (
+                    <li key={`mobile-${item.href}-${item.label}`}>
+                      <a
+                        href={item.href}
+                        className="block rounded-md px-2 py-1 text-sm text-white/90 hover:bg-white/10">
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </details>
             <a
               href={whatsappHref}
               target="_blank"

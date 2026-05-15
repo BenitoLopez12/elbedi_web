@@ -2,19 +2,14 @@ import { useEffect, useState } from "react";
 import LimitContainer from "@/components/common/LimitContainer.jsx";
 
 const defaultLinks = [
-  { label: "Inicio", href: "#" },
+  { label: "Inicio", href: "#inicio" },
   { label: "Servicios", href: "#services" },
   { label: "Portafolio", href: "#portfolio" },
   { label: "Planes y Precios", href: "#plans" },
+  { label: "FAQ", href: "#faq" },
 ];
 
-const defaultSocials = [
-  { label: "Facebook", href: "#", icon: "/images/icons/facebook.svg" },
-  { label: "Instagram", href: "#", icon: "/images/icons/instagram.svg" },
-  { label: "TikTok", href: "#", icon: "/images/icons/tiktok.svg" },
-  { label: "LinkedIn", href: "#", icon: "/images/icons/linkedin.svg" },
-  { label: "WhatsApp", href: "#", icon: "/images/icons/whatsapp.svg" },
-];
+const defaultSocials = [];
 
 const legalNotices = {
   privacy: {
@@ -327,6 +322,9 @@ export default function Footer({
   const year = new Date().getFullYear();
   const [activeNoticeKey, setActiveNoticeKey] = useState(null);
   const activeNotice = activeNoticeKey ? legalNotices[activeNoticeKey] : null;
+  const validSocials = socials.filter(
+    (social) => social?.href && social.href !== "#",
+  );
 
   useEffect(() => {
     if (!activeNotice) return undefined;
@@ -359,7 +357,7 @@ export default function Footer({
           />
         </div>
         <div className="flex justify-between md:flex-row flex-col gap-10">
-          <nav>
+          <nav aria-label="Enlaces del sitio en footer">
             <p className="font-bold 2xl:text-lg lg:text-sm">Navegación</p>
             <ul className="2xl:mt-3 lg:mt-0 2xl:space-y-2 lg:space-y-0">
               {links.map((item) => (
@@ -424,23 +422,25 @@ export default function Footer({
             <p className="2xl:text-sm text-xs">
               &copy; {year} {brand}. Todos los derechos reservados.
             </p>
-            <div className="flex items-center gap-3">
-              {socials.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="inline-flex 2xl:h-10 2xl:w-10 w-7 h-7 items-center justify-center rounded-full border border-white/30 transition hover:border-white hover:bg-white/10"
-                  target="_blank"
-                  rel="noreferrer">
-                  <img
-                    src={social.icon}
-                    alt={social.label}
-                    className="2xl:h-6 2xl:w-6 h-5 w-5 object-contain"
-                  />
-                </a>
-              ))}
-            </div>
+            {validSocials.length ? (
+              <div className="flex items-center gap-3">
+                {validSocials.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="inline-flex 2xl:h-10 2xl:w-10 w-7 h-7 items-center justify-center rounded-full border border-white/30 transition hover:border-white hover:bg-white/10"
+                    target="_blank"
+                    rel="noreferrer">
+                    <img
+                      src={social.icon}
+                      alt={social.label}
+                      className="2xl:h-6 2xl:w-6 h-5 w-5 object-contain"
+                    />
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
 
