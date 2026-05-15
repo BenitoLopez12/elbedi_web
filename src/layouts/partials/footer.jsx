@@ -9,7 +9,13 @@ const defaultLinks = [
   { label: "FAQ", href: "#faq" },
 ];
 
-const defaultSocials = [];
+const defaultSocials = [
+  { label: "Facebook", href: "#", icon: "/images/icons/facebook.svg" },
+  { label: "Instagram", href: "#", icon: "/images/icons/instagram.svg" },
+  { label: "TikTok", href: "#", icon: "/images/icons/tiktok.svg" },
+  { label: "LinkedIn", href: "#", icon: "/images/icons/linkedin.svg" },
+  { label: "WhatsApp", href: "#", icon: "/images/icons/whatsapp.svg" },
+];
 
 const legalNotices = {
   privacy: {
@@ -351,7 +357,7 @@ export default function Footer({
       <LimitContainer className="min-h-svh flex flex-col justify-between 2xl:pt-30 pt-20">
         <div className="w-full">
           <img
-            src="/images/logo.png"
+            src="/images/logo.webp"
             alt="Logo de ELBEDI"
             className="w-full h-full object-contain"
           />

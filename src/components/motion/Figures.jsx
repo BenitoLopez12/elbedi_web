@@ -197,7 +197,7 @@ export default function Figures() {
           className="absolute 2xl:w-16 w-11 top-45 left-10/100 will-change-transform">
           <img
             ref={figure1ImageRef}
-            src="/images/cilindro.png"
+            src="/images/cilindro.webp"
             alt=""
             className="figures w-full rotate-30"
           />
@@ -206,7 +206,7 @@ export default function Figures() {
           ref={figure2Ref}
           className="absolute 2xl:w-16 w-11 bottom-45 lg:left-30/100 left-10/100 will-change-transform">
           <img
-            src="/images/diamante.png"
+            src="/images/diamante.webp"
             alt=""
             className="figures rotate-30 "
             style={{ animationDelay: "-20s" }}

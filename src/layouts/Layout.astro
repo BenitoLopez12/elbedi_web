@@ -7,6 +7,7 @@ import Header from "./partials/header.jsx";
 import Footer from "./partials/footer.jsx";
 import BgTransition from "@/components/motion/bgTransition.jsx";
 import Figures from "@/components/motion/Figures.jsx";
+import WhatsApp from "@/components/common/whatsApp.jsx";
 
 const currentCanonical = Astro.url
   ? new URL(Astro.url.pathname, siteConfig.url).toString()
@@ -45,6 +46,8 @@ const {
       email={site.email}
       phone={site.phone}
     />
+
+    <WhatsApp phone={site.phone} client:load />
 
     <script src="../scripts/lenis-init.js"></script>
   </body>

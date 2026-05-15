@@ -6,7 +6,7 @@ const siteConfig = {
   theme: "dark",
   description:
     "Creamos sitios web rápidos y optimizados para SEO en México. Diseño, mantenimiento, seguridad y estrategia para atraer clientes y vender más.",
-  mainImage: "/images/logo.png",
+  mainImage: "/images/portada.png",
   siteName: "ELBEDI",
   themeColor: "#0f172a",
   keywords:
@@ -15,7 +15,7 @@ const siteConfig = {
     "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
   twitterCard: "summary_large_image",
   twitterSite: "",
-  favicon: "/images/favicon.svg",
+  favicon: "/images/favicon.png",
 };
 
 export default siteConfig;

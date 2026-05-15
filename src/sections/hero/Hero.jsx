@@ -195,7 +195,7 @@ export default function Hero() {
                   </div>
                 </div>
                 <img
-                  src="/images/hero-lap.png"
+                  src="/images/hero-lap.webp"
                   alt="Laptop mostrando tu sitio web"
                   ref={imageRef}
                   className="relative z-2 w-full h-full object-contain object-bottom"
@@ -255,7 +255,7 @@ export default function Hero() {
                     </div>
                   </div>
                   <img
-                    src="/images/hero-phone.png"
+                    src="/images/hero-phone.webp"
                     alt="Teléfono mostrando tu sitio web"
                     ref={imageSecondRef}
                     className="w-full h-full object-contain object-bottom"
