@@ -5,16 +5,36 @@ const defaultLinks = [
   { label: "Inicio", href: "#inicio" },
   { label: "Servicios", href: "#services" },
   { label: "Portafolio", href: "#portfolio" },
-  { label: "Planes y Precios", href: "#plans" },
+  { label: "Planes y Precios", href: "#price" },
   { label: "FAQ", href: "#faq" },
 ];
 
 const defaultSocials = [
-  { label: "Facebook", href: "#", icon: "/images/icons/facebook.svg" },
-  { label: "Instagram", href: "#", icon: "/images/icons/instagram.svg" },
-  { label: "TikTok", href: "#", icon: "/images/icons/tiktok.svg" },
-  { label: "LinkedIn", href: "#", icon: "/images/icons/linkedin.svg" },
-  { label: "WhatsApp", href: "#", icon: "/images/icons/whatsapp.svg" },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/elbedi.studio",
+    icon: "/images/icons/facebook.svg",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/elbedi_studio/",
+    icon: "/images/icons/instagram.svg",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@elbedi_studio",
+    icon: "/images/icons/tiktok.svg",
+  },
+  {
+    label: "WhatsApp",
+    href: "#",
+    icon: "/images/icons/whatsapp.svg",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/elbedi",
+    icon: "/images/icons/linkedin.svg",
+  },
 ];
 
 const legalNotices = {
@@ -321,14 +341,23 @@ Las modificaciones serán publicadas en este sitio web.`,
 export default function Footer({
   brand = "ELBEDI",
   email = "hola@elbedi.com",
-  phone = "+52 55 0000 0000",
+  phone = "+52 55 4660 2947",
   links = defaultLinks,
   socials = defaultSocials,
 }) {
   const year = new Date().getFullYear();
   const [activeNoticeKey, setActiveNoticeKey] = useState(null);
   const activeNotice = activeNoticeKey ? legalNotices[activeNoticeKey] : null;
-  const validSocials = socials.filter(
+  const normalizedPhone = String(phone ?? "").replace(/\D/g, "");
+  const whatsappHref = normalizedPhone
+    ? `https://wa.me/${normalizedPhone}`
+    : "#";
+
+  const socialsWithWhatsApp = socials.map((social) =>
+    social?.label === "WhatsApp" ? { ...social, href: whatsappHref } : social,
+  );
+
+  const validSocials = socialsWithWhatsApp.filter(
     (social) => social?.href && social.href !== "#",
   );
 
@@ -359,6 +388,7 @@ export default function Footer({
           <img
             src="/images/logo.webp"
             alt="Logo de ELBEDI"
+            title="ELBEDI"
             className="w-full h-full object-contain"
           />
         </div>
@@ -390,7 +420,7 @@ export default function Footer({
               <li>
                 <a
                   className="transition hover:text-white 2xl:text-md lg:text-sm"
-                  href={`https://wa.me/${phone.replace(/\D/g, "")}`}
+                  href={whatsappHref}
                   target="_blank"
                   rel="noreferrer">
                   {phone}

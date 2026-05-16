@@ -68,7 +68,7 @@ export default function Contact() {
                 <h2
                   className="text-4xl md:text-6xl font-bold leading-tight text-center max-w-xl mx-auto "
                   style={{ lineHeight: "65px" }}>
-                  Construyamos tu sitio web para crecer en México
+                  Construyamos tu sitio web para crecer tu negocio
                 </h2>
 
                 <Button
@@ -78,16 +78,23 @@ export default function Contact() {
                   Crear mi sitio web
                 </Button>
               </div>
-              <div className="absolute inset-0 m-auto w-full h-2/3 mx-auto translate-y-10">
+              <div
+                className="absolute inset-0 m-auto w-full h-2/3 mx-auto translate-y-10"
+                role="img"
+                aria-label="Animación de contacto para asesoría web">
                 {animationDataContact ? (
                   <Lottie
                     animationData={animationDataContact}
                     loop
                     autoplay
+                    aria-hidden="true"
                     className="w-full h-full"
                   />
                 ) : (
-                  <div className="w-full aspect-square bg-white/10 rounded-2xl animate-pulse" />
+                  <div
+                    aria-hidden="true"
+                    className="w-full aspect-square bg-white/10 rounded-2xl animate-pulse"
+                  />
                 )}
               </div>
             </div>

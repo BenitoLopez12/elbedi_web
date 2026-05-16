@@ -235,7 +235,7 @@ export default function Plans() {
   }, []);
 
   return (
-    <SectionContainer id="plans">
+    <SectionContainer id="price">
       <LimitContainer className="py-24 md:py-35">
         <h2 className="2xl:text-6xl xl:text-5xl text-4xl text-center">
           Planes diseñados para crecer contigo

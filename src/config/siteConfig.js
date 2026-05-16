@@ -15,7 +15,7 @@ const siteConfig = {
     "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
   twitterCard: "summary_large_image",
   twitterSite: "",
-  favicon: "/images/favicon.png",
+  favicon: "/images/favicon.svg",
 };
 
 export default siteConfig;

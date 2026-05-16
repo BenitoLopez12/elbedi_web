@@ -168,16 +168,25 @@ export default function Services() {
                     ${isLast ? "-translate-x-px" : ""}`}>
                       <div
                         className={`w-full h-full sm:aspect-square mx-auto flex-1 ${reverseOnDesktop ? "" : "order-2"}`}>
-                        {animationsByService[service.key] ? (
-                          <Lottie
-                            animationData={animationsByService[service.key]}
-                            loop
-                            autoplay
-                            className="w-full h-full"
-                          />
-                        ) : (
-                          <div className="w-full sm:aspect-square bg-white/10 rounded-2xl animate-pulse" />
-                        )}
+                        <div
+                          role="img"
+                          aria-label={`Animación del servicio ${service.title}`}
+                          className="w-full h-full">
+                          {animationsByService[service.key] ? (
+                            <Lottie
+                              animationData={animationsByService[service.key]}
+                              loop
+                              autoplay
+                              aria-hidden="true"
+                              className="w-full h-full"
+                            />
+                          ) : (
+                            <div
+                              aria-hidden="true"
+                              className="w-full sm:aspect-square bg-white/10 rounded-2xl animate-pulse"
+                            />
+                          )}
+                        </div>
                       </div>
                       <div
                         className={`${reverseOnDesktop ? "md:order-1" : ""} flex-1`}>

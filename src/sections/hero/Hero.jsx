@@ -166,7 +166,7 @@ export default function Hero() {
                     <Button whatsappMessage="Hola, me gustaría cotizar mi sitio web.">
                       Cotizar mi sitio web
                     </Button>
-                    <Button variant="glass" href="#plans">
+                    <Button variant="glass" href="#price">
                       Planes y precios
                     </Button>
                   </div>
@@ -197,6 +197,7 @@ export default function Hero() {
                 <img
                   src="/images/hero-lap.webp"
                   alt="Laptop mostrando tu sitio web"
+                  title="Vista de sitio web en laptop"
                   ref={imageRef}
                   className="relative z-2 w-full h-full object-contain object-bottom"
                 />
@@ -257,6 +258,7 @@ export default function Hero() {
                   <img
                     src="/images/hero-phone.webp"
                     alt="Teléfono mostrando tu sitio web"
+                    title="Vista de sitio web en teléfono"
                     ref={imageSecondRef}
                     className="w-full h-full object-contain object-bottom"
                   />

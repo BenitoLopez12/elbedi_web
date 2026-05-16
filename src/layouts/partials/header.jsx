@@ -2,11 +2,10 @@ import LimitContainer from "@/components/common/LimitContainer.jsx";
 import { buildWhatsAppUrl } from "@/lib/whatsapp.js";
 
 const defaultLinks = [
-  { label: "Inicio", href: "#inicio" },
   { label: "Servicios", href: "#services" },
   { label: "Portafolio", href: "#portfolio" },
   { label: "Sectores", href: "#sectors" },
-  { label: "Planes y Precios", href: "#plans" },
+  { label: "Planes y Precios", href: "#price" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -27,6 +26,7 @@ export default function Header({
             <img
               src="/images/logo.webp"
               alt="Logo de ELBEDI"
+              title="ELBEDI"
               className="w-full h-full object-contain"
             />
           </a>
@@ -54,7 +54,7 @@ export default function Header({
             </a>
             <details className="relative md:hidden">
               <summary className="list-none cursor-pointer rounded-lg h-7 w-7 text-xs uppercase tracking-wide">
-                <img src="/images/icons/menu.svg" alt="Menu" />
+                <img src="/images/icons/menu.svg" alt="Menú" />
               </summary>
               <nav
                 aria-label="Navegación móvil"

@@ -199,6 +199,7 @@ export default function Figures() {
             ref={figure1ImageRef}
             src="/images/cilindro.webp"
             alt=""
+            aria-hidden="true"
             className="figures w-full rotate-30"
           />
         </div>
@@ -208,6 +209,7 @@ export default function Figures() {
           <img
             src="/images/diamante.webp"
             alt=""
+            aria-hidden="true"
             className="figures rotate-30 "
             style={{ animationDelay: "-20s" }}
           />

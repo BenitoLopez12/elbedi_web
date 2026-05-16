@@ -268,6 +268,7 @@ export default function Projects() {
                     ref={orbImageRef}
                     src={activeProject.background}
                     alt={`Fondo visual del proyecto ${activeProject.title}`}
+                    title={`Fondo visual del proyecto ${activeProject.title}`}
                     className={`w-full h-full object-cover blur-xs brightness-50 opacity-75 ${activeProject.backdropClass}`}
                   />
                 </div>
@@ -277,18 +278,21 @@ export default function Projects() {
                     ref={tabletRef}
                     src={activeProject.tablet}
                     alt={`${activeProject.title} vista tablet`}
+                    title={`${activeProject.title} en tablet`}
                     className="h-39 sm:h-52 2xl:h-58 relative z-20 -mr-14"
                   />
                   <img
                     ref={laptopRef}
                     src={activeProject.laptop}
                     alt={`${activeProject.title} vista laptop`}
+                    title={`${activeProject.title} en laptop`}
                     className="h-55 sm:h-72 2xl:h-80 relative z-10"
                   />
                   <img
                     ref={phoneRef}
                     src={activeProject.phone}
                     alt={`${activeProject.title} vista teléfono`}
+                    title={`${activeProject.title} en teléfono`}
                     className="h-28 sm:h-40 2xl:h-46 relative z-20 -ml-16"
                   />
                 </div>
