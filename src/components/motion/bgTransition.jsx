@@ -362,7 +362,7 @@ export default function BgTransition() {
   return (
     <div
       ref={rootRef}
-      className="fixed inset-0 w-full h-full -z-1 overflow-hidden pointer-events-none"
+      className="fixed inset-0 w-full h-vh -z-1 overflow-hidden pointer-events-none"
       style={{
         ...stopToCssVars(INITIAL_BACKGROUND_STOP),
         backgroundColor: INITIAL_BACKGROUND_STOP.centerColor,

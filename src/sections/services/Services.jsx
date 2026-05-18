@@ -23,7 +23,7 @@ const SERVICES = [
     animationPath: "/lottie/seo.json",
     title: "SEO y motores de búsqueda",
     description:
-      "Mejoramos la visibilidad de tu sitio web en Google para atraer clientes potenciales en México y fortalecer tu presencia en resultados de búsqueda y asistentes de IA.",
+      "Mejoramos la visibilidad de tu sitio web para atraer clientes potenciales y fortalecer tu presencia en resultados de búsqueda y asistentes de IA.",
     buttonLabel: "Quiero mejorar mi SEO",
   },
   {

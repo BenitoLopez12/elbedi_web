@@ -80,7 +80,7 @@ const PLANS = [
     points: [
       "Dominio personalizado sin costo extra",
       "Hosting incluido sin costo extra",
-      "Diseño generado y optimizado con IA",
+      "Diseño personalizado",
       "Tiempo de entrega rápido",
       "Página web que carga rápidamente",
       "Diseño para dispositivos móviles y escritorio",
