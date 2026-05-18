@@ -25,11 +25,11 @@ const defaultSocials = [
     href: "https://www.tiktok.com/@elbedi_studio",
     icon: "/images/icons/tiktok.svg",
   },
-  {
-    label: "WhatsApp",
-    href: "#",
-    icon: "/images/icons/whatsapp.svg",
-  },
+  // {
+  //   label: "WhatsApp",
+  //   href: "#",
+  //   icon: "/images/icons/whatsapp.svg",
+  // },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/elbedi",

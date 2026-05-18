@@ -49,10 +49,10 @@ const {
           const hasVisited =
             localStorage.getItem(VISITED_STORAGE_KEY) === "true";
 
-          if (!hasVisited) {
-            variant = "first";
-            localStorage.setItem(VISITED_STORAGE_KEY, "true");
-          }
+          // if (!hasVisited) {
+          variant = "first";
+          localStorage.setItem(VISITED_STORAGE_KEY, "true");
+          // }
         } catch {
           try {
             const seenThisSession =

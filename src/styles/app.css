@@ -83,7 +83,7 @@ html.preloader-active {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: clamp(72px, 11vw, 110px);
+  width: clamp(92px, 11vw, 130px);
   height: auto;
   transform: translate(-50%, calc(-50% + 24px)) scale(0.94);
   opacity: 0;
@@ -100,13 +100,13 @@ html.preloader-active {
   left: 50%;
   top: 50%;
   margin: 0;
-  max-width: min(90vw, 980px);
+  max-width: min(90vw, 990px);
   text-align: center;
   font-family: "Bauhaus93", sans-serif;
   text-wrap: balance;
   line-height: 1.05;
   letter-spacing: 0.015em;
-  font-size: clamp(1.5rem, 4.1vw, 3.6rem);
+  font-size: clamp(2.5rem, 4.1vw, 4.5rem);
   color: #355fc2;
   transform: translate(-50%, calc(-50% + 24px)) scale(0.96);
   opacity: 0;
@@ -120,7 +120,7 @@ html.preloader-active {
 html[data-preloader-variant="standard"] #global-preloader .elbedi-preloader__logo {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
-  animation: preloaderPulse 2.2s ease-in-out infinite;
+  animation: preloaderPulse 2s ease-in-out infinite;
 }
 
 html[data-preloader-variant="standard"] #global-preloader .elbedi-preloader__message {

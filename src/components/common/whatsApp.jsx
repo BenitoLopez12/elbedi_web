@@ -53,7 +53,7 @@ export default function WhatsApp({
   return (
     <div
       ref={panelRef}
-      className="pointer-events-none fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(1rem,env(safe-area-inset-bottom))] z-70 flex flex-col items-end gap-3">
+      className="pointer-events-none fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(5rem,env(safe-area-inset-bottom))] z-70 flex flex-col items-end gap-3">
       {isOpen && (
         <section
           aria-label="Ventana de chat de WhatsApp"
@@ -117,14 +117,14 @@ export default function WhatsApp({
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-label={isOpen ? "Cerrar chat de WhatsApp" : label}
-        className="group pointer-events-auto relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_14px_30px_-14px_rgba(37,211,102,0.95)] ring-1 ring-white/30 transition-transform duration-300 ease-out hover:scale-105 focus-visible:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/45 motion-safe:animate-[floatWhats_4.4s_ease-in-out_infinite] cursor-pointer">
+        className="group pointer-events-auto relative inline-flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] shadow-[0_14px_30px_-14px_rgba(37,211,102,0.95)] ring-1 ring-white/30 transition-transform duration-300 ease-out hover:scale-105 focus-visible:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/45 motion-safe:animate-[floatWhats_4.4s_ease-in-out_infinite] cursor-pointer">
         <span className="sr-only">{label}</span>
 
         <img
           src="/images/icons/whatsapp.svg"
           alt=""
           aria-hidden="true"
-          className="h-10 w-10 brightness-200"
+          className="h-11 w-11 brightness-200"
           loading="lazy"
           decoding="async"
         />
