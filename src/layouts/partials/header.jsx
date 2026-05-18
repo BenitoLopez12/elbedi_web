@@ -58,13 +58,13 @@ export default function Header({
               </summary>
               <nav
                 aria-label="Navegación móvil"
-                className="fixed right-0 left-0 mt-4 min-w-55 rounded-xl border border-white/30 bg-slate-900/95 p-3 shadow-2xl">
+                className="fixed right-0 left-0 mt-4 min-w-55 rounded-xl border border-white/30 bg-white/90 backdrop-blur-xl p-3 shadow-2xl">
                 <ul className="flex flex-col gap-2">
                   {links.map((item) => (
                     <li key={`mobile-${item.href}-${item.label}`}>
                       <a
                         href={item.href}
-                        className="block rounded-md px-2 py-1 text-sm text-white/90 hover:bg-white/10">
+                        className="block rounded-md px-2 py-1 text-sm text-slate-900/90 hover:bg-white/10">
                         {item.label}
                       </a>
                     </li>

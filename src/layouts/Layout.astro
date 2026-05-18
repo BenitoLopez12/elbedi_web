@@ -34,6 +34,266 @@ const {
     schema={schema}
   />
   <body class="text-white">
+    <script is:inline>
+      (() => {
+        const VISITED_STORAGE_KEY = "elbedi_preloader_visited";
+        const root = document.documentElement;
+
+        const prefersReducedMotion =
+          typeof window.matchMedia === "function" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        let variant = "standard";
+
+        try {
+          const hasVisited =
+            localStorage.getItem(VISITED_STORAGE_KEY) === "true";
+
+          if (!hasVisited) {
+            variant = "first";
+            localStorage.setItem(VISITED_STORAGE_KEY, "true");
+          }
+        } catch {
+          try {
+            const seenThisSession =
+              sessionStorage.getItem(VISITED_STORAGE_KEY) === "true";
+
+            if (!seenThisSession) {
+              variant = "first";
+              sessionStorage.setItem(VISITED_STORAGE_KEY, "true");
+            }
+          } catch {
+            variant = "standard";
+          }
+        }
+
+        if (variant === "first" && prefersReducedMotion) {
+          variant = "first-reduced";
+        }
+
+        root.dataset.preloaderVariant = variant;
+        root.classList.add("preloader-active");
+
+        window.__elbediPreloaderDone = false;
+        window.__elbediPreloaderVariant = variant;
+      })();
+    </script>
+
+    <noscript>
+      <style>
+        #global-preloader {
+          display: none !important;
+        }
+      </style>
+    </noscript>
+
+    <div
+      id="global-preloader"
+      class="elbedi-preloader"
+      data-phase="logo"
+      aria-hidden="true">
+      <div class="elbedi-preloader__content">
+        <img
+          src="/images/favicon.svg"
+          alt=""
+          aria-hidden="true"
+          class="elbedi-preloader__logo"
+          width="96"
+          height="96"
+        />
+        <p class="elbedi-preloader__message elbedi-preloader__message--first">
+          ¿Necesitas un Sitio Web?
+        </p>
+        <p class="elbedi-preloader__message elbedi-preloader__message--second">
+          ¡Estas en el lugar indicado!
+        </p>
+      </div>
+    </div>
+
+    <script is:inline>
+      (() => {
+        const PRELOADER_ID = "global-preloader";
+        const PRELOADER_DONE_EVENT = "elbedi:preloader:done";
+        const STANDARD_MIN_VISIBLE_MS = 1500;
+        const STANDARD_FALLBACK_TIMEOUT_MS = 6000;
+
+        // Duraciones editables de la secuencia de primera visita
+        const FIRST_FAVICON_DURATION_MS = 1800;
+        const FIRST_TEXT_1_DURATION_MS = 2500;
+        const FIRST_TEXT_2_DURATION_MS = 2500;
+        const FIRST_TEXT_1_EXIT_DURATION_MS = 250;
+        const MESSAGE_PHASE_TRANSITION_MS = 520;
+
+        const FIRST_MESSAGE_1_START_MS = FIRST_FAVICON_DURATION_MS;
+        const FIRST_MESSAGE_1_EXIT_START_MS =
+          FIRST_MESSAGE_1_START_MS + FIRST_TEXT_1_DURATION_MS;
+        const FIRST_MESSAGE_2_START_MS =
+          FIRST_MESSAGE_1_EXIT_START_MS + FIRST_TEXT_1_EXIT_DURATION_MS;
+        const FIRST_TOTAL_DURATION_MS =
+          FIRST_MESSAGE_2_START_MS + FIRST_TEXT_2_DURATION_MS;
+        const FIRST_REDUCED_TOTAL_MS = Math.min(
+          1200,
+          Math.round(FIRST_TOTAL_DURATION_MS * 0.25),
+        );
+
+        const EXIT_TRANSITION_MS = 320;
+        const STANDARD_EXPECTED_MAX_MS =
+          Math.max(STANDARD_MIN_VISIBLE_MS, STANDARD_FALLBACK_TIMEOUT_MS) +
+          EXIT_TRANSITION_MS;
+        const FIRST_EXPECTED_MAX_MS =
+          FIRST_TOTAL_DURATION_MS + EXIT_TRANSITION_MS;
+        const FIRST_REDUCED_EXPECTED_MAX_MS =
+          FIRST_REDUCED_TOTAL_MS + EXIT_TRANSITION_MS;
+
+        const root = document.documentElement;
+        const preloader = document.getElementById(PRELOADER_ID);
+        const variant =
+          window.__elbediPreloaderVariant ??
+          root.dataset.preloaderVariant ??
+          "standard";
+
+        if (!preloader) {
+          root.classList.remove("preloader-active");
+          window.__elbediPreloaderDone = true;
+          window.dispatchEvent(new CustomEvent(PRELOADER_DONE_EVENT));
+          return;
+        }
+
+        window.__elbediPreloaderExpectedMaxMs =
+          variant === "first"
+            ? FIRST_EXPECTED_MAX_MS
+            : variant === "first-reduced"
+              ? FIRST_REDUCED_EXPECTED_MAX_MS
+              : STANDARD_EXPECTED_MAX_MS;
+
+        preloader.style.setProperty(
+          "--preloader-message-transition-ms",
+          `${MESSAGE_PHASE_TRANSITION_MS}ms`,
+        );
+        preloader.style.setProperty(
+          "--preloader-text-1-exit-ms",
+          `${FIRST_TEXT_1_EXIT_DURATION_MS}ms`,
+        );
+
+        preloader.dataset.mode = variant;
+        preloader.dataset.phase = variant === "standard" ? "standard" : "logo";
+
+        const startedAt = performance.now();
+        const timeoutHandles = [];
+
+        let isClosing = false;
+        let isClosed = false;
+        let pageReady = document.readyState === "complete";
+        let sequenceFinished = variant === "standard";
+        let standardFallbackHandle;
+
+        const queueTimeout = (callback, delay) => {
+          const handle = window.setTimeout(callback, delay);
+          timeoutHandles.push(handle);
+          return handle;
+        };
+
+        const clearAllTimeouts = () => {
+          timeoutHandles.forEach((handle) => window.clearTimeout(handle));
+        };
+
+        const markPreloaderDone = () => {
+          if (window.__elbediPreloaderDone) return;
+
+          window.__elbediPreloaderDone = true;
+          window.dispatchEvent(new CustomEvent(PRELOADER_DONE_EVENT));
+        };
+
+        const finalizeClose = () => {
+          if (isClosed) return;
+
+          isClosed = true;
+          clearAllTimeouts();
+
+          root.classList.remove("preloader-active");
+
+          preloader.classList.add("is-hidden");
+
+          queueTimeout(() => {
+            preloader.setAttribute("hidden", "");
+          }, EXIT_TRANSITION_MS);
+
+          markPreloaderDone();
+        };
+
+        const tryClosePreloader = () => {
+          if (isClosing || isClosed) return;
+
+          if (!pageReady || !sequenceFinished) return;
+
+          isClosing = true;
+
+          let waitToClose = 0;
+
+          if (variant === "standard") {
+            const elapsed = performance.now() - startedAt;
+            waitToClose = Math.max(0, STANDARD_MIN_VISIBLE_MS - elapsed);
+          }
+
+          queueTimeout(finalizeClose, waitToClose);
+        };
+
+        const onWindowLoad = () => {
+          pageReady = true;
+
+          if (standardFallbackHandle) {
+            window.clearTimeout(standardFallbackHandle);
+            standardFallbackHandle = undefined;
+          }
+
+          tryClosePreloader();
+        };
+
+        if (pageReady) {
+          onWindowLoad();
+        } else {
+          window.addEventListener("load", onWindowLoad, { once: true });
+        }
+
+        if (variant === "first") {
+          queueTimeout(() => {
+            preloader.dataset.phase = "message1";
+          }, FIRST_MESSAGE_1_START_MS);
+
+          queueTimeout(() => {
+            preloader.dataset.phase = "message1-out";
+          }, FIRST_MESSAGE_1_EXIT_START_MS);
+
+          queueTimeout(() => {
+            preloader.dataset.phase = "message2";
+          }, FIRST_MESSAGE_2_START_MS);
+
+          queueTimeout(() => {
+            sequenceFinished = true;
+            tryClosePreloader();
+          }, FIRST_TOTAL_DURATION_MS);
+        } else if (variant === "first-reduced") {
+          queueTimeout(() => {
+            sequenceFinished = true;
+            tryClosePreloader();
+          }, FIRST_REDUCED_TOTAL_MS);
+        } else {
+          standardFallbackHandle = queueTimeout(() => {
+            pageReady = true;
+            tryClosePreloader();
+          }, STANDARD_FALLBACK_TIMEOUT_MS);
+        }
+
+        window.addEventListener("pageshow", (event) => {
+          if (!event.persisted) return;
+
+          pageReady = true;
+          sequenceFinished = true;
+          tryClosePreloader();
+        });
+      })();
+    </script>
+
     <BgTransition client:load />
     <Figures client:load />
     <Header brand={site.name} />

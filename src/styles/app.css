@@ -27,6 +27,179 @@ body{
   background: transparent;
 }
 
+html.preloader-active {
+  overflow: hidden;
+}
+
+.elbedi-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 320ms ease,
+    visibility 320ms ease;
+}
+
+.elbedi-preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.elbedi-preloader.is-hidden .elbedi-preloader__content {
+  transform: translate3d(0, -48px, 0);
+  opacity: 0;
+}
+
+.elbedi-preloader.is-hidden .elbedi-preloader__logo,
+.elbedi-preloader.is-hidden .elbedi-preloader__message {
+  transform: translate(-50%, calc(-50% - 24px)) scale(0.94);
+  opacity: 0;
+}
+
+.elbedi-preloader__content {
+  position: relative;
+  width: min(92vw, 980px);
+  min-height: clamp(140px, 24vh, 220px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 320ms ease;
+  will-change: transform, opacity;
+}
+
+.elbedi-preloader__logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(72px, 11vw, 110px);
+  height: auto;
+  transform: translate(-50%, calc(-50% + 24px)) scale(0.94);
+  opacity: 0;
+  filter: drop-shadow(0 8px 14px rgba(15, 23, 42, 0.12));
+  transition:
+    opacity var(--preloader-message-transition-ms, 520ms) ease,
+    transform var(--preloader-message-transition-ms, 520ms)
+      cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.elbedi-preloader__message {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  max-width: min(90vw, 980px);
+  text-align: center;
+  font-family: "Bauhaus93", sans-serif;
+  text-wrap: balance;
+  line-height: 1.05;
+  letter-spacing: 0.015em;
+  font-size: clamp(1.5rem, 4.1vw, 3.6rem);
+  color: #355fc2;
+  transform: translate(-50%, calc(-50% + 24px)) scale(0.96);
+  opacity: 0;
+  transition:
+    opacity var(--preloader-message-transition-ms, 520ms) ease,
+    transform var(--preloader-message-transition-ms, 520ms)
+      cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+html[data-preloader-variant="standard"] #global-preloader .elbedi-preloader__logo {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  animation: preloaderPulse 2.2s ease-in-out infinite;
+}
+
+html[data-preloader-variant="standard"] #global-preloader .elbedi-preloader__message {
+  display: none;
+}
+
+html[data-preloader-variant="first"] #global-preloader .elbedi-preloader__logo,
+html[data-preloader-variant="first-reduced"] #global-preloader .elbedi-preloader__logo {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  animation: none;
+}
+
+html[data-preloader-variant="first"] #global-preloader[data-phase="logo"] .elbedi-preloader__logo {
+  animation: preloaderLogoIntro 680ms cubic-bezier(0.18, 1, 0.32, 1) both;
+}
+
+html[data-preloader-variant="first"] #global-preloader[data-phase="message1"] .elbedi-preloader__logo,
+html[data-preloader-variant="first"] #global-preloader[data-phase="message1-out"] .elbedi-preloader__logo,
+html[data-preloader-variant="first"] #global-preloader[data-phase="message2"] .elbedi-preloader__logo {
+  transform: translate(-50%, calc(-50% - 20px)) scale(0.92);
+  opacity: 0;
+}
+
+html[data-preloader-variant="first"] #global-preloader[data-phase="message1"] .elbedi-preloader__message--first,
+html[data-preloader-variant="first"] #global-preloader[data-phase="message2"] .elbedi-preloader__message--second {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+html[data-preloader-variant="first"] #global-preloader[data-phase="message1-out"] .elbedi-preloader__message--first {
+  transition-duration: var(--preloader-text-1-exit-ms, 200ms);
+  transform: translate(-50%, calc(-50% - 24px));
+  opacity: 0;
+}
+
+html[data-preloader-variant="first"] #global-preloader[data-phase="message2"] .elbedi-preloader__message--first {
+  transform: translate(-50%, calc(-50% - 24px)) scale(0.94);
+  opacity: 0;
+}
+
+html[data-preloader-variant="first-reduced"] #global-preloader .elbedi-preloader__message {
+  display: none;
+}
+
+@keyframes preloaderLogoIntro {
+  0% {
+    transform: translate(-50%, calc(-50% + 34px)) scale(0.84);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes preloaderPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elbedi-preloader {
+    transition-duration: 1ms;
+  }
+
+  .elbedi-preloader__content,
+  .elbedi-preloader__logo,
+  .elbedi-preloader__message {
+    transition-duration: 1ms;
+    animation: none !important;
+  }
+}
+
 @supports selector(::-webkit-scrollbar) {
   html::-webkit-scrollbar {
     width: 10px;
@@ -213,4 +386,8 @@ p{
 }
 #content-articles-sectors *{
   min-height: 0;
+}
+
+.backdrop-blur-xl {
+  will-change: backdrop-filter !important;
 }
