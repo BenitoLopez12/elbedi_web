@@ -61,13 +61,13 @@ const PLANS = [
       "Presencia digital rápida y accesible para negocios que necesitan una página web profesional sin procesos complejos.",
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
-      monthly: { previous: "$69 USD", current: "GRATIS" },
-      yearly: { previous: "$99 USD", current: "GRATIS" },
-      oneTime: { previous: "", current: "$299 USD" },
+      monthly: { previous: "$1,242 MXN", current: "GRATIS" },
+      yearly: { previous: "$1,782 MXN", current: "GRATIS" },
+      oneTime: { previous: "", current: "$5,382 MXN" },
     },
     billing: {
-      monthly: { previous: "$16 USD / mes", current: "$13 USD / mes" },
-      yearly: { previous: "$16 USD / mes", current: "$11 USD / mes" },
+      monthly: { previous: "$288 MXN / mes", current: "$69 MXN / mes" },
+      yearly: { previous: "$288 MXN / mes", current: "$59 MXN / mes" },
     },
     forWho: [
       "Freelancers",
@@ -105,13 +105,13 @@ const PLANS = [
       "Una solución más sólida y personalizada para empresas y negocios que necesitan una presencia digital más profesional y estratégica.",
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
-      monthly: { previous: "$329 USD", current: "$299 USD" },
-      yearly: { previous: "$329 USD", current: "$279 USD" },
-      oneTime: { previous: "", current: "$499 USD" },
+      monthly: { previous: "$5,922 MXN", current: "$5,382 MXN" },
+      yearly: { previous: "$5,922 MXN", current: "$5,022 MXN" },
+      oneTime: { previous: "", current: "$8,982 MXN" },
     },
     billing: {
-      monthly: { previous: "", current: "$32 USD / mes" },
-      yearly: { previous: "$32 USD / mes", current: "$29 USD / mes" },
+      monthly: { previous: "", current: "$576 MXN / mes" },
+      yearly: { previous: "$576 MXN / mes", current: "$522 MXN / mes" },
     },
     forWho: [
       "Empresas pequeñas y medianas",
@@ -153,13 +153,13 @@ const PLANS = [
       "Acompañamiento continuo para marcas y empresas que buscan evolucionar constantemente su presencia digital con soporte prioritario y mejoras continuas.",
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
-      monthly: { previous: "", current: "$699 USD" },
-      yearly: { previous: "$699 USD", current: "$599 USD" },
-      oneTime: { previous: "", current: "$999 USD" },
+      monthly: { previous: "", current: "$12,582 MXN" },
+      yearly: { previous: "$12,582 MXN", current: "$10,782 MXN" },
+      oneTime: { previous: "", current: "$17,982 MXN" },
     },
     billing: {
-      monthly: { previous: "", current: "$69 USD / mes" },
-      yearly: { previous: "$69 USD / mes", current: "$59 USD / mes" },
+      monthly: { previous: "", current: "$1,242 MXN / mes" },
+      yearly: { previous: "$1,242 MXN / mes", current: "$1,062 MXN / mes" },
     },
     forWho: [
       "Marcas premium",
@@ -318,14 +318,20 @@ export default function Plans() {
                       {currentSetupLabel}
                     </p>
                     {setupPriceDisplay.previous ? (
-                      <p className="mt-2 text-sm md:text-base text-white/75 line-through decoration-white/70">
-                        {setupPriceDisplay.previous}
+                      <p className="mt-2 text-white/75">
+                        <span className="hidden">Precio anterior:</span>{" "}
+                        <span className="text-sm md:text-base line-through decoration-white/70">
+                          {setupPriceDisplay.previous}
+                        </span>
                       </p>
                     ) : null}
-                    <p
-                      className={`mt-1 text-2xl md:text-3xl font-bold ${currentTheme.price}`}>
-                      {setupPriceDisplay.current}
-                    </p>
+                    <div>
+                      <p className="hidden">Precio actual:</p>
+                      <p
+                        className={`mt-1 text-2xl md:text-3xl font-bold ${currentTheme.price}`}>
+                        {setupPriceDisplay.current}
+                      </p>
+                    </div>
                     {!isOneTimeCycle ? (
                       <>
                         <p className="mt-3 text-sm text-white">
@@ -333,22 +339,30 @@ export default function Plans() {
                         </p>
                         {billingPriceDisplay?.previous ? (
                           <p
-                            className={`text-sm text-white/75 line-through decoration-white/70 transition-all duration-200 ${
+                            className={`text-sm text-white/75 transition-all duration-200 ${
                               isSwitchingPrice
                                 ? "opacity-0 translate-y-1"
                                 : "opacity-100 translate-y-0"
                             }`}>
-                            {billingPriceDisplay.previous}
+                            <span className="hidden">
+                              Precio anterior sin descuento:
+                            </span>{" "}
+                            <span className="text-sm line-through decoration-white/70">
+                              {billingPriceDisplay.previous}
+                            </span>
                           </p>
                         ) : null}
-                        <p
-                          className={`text-lg font-bold ${currentTheme.price} transition-all duration-200 ${
-                            isSwitchingPrice
-                              ? "opacity-0 translate-y-1"
-                              : "opacity-100 translate-y-0"
-                          }`}>
-                          {billingPriceDisplay?.current}
-                        </p>
+                        <div>
+                          <p className="hidden">Precio actual con descuento:</p>
+                          <p
+                            className={`text-lg font-bold ${currentTheme.price} transition-all duration-200 ${
+                              isSwitchingPrice
+                                ? "opacity-0 translate-y-1"
+                                : "opacity-100 translate-y-0"
+                            }`}>
+                            {billingPriceDisplay?.current}
+                          </p>
+                        </div>
                       </>
                     ) : (
                       <p className="mt-3 text-sm text-white/70">
@@ -356,6 +370,10 @@ export default function Plans() {
                         mejora continua.
                       </p>
                     )}
+
+                    <p className="hidden">
+                      Descuentos activos por tiempo limitado
+                    </p>
                   </div>
 
                   <div className="mt-6">
