@@ -85,7 +85,6 @@ const PLANS = [
       "Página web que carga rápidamente",
       "Diseño para dispositivos móviles y escritorio",
       "Certificado de seguridad SSL incluido",
-      "Hasta 5 secciones",
       "Integración de tu WhatsApp",
       "Formulario de contacto",
       "SEO básico",
@@ -106,12 +105,12 @@ const PLANS = [
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
       monthly: { previous: "$5,922 MXN", current: "$5,382 MXN" },
-      yearly: { previous: "$5,922 MXN", current: "$5,022 MXN" },
+      yearly: { previous: "$5,922 MXN", current: "$4,999 MXN" },
       oneTime: { previous: "", current: "$8,982 MXN" },
     },
     billing: {
-      monthly: { previous: "", current: "$576 MXN / mes" },
-      yearly: { previous: "$576 MXN / mes", current: "$522 MXN / mes" },
+      monthly: { previous: "$599 MXN / mes", current: "$499 MXN / mes" },
+      yearly: { previous: "$599 MXN / mes", current: "$399 MXN / mes" },
     },
     forWho: [
       "Empresas pequeñas y medianas",
@@ -123,6 +122,7 @@ const PLANS = [
     ],
     points: [
       "Todo lo incluido en el plan Express y más",
+      "Agentes de IA personalizados para atención al cliente",
       "Diseño profesional personalizado",
       "Estructura web profesional",
       "Múltiples páginas",
@@ -154,12 +154,12 @@ const PLANS = [
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
       monthly: { previous: "", current: "$12,582 MXN" },
-      yearly: { previous: "$12,582 MXN", current: "$10,782 MXN" },
+      yearly: { previous: "$12,582 MXN", current: "$9,999 MXN" },
       oneTime: { previous: "", current: "$17,982 MXN" },
     },
     billing: {
       monthly: { previous: "", current: "$1,242 MXN / mes" },
-      yearly: { previous: "$1,242 MXN / mes", current: "$1,062 MXN / mes" },
+      yearly: { previous: "$1,242 MXN / mes", current: "$999 MXN / mes" },
     },
     forWho: [
       "Marcas premium",
@@ -184,6 +184,7 @@ const PLANS = [
       "Integración de nuevas secciones",
       "Seguimiento, monitoreo y evolución del sitio",
       "Reportes de rendimiento y analítica avanzada",
+      "Integracion de herramientas de IA para optimización continua",
     ],
     excludedPointsByCycle: {
       oneTime: [

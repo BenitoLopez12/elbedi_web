@@ -16,18 +16,18 @@ const PROJECTS = [
     accent: "bg-sky-500",
     backdropClass: "grayscale",
   },
-  {
-    key: "rupture",
-    title: "Rupture Technologies",
-    description:
-      "Rediseño de sitio web corporativo enfocado en claridad, estructura comercial y percepción premium. Se reorganizó la información de servicios y se construyó una experiencia moderna alineada con una empresa tecnológica orientada a la eficiencia y el crecimiento.",
-    background: "/images/projects/rup-bg.webp",
-    laptop: "/images/projects/rup-lap.webp",
-    tablet: "/images/projects/rup-tablet.webp",
-    phone: "/images/projects/rup-phone.webp",
-    accent: "bg-blue-500",
-    backdropClass: "",
-  },
+  // {
+  //   key: "rupture",
+  //   title: "Rupture Technologies",
+  //   description:
+  //     "Rediseño de sitio web corporativo enfocado en claridad, estructura comercial y percepción premium. Se reorganizó la información de servicios y se construyó una experiencia moderna alineada con una empresa tecnológica orientada a la eficiencia y el crecimiento.",
+  //   background: "/images/projects/rup-bg.webp",
+  //   laptop: "/images/projects/rup-lap.webp",
+  //   tablet: "/images/projects/rup-tablet.webp",
+  //   phone: "/images/projects/rup-phone.webp",
+  //   accent: "bg-blue-500",
+  //   backdropClass: "",
+  // },
   {
     key: "horloger",
     title: "Horloger Genevois",
