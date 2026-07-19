@@ -1,35 +1,36 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+// Index — ELBEDI Studio: experiencia cinematográfica del estudio de
+// desarrollo e inteligencia artificial.
+import ExperienceLayout from "@/layouts/ExperienceLayout.astro";
+import Experience from "@/experience/Experience.jsx";
 import siteConfig from "@/config/siteConfig.js";
 import site from "@/content/site.js";
-import { SEO_FAQS, SEO_SERVICES } from "@/content/seoContent.js";
-import Hero from "@/sections/hero/Hero.jsx";
-import Services from "@/sections/services/Services";
-import Sectors from "@/sections/sectors/sectors.jsx";
-import Projects from "@/sections/projects/Projects.jsx";
-import Plans from "@/sections/plans/plans.jsx";
-import Faq from "@/sections/faq/Faq.jsx";
-import Contact from "@/sections/contact/Contact.jsx";
+import { FAQS } from "@/content/experience.js";
 
 const canonicalUrl = `${siteConfig.url}/`;
-const serviceOfferList = SEO_SERVICES.map((service, index) => ({
-  "@type": "Offer",
-  position: index + 1,
-  itemOffered: {
-    "@type": "Service",
-    name: service.name,
-    description: service.description,
-  },
-}));
 
-const faqSchemaList = SEO_FAQS.map((item) => ({
-  "@type": "Question",
-  name: item.question,
-  acceptedAnswer: {
-    "@type": "Answer",
-    text: item.answer,
+const services = [
+  {
+    name: "Sitios web cinematográficos",
+    description:
+      "Diseño web disruptivo con animaciones cinematográficas, experiencias 3D y UX de última generación.",
   },
-}));
+  {
+    name: "Agentes de IA para WhatsApp",
+    description:
+      "Panel profesional con agentes de inteligencia artificial que atienden, venden y administran el WhatsApp de tu empresa 24/7.",
+  },
+  {
+    name: "Sistemas agénticos empresariales",
+    description:
+      "Agentes de IA expertos y sistemas multi-agente robustos integrados a la operación de empresas.",
+  },
+  {
+    name: "Analíticas web con IA",
+    description:
+      "Dashboard de analíticas de tráfico web con un asistente de inteligencia artificial integrado al panel.",
+  },
+];
 
 const homeSchema = [
   {
@@ -42,6 +43,8 @@ const homeSchema = [
     email: site.email,
     telephone: site.phone,
     areaServed: "MX",
+    description:
+      "Estudio de desarrollo enfocado en herramientas de inteligencia artificial: sitios web cinematográficos, agentes de IA para WhatsApp, sistemas agénticos y analíticas con IA.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
@@ -58,50 +61,52 @@ const homeSchema = [
     url: siteConfig.url,
     name: siteConfig.siteName,
     inLanguage: siteConfig.lang,
-    publisher: {
-      "@id": `${siteConfig.url}#organization`,
-    },
+    publisher: { "@id": `${siteConfig.url}#organization` },
   },
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${siteConfig.url}#professional-service`,
-    name: `${siteConfig.siteName} - Diseño Web y SEO`,
+    name: `${siteConfig.siteName} — Estudio de desarrollo e IA`,
     url: siteConfig.url,
     description:
-      "Servicios de diseño web, SEO técnico, seguridad y mantenimiento para negocios en México.",
+      "Desarrollo de experiencias web cinematográficas e implementación de inteligencia artificial: agentes para WhatsApp, sistemas agénticos empresariales y analíticas con IA.",
     inLanguage: siteConfig.lang,
     areaServed: "MX",
     telephone: site.phone,
     email: site.email,
-    brand: {
-      "@id": `${siteConfig.url}#organization`,
-    },
+    brand: { "@id": `${siteConfig.url}#organization` },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Servicios digitales ELBEDI",
-      itemListElement: serviceOfferList,
+      name: "Servicios ELBEDI Studio",
+      itemListElement: services.map((service, index) => ({
+        "@type": "Offer",
+        position: index + 1,
+        itemOffered: {
+          "@type": "Service",
+          name: service.name,
+          description: service.description,
+        },
+      })),
     },
   },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "@id": `${siteConfig.url}#faq`,
-    mainEntity: faqSchemaList,
+    mainEntity: FAQS.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
   },
 ];
 ---
 
-<Layout
-  title="ELBEDI | Diseño y Desarrollo de Sitios Web en México"
-  description="Agencia de diseño web y SEO en México para negocios. Creamos sitios rápidos, seguros y orientados a conversión con soporte continuo."
+<ExperienceLayout
+  title="ELBEDI | Estudio de Desarrollo Web e Inteligencia Artificial"
+  description="Estudio de desarrollo enfocado en IA: sitios web cinematográficos, agentes de inteligencia artificial para WhatsApp, sistemas agénticos para empresas y analíticas web con IA."
   canonicalUrl={canonicalUrl}
   schema={homeSchema}>
-  <Hero client:load />
-  <Services client:load />
-  <Projects client:load />
-  <Sectors client:load />
-  <Plans client:load />
-  <Faq />
-  <Contact client:load />
-</Layout>
+  <Experience client:load />
+</ExperienceLayout>

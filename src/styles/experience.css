@@ -1,0 +1,172 @@
+/* Estilos de la experiencia cinematográfica (index). */
+
+html.cine-experience,
+html.cine-experience body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* El documento no scrollea en la experiencia: se elimina también el
+   ESPACIO reservado del scrollbar (app.css usa scrollbar-gutter: stable,
+   que aquí dejaba una franja blanca a la derecha). El scroll funcional
+   vive en los scrollers internos de cada sección, que no se ven afectados. */
+html.cine-experience {
+  scrollbar-gutter: auto;
+  scrollbar-width: none;
+}
+
+html.cine-experience::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Secciones: invisibles hasta que la coreografía las construye. */
+.cine-section {
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity;
+}
+
+/* pan-y (no none): los scrollers internos y los modales del footer
+   conservan su scroll táctil nativo; el motor decide cuándo navegar. */
+.cine-stage {
+  touch-action: pan-y;
+}
+
+/* Scroll interno por sección: solo aparece si el contenido excede la
+   pantalla, estilizado como parte del sistema. */
+.cine-scroller {
+  touch-action: pan-y;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+}
+
+.cine-scroller::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cine-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cine-scroller::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(120, 206, 255, 0.55),
+    rgba(255, 158, 207, 0.55)
+  );
+}
+
+.cine-chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.cine-chat-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.cine-chat-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.cine-dock-scroll {
+  scrollbar-width: none;
+}
+
+.cine-dock-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tooltip del scroll inteligente */
+.cine-tooltip {
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(10, 12, 30, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-50%) translateX(-6px) scale(0.94);
+  transition:
+    opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 767px) {
+  .cine-tooltip {
+    transform: translateX(-50%) translateY(6px) scale(0.94);
+  }
+}
+
+.cine-tooltip--on {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0) scale(1);
+}
+
+@media (max-width: 767px) {
+  .cine-tooltip--on {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* Grano cinematográfico sutil sobre el backdrop */
+.cine-grain {
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Rotación decorativa lenta (figuras del hero): 360° en 60 s, se combina
+   con la flotación del contenedor padre (target-float). */
+@keyframes cinespin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cine-spin {
+  animation: cinespin 60s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-spin {
+    animation: none;
+  }
+}
+
+/* Indicador "desliza para explorar" */
+@keyframes scrollhint {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(22px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-grain {
+    display: none;
+  }
+}

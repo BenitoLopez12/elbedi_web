@@ -104,13 +104,13 @@ const PLANS = [
       "Una solución más sólida y personalizada para empresas y negocios que necesitan una presencia digital más profesional y estratégica.",
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
-      monthly: { previous: "$5,922 MXN", current: "$5,382 MXN" },
-      yearly: { previous: "$5,922 MXN", current: "$4,999 MXN" },
-      oneTime: { previous: "", current: "$8,982 MXN" },
+      monthly: { previous: "$5,382 MXN", current: "$2,691 MXN" },
+      yearly: { previous: "$4,999 MXN", current: "$2,499 MXN" },
+      oneTime: { previous: "$8,982 MXN", current: "$4,491 MXN" },
     },
     billing: {
-      monthly: { previous: "$599 MXN / mes", current: "$499 MXN / mes" },
-      yearly: { previous: "$599 MXN / mes", current: "$399 MXN / mes" },
+      monthly: { previous: "$499 MXN / mes", current: "$99 MXN / mes" },
+      yearly: { previous: "$399 MXN / mes", current: "$99 MXN / mes" },
     },
     forWho: [
       "Empresas pequeñas y medianas",
@@ -122,13 +122,12 @@ const PLANS = [
     ],
     points: [
       "Todo lo incluido en el plan Express y más",
-      "Agentes de IA personalizados para atención al cliente",
       "Diseño profesional personalizado",
       "Estructura web profesional",
       "Múltiples páginas",
       "Optimización avanzada para dispositivos móviles",
       "Configuración de accesibilidad web: Web Content Accessibility Guidelines (WCAG)",
-      "SEO optimizado para motores de búsqueda, redes sociales y chats de IA",
+      "SEO optimizado para motores de búsqueda y redes sociales",
       "Múltiples formularios avanzados",
       "Integración de múltiples redes sociales",
       "Soporte y mantenimiento continuo",
@@ -147,19 +146,19 @@ const PLANS = [
     cta: "Quiero este plan",
   },
   {
-    key: "CORPORATE-PARTNER",
-    name: "Corporate Partner",
+    key: "CORPORATE",
+    name: "Corporate",
     subtitle:
       "Acompañamiento continuo para marcas y empresas que buscan evolucionar constantemente su presencia digital con soporte prioritario y mejoras continuas.",
     setupLabel: "DISEÑO Y DESARROLLO",
     setupPrice: {
-      monthly: { previous: "", current: "$12,582 MXN" },
-      yearly: { previous: "$12,582 MXN", current: "$9,999 MXN" },
-      oneTime: { previous: "", current: "$17,982 MXN" },
+      monthly: { previous: "$12,582 MXN", current: "$6,291 MXN" },
+      yearly: { previous: "$9,999 MXN", current: "$4,999 MXN" },
+      oneTime: { previous: "$17,982 MXN", current: "$8,991 MXN" },
     },
     billing: {
-      monthly: { previous: "", current: "$1,242 MXN / mes" },
-      yearly: { previous: "$1,242 MXN / mes", current: "$999 MXN / mes" },
+      monthly: { previous: "$1,242 MXN / mes", current: "$621 MXN / mes" },
+      yearly: { previous: "$999 MXN / mes", current: "$499 MXN / mes" },
     },
     forWho: [
       "Marcas premium",
@@ -184,7 +183,6 @@ const PLANS = [
       "Integración de nuevas secciones",
       "Seguimiento, monitoreo y evolución del sitio",
       "Reportes de rendimiento y analítica avanzada",
-      "Integracion de herramientas de IA para optimización continua",
     ],
     excludedPointsByCycle: {
       oneTime: [

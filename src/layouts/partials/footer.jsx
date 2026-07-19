@@ -344,6 +344,9 @@ export default function Footer({
   phone = "+52 55 4660 2947",
   links = defaultLinks,
   socials = defaultSocials,
+  // "boxed": tarjeta con fondo y borde (look de /websites).
+  // "plain": contenido plano sin fondo ni borde (experiencia del index).
+  variant = "boxed",
 }) {
   const year = new Date().getFullYear();
   const [activeNoticeKey, setActiveNoticeKey] = useState(null);
@@ -382,7 +385,10 @@ export default function Footer({
   }, [activeNotice]);
 
   return (
-    <footer className="bg-white/10 border border-white/30 text-lg">
+    <footer
+      className={`text-lg ${
+        variant === "plain" ? "" : "bg-white/10 border border-white/30"
+      }`}>
       <LimitContainer className="min-h-svh flex flex-col justify-between 2xl:pt-30 pt-20">
         <div className="w-full">
           <img

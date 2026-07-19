@@ -1,14 +1,12 @@
 ---
+// Layout de la experiencia cinematográfica (index): sin scroll de documento,
+// sin header/footer clásicos — el escenario, el scroll inteligente y el
+// agente de IA son la interfaz.
 import "../styles/app.css";
+import "../styles/experience.css";
 import siteConfig from "../config/siteConfig.js";
 import Head from "./partials/head.jsx";
-import site from "../content/site";
-import Header from "./partials/header.jsx";
-import Footer from "./partials/footer.jsx";
 import Preloader from "./partials/Preloader.astro";
-import BgTransition from "@/components/motion/bgTransition.jsx";
-import Figures from "@/components/motion/Figures.jsx";
-import WhatsApp from "@/components/common/whatsApp.jsx";
 
 const currentCanonical = Astro.url
   ? new URL(Astro.url.pathname, siteConfig.url).toString()
@@ -25,7 +23,7 @@ const {
 ---
 
 <!doctype html>
-<html lang={siteConfig.lang} class="dark">
+<html lang={siteConfig.lang} class="dark cine-experience">
   <Head
     title={title}
     description={description}
@@ -36,22 +34,6 @@ const {
   />
   <body class="text-white">
     <Preloader />
-
-    <BgTransition client:load />
-    <Figures client:load />
-    <Header brand={site.name} />
-    <main>
-      <slot />
-    </main>
-    <Footer
-      client:load
-      brand={site.name}
-      email={site.email}
-      phone={site.phone}
-    />
-
-    <WhatsApp phone={site.phone} client:load />
-
-    <script src="../scripts/lenis-init.js"></script>
+    <slot />
   </body>
 </html>
