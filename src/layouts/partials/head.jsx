@@ -62,10 +62,7 @@ export default function Head({
       <meta name="twitter:image" content={resolvedImage} />
 
       {/* traffic lens */}
-      <script
-        defer
-        src="https://analytics.elbedi.com/tracker.js"
-        data-site="tl_59f957b67e7c"></script>
+      <script defer src="https://analytics.elbedi.com/s.js" data-site="tl_59f957b67e7c"></script>
 
       <link rel="icon" type="image/svg+xml" href={siteConfig.favicon} />
 
