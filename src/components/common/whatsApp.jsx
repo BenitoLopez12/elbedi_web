@@ -53,7 +53,7 @@ export default function WhatsApp({
   return (
     <div
       ref={panelRef}
-      className="pointer-events-none fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(5rem,env(safe-area-inset-bottom))] z-70 flex flex-col items-end gap-3">
+      className="pointer-events-none fixed right-[max(20px,env(safe-area-inset-right))] bottom-[max(6rem,env(safe-area-inset-bottom))] z-70 flex flex-col items-end gap-3">
       {isOpen && (
         <section
           aria-label="Ventana de chat de WhatsApp"
