@@ -1,115 +1,227 @@
-// Scroll inteligente: rail lateral (desktop) / dock inferior (móvil).
-// Sustituye al scroll del navegador; cada icono es una sección y el
-// indicador viaja con animación spring.
+// Menú inteligente de la experiencia. El isotipo, el estado de capítulo y
+// los accesos forman un único panel de altura completa. Su viewport interno
+// solo aparece cuando la altura disponible no alcanza para todos los iconos.
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Icon from "@/experience/ui/icons.jsx";
 import { SECTIONS } from "@/content/experience.js";
-import { useExperienceSelector } from "@/experience/navigation/useSectionEngine.js";
+import { useExperienceSelector } from "@/experience/state/useExperienceSelector.js";
 import { dispatchIntent } from "@/experience/state/experienceStore.js";
 
 export default function SmartScrollNav() {
-  const active = useExperienceSelector((s) => s.active);
-  const transitioning = useExperienceSelector((s) => s.transitioning);
+  const active = useExperienceSelector((state) => state.active);
+  const transitioning = useExperienceSelector((state) => state.transitioning);
   const indicatorRef = useRef(null);
   const itemRefs = useRef([]);
   const railRef = useRef(null);
-  const [hovered, setHovered] = useState(-1);
+  const viewportRef = useRef(null);
+  const [hovered, setHovered] = useState({ index: -1, top: 0 });
+  const [scrollState, setScrollState] = useState({
+    canScrollUp: false,
+    canScrollDown: false,
+  });
 
-  // El indicador viaja hasta el icono activo (vertical u horizontal).
+  const updateScrollState = useCallback(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const maxScroll = Math.max(0, viewport.scrollHeight - viewport.clientHeight);
+    setScrollState({
+      canScrollUp: viewport.scrollTop > 2,
+      canScrollDown: viewport.scrollTop < maxScroll - 2,
+    });
+  }, []);
+
+  const moveMenu = (direction) => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    viewport.scrollBy({
+      top: direction * Math.max(120, viewport.clientHeight * 0.58),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+  };
+
   useEffect(() => {
     const indicator = indicatorRef.current;
     const target = itemRefs.current[active];
     const rail = railRef.current;
-    if (!indicator || !target || !rail) return;
+    if (!indicator || !target || !rail) return undefined;
 
-    const railBox = rail.getBoundingClientRect();
-    const box = target.getBoundingClientRect();
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
-    gsap.to(indicator, {
-      x: box.left - railBox.left,
-      y: box.top - railBox.top,
-      width: box.width,
-      height: box.height,
-      duration: 0.65,
-      ease: "elastic.out(0.9, 0.6)",
+    const viewport = viewportRef.current;
+    if (viewport) {
+      const targetTop = target.offsetTop;
+      const targetBottom = targetTop + target.offsetHeight;
+      const viewportBottom = viewport.scrollTop + viewport.clientHeight;
+      const nextTop =
+        targetTop < viewport.scrollTop
+          ? targetTop
+          : targetBottom > viewportBottom
+            ? targetBottom - viewport.clientHeight
+            : viewport.scrollTop;
+      viewport.scrollTo({
+        top: nextTop,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    }
+
+    const tween = gsap.to(indicator, {
+      y: target.offsetTop,
+      width: target.offsetWidth,
+      height: target.offsetHeight,
+      duration: reduceMotion ? 0 : 0.62,
+      ease: "elastic.out(0.9, 0.62)",
       overwrite: true,
     });
-  }, [active]);
+
+    const frame = requestAnimationFrame(updateScrollState);
+    return () => {
+      cancelAnimationFrame(frame);
+      tween.kill();
+    };
+  }, [active, updateScrollState]);
+
+  const showTooltip = (index, target) => {
+    const box = target.getBoundingClientRect();
+    const menuBox = target.closest(".cine-side-menu")?.getBoundingClientRect();
+    setHovered({
+      index,
+      top: box.top - (menuBox?.top ?? 0) + box.height / 2,
+    });
+  };
 
   useEffect(() => {
-    const onResize = () => {
+    const viewport = viewportRef.current;
+    const rail = railRef.current;
+    if (!viewport || !rail) return undefined;
+
+    const syncIndicator = () => {
       const indicator = indicatorRef.current;
-      const target = itemRefs.current[experienceActive()];
-      const rail = railRef.current;
-      if (!indicator || !target || !rail) return;
-      const railBox = rail.getBoundingClientRect();
-      const box = target.getBoundingClientRect();
-      gsap.set(indicator, {
-        x: box.left - railBox.left,
-        y: box.top - railBox.top,
-        width: box.width,
-        height: box.height,
-      });
+      const target = itemRefs.current[active];
+      if (indicator && target) {
+        gsap.set(indicator, {
+          y: target.offsetTop,
+          width: target.offsetWidth,
+          height: target.offsetHeight,
+        });
+      }
+      updateScrollState();
     };
-    const experienceActive = () => active;
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [active]);
+
+    const observer =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(syncIndicator);
+    observer?.observe(viewport);
+    observer?.observe(rail);
+    viewport.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", syncIndicator);
+    syncIndicator();
+
+    return () => {
+      observer?.disconnect();
+      viewport.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", syncIndicator);
+      gsap.killTweensOf(indicatorRef.current);
+    };
+  }, [active, updateScrollState]);
 
   return (
-    <nav
-      aria-label="Navegación de secciones"
-      className="cine-nav fixed z-40 md:left-4 md:top-1/2 md:-translate-y-1/2 max-md:bottom-3 max-md:left-1/2 max-md:-translate-x-1/2">
-      <div
-        ref={railRef}
-        className="relative flex md:flex-col flex-row items-center gap-1 rounded-2xl border border-white/25 bg-white/10 backdrop-blur-xl p-1.5 shadow-2xl max-md:max-w-[92vw] max-md:overflow-x-auto cine-dock-scroll">
-        <span
-          ref={indicatorRef}
-          aria-hidden="true"
-          className="absolute left-0 top-0 rounded-xl bg-white/90 shadow-lg pointer-events-none"
-          style={{ width: 44, height: 44 }}
+    <header className="cine-side-menu">
+      <a
+        href="#inicio"
+        className="cine-side-menu__brand"
+        aria-label="ELBEDI AI — Inicio"
+        onClick={(event) => {
+          event.preventDefault();
+          dispatchIntent({ type: "navigate", section: "inicio", source: "brand" });
+        }}>
+        <img
+          src="/images/favicon.svg"
+          width="38"
+          height="38"
+          alt="Isotipo ELBEDI AI"
         />
-        {SECTIONS.map((section, index) => {
-          const isActive = index === active;
-          return (
-            <button
-              key={section.id}
-              ref={(el) => (itemRefs.current[index] = el)}
-              type="button"
-              aria-label={section.name}
-              aria-current={isActive ? "true" : undefined}
-              disabled={transitioning}
-              onMouseEnter={() => setHovered(index)}
-              onMouseLeave={() => setHovered(-1)}
-              onFocus={() => setHovered(index)}
-              onBlur={() => setHovered(-1)}
-              onClick={() =>
-                dispatchIntent({
-                  type: "navigate",
-                  section: section.id,
-                  source: "nav",
-                })
-              }
-              className={`relative z-10 grid place-items-center h-11 w-11 shrink-0 rounded-xl transition-colors duration-300 ${
-                isActive
-                  ? "text-slate-900"
-                  : "text-white/85 hover:text-white"
-              }`}>
-              <Icon name={section.icon} size={21} />
-              {/* Tooltip con el nombre de la sección */}
+      </a>
+
+      <div className="cine-side-menu__navigation">
+        <button
+          type="button"
+          className="cine-side-menu__scroll cine-side-menu__scroll--up"
+          aria-label="Mostrar secciones anteriores"
+          disabled={!scrollState.canScrollUp}
+          onClick={() => moveMenu(-1)}>
+          <Icon name="arrow" size={16} />
+        </button>
+
+        <nav className="cine-nav" aria-label="Navegación de secciones">
+          <div
+            ref={viewportRef}
+            className="cine-nav__viewport"
+            data-lenis-prevent>
+            <div ref={railRef} className="cine-nav__rail">
               <span
-                className={`cine-tooltip md:left-[calc(100%+14px)] md:top-1/2 md:-translate-y-1/2 max-md:bottom-[calc(100%+12px)] max-md:left-1/2 max-md:-translate-x-1/2 ${
-                  hovered === index ? "cine-tooltip--on" : ""
-                }`}
-                role="presentation">
-                {section.name}
-              </span>
-            </button>
-          );
-        })}
+                ref={indicatorRef}
+                aria-hidden="true"
+                className="cine-nav__indicator"
+              />
+
+              {SECTIONS.map((section, index) => {
+                const isActive = index === active;
+                return (
+                  <button
+                    key={section.id}
+                    ref={(element) => {
+                      itemRefs.current[index] = element;
+                    }}
+                    type="button"
+                    aria-label={section.name}
+                    aria-current={isActive ? "page" : undefined}
+                    disabled={transitioning}
+                    onMouseEnter={(event) => showTooltip(index, event.currentTarget)}
+                    onMouseLeave={() => setHovered({ index: -1, top: 0 })}
+                    onFocus={(event) => showTooltip(index, event.currentTarget)}
+                    onBlur={() => setHovered({ index: -1, top: 0 })}
+                    onClick={() =>
+                      dispatchIntent({
+                        type: "navigate",
+                        section: section.id,
+                        source: "nav",
+                      })
+                    }
+                    className={`cine-nav__item ${isActive ? "is-active" : ""}`}>
+                    <Icon name={section.icon} size={24} />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </nav>
+
+        <button
+          type="button"
+          className="cine-side-menu__scroll cine-side-menu__scroll--down"
+          aria-label="Mostrar secciones siguientes"
+          disabled={!scrollState.canScrollDown}
+          onClick={() => moveMenu(1)}>
+          <Icon name="arrow" size={16} />
+        </button>
       </div>
-    </nav>
+
+      <span
+        className={`cine-tooltip ${
+          hovered.index >= 0 ? "cine-tooltip--on" : ""
+        }`}
+        style={{ top: hovered.top }}
+        role="presentation">
+        {hovered.index >= 0 ? SECTIONS[hovered.index]?.name : ""}
+      </span>
+    </header>
   );
 }

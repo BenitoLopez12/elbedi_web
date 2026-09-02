@@ -10,6 +10,14 @@ export const SECTIONS = [
     backdrop: {
       center: "#9b73d4",
       corners: ["#3853F0", "#FF9ECF", "#78CEFF", "#BD0B91"],
+      mirrorX: true,
+      spaceColor: "#080f24",
+      exposure: {
+        left: 0.76,
+        center: 0.32,
+        right: 0.22,
+        glow: 0.28,
+      },
       glow: "rgba(255,255,255,0.22)",
     },
   },
@@ -107,9 +115,10 @@ export const SECTIONS = [
     icon: "layers",
     kicker: "ELBEDI",
     backdrop: {
-      center: "#241b3e",
-      corners: ["#33418f", "#6d2a7a", "#171130", "#3c2f66"],
-      glow: "rgba(255,255,255,0.08)",
+      center: "#9b73d4",
+      corners: ["#3853F0", "#FF9ECF", "#78CEFF", "#BD0B91"],
+      exposure: 0.86,
+      glow: "rgba(255,255,255,0.22)",
     },
   },
 ];
@@ -127,13 +136,13 @@ export const SERVICE_DEMOS = {
 };
 
 export const HERO = {
-  title: ["Construimos experiencias web", "y agentes de IA", "que trabajan por tu negocio."],
-  highlight: "agentes de IA",
+  title: ["Integramos inteligencia artificial", "en los procesos", "que mueven tu empresa."],
+  highlight: "inteligencia artificial",
   description:
-    "ELBEDI es un estudio de desarrollo enfocado en herramientas de inteligencia artificial: sitios cinematográficos, agentes de WhatsApp que venden 24/7, sistemas agénticos para empresas y analíticas explicadas por IA.",
+    "ELBEDI es un estudio de implementación de inteligencia artificial: diseñamos agentes, sistemas agénticos e integraciones que conectan datos, herramientas y equipos con la operación real de cada empresa.",
   ctaPrimary: "Explorar los servicios",
-  ctaSecondary: "Hablar con nuestra IA",
-  chips: ["Web cinematográfica", "Agentes 24/7", "IA en producción", "México · LATAM"],
+  ctaSecondary: "Hablar con el equipo",
+  chips: ["Agentes 24/7", "Sistemas agénticos", "IA en producción", "México · LATAM"],
 };
 
 export const WEBSITES = {
@@ -233,9 +242,9 @@ export const ANALITICAS = {
 };
 
 export const PROCESO = {
-  title: "Un proceso de estudio, no de fábrica.",
+  title: "Un proceso de implementación, no una caja negra.",
   description:
-    "Cada proyecto se dirige como una producción: se escribe, se diseña, se construye y se opera con estándares de cine y de ingeniería.",
+    "Cada implementación parte de un proceso real: diagnosticamos el reto, diseñamos la arquitectura, evaluamos el comportamiento y desplegamos con observabilidad, límites y control humano.",
   steps: [
     {
       num: "01",
@@ -244,42 +253,42 @@ export const PROCESO = {
     },
     {
       num: "02",
-      title: "Dirección y diseño",
-      text: "Guion, storyboard y dirección de arte. Apruebas cómo se verá y se sentirá antes de construir.",
+      title: "Arquitectura y guardrails",
+      text: "Definimos datos, herramientas, permisos, límites y puntos de supervisión antes de conectar la IA.",
     },
     {
       num: "03",
       title: "Construcción y evaluación",
-      text: "Ingeniería senior con animaciones de alto nivel y agentes evaluados contra casos reales.",
+      text: "Construimos las integraciones y evaluamos agentes contra casos reales, errores esperables y criterios de calidad.",
     },
     {
       num: "04",
       title: "Lanzamiento y operación",
-      text: "Publicamos, medimos y mejoramos en continuo. Tu plataforma queda operando y aprendiendo.",
+      text: "Desplegamos, observamos y mejoramos en continuo. Tu equipo conserva visibilidad, control y trazabilidad.",
     },
   ],
 };
 
 export const ESTUDIO = {
-  title: "La IA como operador, no como adorno.",
+  title: "Tu nuevo sistema de operación inteligente.",
   description:
-    "Somos un estudio mexicano que une dirección de arte cinematográfica con ingeniería de inteligencia artificial de producción. No hacemos páginas: construimos experiencias que trabajan.",
+    "Somos un estudio mexicano especializado en llevar inteligencia artificial a producción. Convertimos procesos empresariales en sistemas confiables, conectados con tus datos y herramientas, con evaluación, auditoría y control humano.",
   principles: [
     {
-      title: "Diseño que se siente",
-      text: "Cada pixel animado con propósito. Si un efecto no cuenta la historia, sobra.",
+      title: "IA conectada a la operación",
+      text: "Los agentes trabajan con tus sistemas, datos y reglas; no viven aislados en una demostración.",
     },
     {
-      title: "Ingeniería que se mide",
-      text: "Rendimiento, evals y observabilidad. La magia por fuera, disciplina por dentro.",
+      title: "Resultados que se miden",
+      text: "Definimos métricas, evaluaciones y observabilidad para saber qué funciona y qué debe mejorar.",
     },
     {
       title: "IA con límites y auditoría",
       text: "Agentes con presupuestos, guardrails y control humano. Confianza que se gana, no que se asume.",
     },
     {
-      title: "Socios, no proveedores",
-      text: "Operamos y mejoramos contigo después del lanzamiento. Tu crecimiento es el proyecto.",
+      title: "Socios de implementación",
+      text: "Operamos y mejoramos contigo después del lanzamiento. La adopción y el impacto también son parte del proyecto.",
     },
   ],
 };
@@ -299,7 +308,7 @@ export const FAQS = [
   },
   {
     q: "¿Cuánto tarda un proyecto?",
-    a: "Un sitio cinematográfico típico toma de 3 a 6 semanas; un sistema de agentes, de 2 a 8 según el alcance. Siempre trabajamos por fases con entregas visibles.",
+    a: "Una página web se entrega en 3 días hábiles. Los agentes de inteligencia artificial y los sistemas agénticos suelen requerir de una a dos semanas hábiles, según las integraciones, los datos y el nivel de control necesario. Siempre trabajamos por fases con entregas visibles.",
   },
   {
     q: "¿Necesito cambiar mis sistemas actuales?",

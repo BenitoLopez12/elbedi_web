@@ -19,10 +19,15 @@ export default function TiltFrame({
     const inner = innerRef.current;
     if (!wrap || !inner) return undefined;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    if (reduceMotion || !finePointer) {
       return undefined;
     }
 
+    const glareNode = glareRef.current;
     const rx = gsap.quickTo(inner, "rotationX", {
       duration: 0.7,
       ease: "power3.out",
@@ -31,38 +36,53 @@ export default function TiltFrame({
       duration: 0.7,
       ease: "power3.out",
     });
+    const glareX = glareNode
+      ? gsap.quickTo(glareNode, "x", { duration: 0.5, ease: "power2.out" })
+      : null;
+    const glareY = glareNode
+      ? gsap.quickTo(glareNode, "y", { duration: 0.5, ease: "power2.out" })
+      : null;
+    const glareOpacity = glareNode
+      ? gsap.quickTo(glareNode, "opacity", {
+          duration: 0.36,
+          ease: "power2.out",
+        })
+      : null;
+
+    let box = null;
+    const measure = () => {
+      box = wrap.getBoundingClientRect();
+    };
 
     const onMove = (event) => {
-      const box = wrap.getBoundingClientRect();
+      if (!box) measure();
+      if (!box?.width || !box?.height) return;
       const nx = (event.clientX - box.left) / box.width - 0.5;
       const ny = (event.clientY - box.top) / box.height - 0.5;
       ry(nx * max);
       rx(-ny * max);
-      if (glareRef.current) {
-        gsap.to(glareRef.current, {
-          opacity: 0.5,
-          x: nx * box.width * 0.45,
-          y: ny * box.height * 0.45,
-          duration: 0.5,
-        });
-      }
+      glareOpacity?.(0.5);
+      glareX?.(nx * box.width * 0.45);
+      glareY?.(ny * box.height * 0.45);
     };
 
     const onLeave = () => {
+      box = null;
       rx(0);
       ry(0);
-      if (glareRef.current) {
-        gsap.to(glareRef.current, { opacity: 0, duration: 0.7 });
-      }
+      glareOpacity?.(0);
     };
 
+    wrap.addEventListener("pointerenter", measure);
     wrap.addEventListener("pointermove", onMove);
     wrap.addEventListener("pointerleave", onLeave);
     return () => {
+      wrap.removeEventListener("pointerenter", measure);
       wrap.removeEventListener("pointermove", onMove);
       wrap.removeEventListener("pointerleave", onLeave);
+      gsap.killTweensOf([inner, glareNode].filter(Boolean));
     };
-  }, [max]);
+  }, [glare, max]);
 
   return (
     <div
@@ -71,7 +91,7 @@ export default function TiltFrame({
       style={{ perspective: "1200px" }}>
       <div
         ref={innerRef}
-        className="relative will-change-transform"
+        className="relative"
         style={{ transformStyle: "preserve-3d" }}>
         {children}
         {glare && (

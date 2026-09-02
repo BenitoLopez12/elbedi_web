@@ -62,6 +62,8 @@ export default function WhatsApp({
             <div className="flex items-center gap-2">
               <img
                 src="/images/icons/whatsapp.svg"
+                width="32"
+                height="32"
                 alt=""
                 aria-hidden="true"
                 loading="lazy"
@@ -122,6 +124,8 @@ export default function WhatsApp({
 
         <img
           src="/images/icons/whatsapp.svg"
+          width="44"
+          height="44"
           alt=""
           aria-hidden="true"
           className="h-11 w-11 brightness-200"

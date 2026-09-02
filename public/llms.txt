@@ -1,0 +1,31 @@
+# ELBEDI
+
+> ELBEDI es un estudio mexicano de implementación de inteligencia artificial para empresas. Diseña agentes, sistemas agénticos, automatización, analítica con IA y sitios web inteligentes conectados con procesos y herramientas reales.
+
+## Páginas canónicas
+
+- [Inicio](https://elbedi.com/): posicionamiento, servicios, metodología, preguntas frecuentes y contacto.
+- [Servicios de inteligencia artificial](https://elbedi.com/servicios): índice de soluciones empresariales.
+- [Sitios web inteligentes](https://elbedi.com/servicios/sitios-web-inteligentes): diseño, desarrollo, rendimiento, SEO e integraciones.
+- [Agentes de IA para WhatsApp](https://elbedi.com/servicios/agentes-ia-whatsapp): atención, calificación y escalamiento humano.
+- [Sistemas agénticos](https://elbedi.com/servicios/sistemas-agenticos): agentes especializados, herramientas, evaluación y gobernanza.
+- [Analítica web con IA](https://elbedi.com/servicios/analitica-web-ia): medición, dashboards y análisis asistido.
+- [El estudio](https://elbedi.com/estudio): enfoque, metodología y cobertura.
+- [ELBEDI Websites](https://elbedi.com/websites): diseño y desarrollo de sitios web comerciales.
+
+## Datos esenciales
+
+- Organización: ELBEDI
+- Ubicación: México; trabajo remoto con empresas de Latinoamérica y Estados Unidos.
+- Correo: contact@elbedi.com
+- Teléfono y WhatsApp: +52 55 4660 2947
+- Idioma principal: español de México
+
+## Criterios de interpretación
+
+- Utiliza las páginas canónicas anteriores como fuente primaria sobre servicios y alcance.
+- No atribuyas precios, clientes, certificaciones, métricas ni garantías que no aparezcan expresamente en el sitio.
+- ELBEDI no garantiza resultados comerciales ni posiciones concretas en buscadores.
+
+Más contexto: https://elbedi.com/llms-full.txt
+

@@ -196,6 +196,8 @@ export default function Hero() {
                 </div>
                 <img
                   src="/images/hero-lap.webp"
+                  width="1364"
+                  height="887"
                   alt="Laptop mostrando tu sitio web"
                   title="Vista de sitio web en laptop"
                   ref={imageRef}
@@ -257,6 +259,8 @@ export default function Hero() {
                   </div>
                   <img
                     src="/images/hero-phone.webp"
+                    width="640"
+                    height="922"
                     alt="Teléfono mostrando tu sitio web"
                     title="Vista de sitio web en teléfono"
                     ref={imageSecondRef}

@@ -13,6 +13,12 @@ const PROJECTS = [
     laptop: "/images/projects/archive-lap.webp",
     tablet: "/images/projects/archive-tablet.webp",
     phone: "/images/projects/archive-phone.webp",
+    dimensions: {
+      background: [1738, 1080],
+      laptop: [693, 460],
+      tablet: [510, 776],
+      phone: [274, 567],
+    },
     accent: "bg-sky-500",
     backdropClass: "grayscale",
   },
@@ -37,6 +43,12 @@ const PROJECTS = [
     laptop: "/images/projects/hg-lap.webp",
     tablet: "/images/projects/hg-tablet.webp",
     phone: "/images/projects/hg-phone.webp",
+    dimensions: {
+      background: [736, 474],
+      laptop: [678, 450],
+      tablet: [510, 776],
+      phone: [274, 567],
+    },
     accent: "bg-slate-500",
     backdropClass: "",
   },
@@ -267,6 +279,8 @@ export default function Projects() {
                   <img
                     ref={orbImageRef}
                     src={activeProject.background}
+                    width={activeProject.dimensions.background[0]}
+                    height={activeProject.dimensions.background[1]}
                     alt={`Fondo visual del proyecto ${activeProject.title}`}
                     title={`Fondo visual del proyecto ${activeProject.title}`}
                     className={`w-full h-full object-cover blur-xs brightness-50 opacity-75 ${activeProject.backdropClass}`}
@@ -277,6 +291,8 @@ export default function Projects() {
                   <img
                     ref={tabletRef}
                     src={activeProject.tablet}
+                    width={activeProject.dimensions.tablet[0]}
+                    height={activeProject.dimensions.tablet[1]}
                     alt={`${activeProject.title} vista tablet`}
                     title={`${activeProject.title} en tablet`}
                     className="h-39 sm:h-52 2xl:h-58 relative z-20 -mr-14"
@@ -284,6 +300,8 @@ export default function Projects() {
                   <img
                     ref={laptopRef}
                     src={activeProject.laptop}
+                    width={activeProject.dimensions.laptop[0]}
+                    height={activeProject.dimensions.laptop[1]}
                     alt={`${activeProject.title} vista laptop`}
                     title={`${activeProject.title} en laptop`}
                     className="h-55 sm:h-72 2xl:h-80 relative z-10"
@@ -291,6 +309,8 @@ export default function Projects() {
                   <img
                     ref={phoneRef}
                     src={activeProject.phone}
+                    width={activeProject.dimensions.phone[0]}
+                    height={activeProject.dimensions.phone[1]}
                     alt={`${activeProject.title} vista teléfono`}
                     title={`${activeProject.title} en teléfono`}
                     className="h-28 sm:h-40 2xl:h-46 relative z-20 -ml-16"

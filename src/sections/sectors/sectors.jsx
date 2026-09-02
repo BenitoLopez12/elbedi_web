@@ -92,6 +92,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/restaurant.webp"
+                    width="640"
+                    height="800"
                     alt="Sector restaurantes"
                   />
                   <div className="box-info-sector">
@@ -109,7 +111,12 @@ export default function Sectors({ children = null }) {
               </div>
               <div>
                 <article className="flex-2">
-                  <img src="/images/sectors/hotel.webp" alt="Sector hoteles" />
+                  <img
+                    src="/images/sectors/hotel.webp"
+                    width="1386"
+                    height="924"
+                    alt="Sector hoteles"
+                  />
                   <div className="box-info-sector">
                     <h3>Hoteles</h3>
                     <Button
@@ -123,6 +130,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/tourism.webp"
+                    width="1981"
+                    height="1321"
                     alt="Sector turismo"
                   />
                   <div className="box-info-sector">
@@ -140,6 +149,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/freelancer.webp"
+                    width="1290"
+                    height="791"
                     alt="Sector freelancers"
                   />
                   <div className="box-info-sector">
@@ -155,6 +166,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/influencer.webp"
+                    width="1443"
+                    height="962"
                     alt="Sector influencers"
                   />
                   <div className="box-info-sector">
@@ -170,6 +183,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/artist.webp"
+                    width="720"
+                    height="480"
                     alt="Sector artistas"
                   />
                   <div className="box-info-sector">
@@ -187,6 +202,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/building.webp"
+                    width="594"
+                    height="743"
                     alt="Sector constructoras"
                   />
                   <div className="box-info-sector">
@@ -206,6 +223,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/realty.webp"
+                    width="1102"
+                    height="828"
                     alt="Sector inmobiliarias"
                   />
                   <div className="box-info-sector">
@@ -223,6 +242,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/transport.webp"
+                    width="933"
+                    height="1244"
                     alt="Sector transporte"
                   />
                   <div className="box-info-sector">
@@ -238,7 +259,12 @@ export default function Sectors({ children = null }) {
               </div>
               <div>
                 <article className="flex-1">
-                  <img src="/images/sectors/events.webp" alt="Sector eventos" />
+                  <img
+                    src="/images/sectors/events.webp"
+                    width="1613"
+                    height="1075"
+                    alt="Sector eventos"
+                  />
                   <div className="box-info-sector">
                     <h3>Planificación de Eventos</h3>
                     <Button
@@ -252,7 +278,12 @@ export default function Sectors({ children = null }) {
                   </div>
                 </article>
                 <article className="flex-1">
-                  <img src="/images/sectors/gym.webp" alt="Sector gimnasios" />
+                  <img
+                    src="/images/sectors/gym.webp"
+                    width="1387"
+                    height="923"
+                    alt="Sector gimnasios"
+                  />
                   <div className="box-info-sector">
                     <h3>Gimnasios</h3>
                     <Button
@@ -264,7 +295,12 @@ export default function Sectors({ children = null }) {
                   </div>
                 </article>
                 <article className="flex-1">
-                  <img src="/images/sectors/salud.webp" alt="Sector salud" />
+                  <img
+                    src="/images/sectors/salud.webp"
+                    width="1440"
+                    height="960"
+                    alt="Sector salud"
+                  />
                   <div className="box-info-sector">
                     <h3>Salud</h3>
                     <Button
@@ -280,6 +316,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/legal.webp"
+                    width="1348"
+                    height="899"
                     alt="Sector legal y contable"
                   />
                   <div className="box-info-sector">
@@ -301,6 +339,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/startups.webp"
+                    width="922"
+                    height="518"
                     alt="Sector empresas y startups"
                   />
                   <div className="box-info-sector">
@@ -318,6 +358,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/school.webp"
+                    width="1313"
+                    height="876"
                     alt="Sector educación"
                   />
                   <div className="box-info-sector">
@@ -336,6 +378,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/bar.webp"
+                    width="1111"
+                    height="778"
                     alt="Sector antros y bares"
                   />
                   <div className="box-info-sector">
@@ -353,6 +397,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/barber.webp"
+                    width="538"
+                    height="806"
                     alt="Sector barberías"
                   />
                   <div className="box-info-sector">
@@ -368,6 +414,8 @@ export default function Sectors({ children = null }) {
                 <article className="flex-1">
                   <img
                     src="/images/sectors/tattoo.webp"
+                    width="1175"
+                    height="783"
                     alt="Sector tatuajes"
                   />
                   <div className="box-info-sector">

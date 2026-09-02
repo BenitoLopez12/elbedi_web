@@ -10,7 +10,7 @@ import {
   experienceStore,
   dispatchIntent,
 } from "@/experience/state/experienceStore.js";
-import { useExperienceSelector } from "@/experience/navigation/useSectionEngine.js";
+import { useExperienceSelector } from "@/experience/state/useExperienceSelector.js";
 import { buildWhatsAppUrl } from "@/lib/whatsapp.js";
 import { compactConversation } from "@/experience/chat/compactor.js";
 import { SERVICE_DEMOS } from "@/content/experience.js";
@@ -273,7 +273,10 @@ export default function ChatPanel() {
   };
 
   const panelBody = (
-    <div className="flex h-full min-h-0 flex-col" data-chat-panel>
+    <div
+      className="flex h-full min-h-0 flex-col"
+      data-chat-panel
+      data-lenis-prevent>
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-white/15 px-4 py-3.5">
         <div className="relative">
@@ -362,7 +365,7 @@ export default function ChatPanel() {
             animate={{ width: 380, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 30 }}
-            className="relative z-30 hidden h-full shrink-0 overflow-hidden xl:block">
+            className="sticky top-0 z-50 hidden h-svh shrink-0 overflow-hidden xl:block">
             <div className="h-full w-[380px] border-l border-white/15 bg-slate-950/45 backdrop-blur-2xl">
               {panelBody}
             </div>

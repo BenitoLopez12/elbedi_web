@@ -1,8 +1,8 @@
 // Capítulo 10 — Footer: EXACTAMENTE el mismo componente compartido que usa
 // /websites (src/layouts/partials/footer.jsx). Un solo footer para todo el
 // sitio. Los enlaces con hash que coinciden con secciones de la experiencia
-// se interceptan y viajan por el bus de intents (misma navegación que el
-// scroll inteligente y el agente IA); el resto navega normal.
+// se interceptan y viajan por el bus de intents (la misma navegación del
+// menú interactivo); el resto navega normal.
 
 import Footer from "@/layouts/partials/footer.jsx";
 import site from "@/content/site.js";
@@ -32,17 +32,17 @@ export default function FooterSection() {
   };
 
   return (
-    <div
-      data-cine="rise"
-      className="mx-auto w-full max-w-7xl px-4 md:px-6"
-      onClickCapture={onClickCapture}>
-      <Footer
-        brand={site.name}
-        email={site.email}
-        phone={site.phone}
-        links={FOOTER_LINKS}
-        variant="plain"
-      />
-    </div>
+    <Footer
+      id="footer"
+      data-chapter
+      data-reversible-section
+      data-post-studio-item
+      className="cine-footer"
+      onClickCapture={onClickCapture}
+      brand={site.name}
+      email={site.email}
+      phone={site.phone}
+      links={FOOTER_LINKS}
+    />
   );
 }

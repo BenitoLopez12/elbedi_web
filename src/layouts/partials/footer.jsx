@@ -344,9 +344,8 @@ export default function Footer({
   phone = "+52 55 4660 2947",
   links = defaultLinks,
   socials = defaultSocials,
-  // "boxed": tarjeta con fondo y borde (look de /websites).
-  // "plain": contenido plano sin fondo ni borde (experiencia del index).
-  variant = "boxed",
+  className = "",
+  ...footerProps
 }) {
   const year = new Date().getFullYear();
   const [activeNoticeKey, setActiveNoticeKey] = useState(null);
@@ -386,13 +385,15 @@ export default function Footer({
 
   return (
     <footer
-      className={`text-lg ${
-        variant === "plain" ? "" : "bg-white/10 border border-white/30"
-      }`}>
-      <LimitContainer className="min-h-svh flex flex-col justify-between 2xl:pt-30 pt-20">
+      {...footerProps}
+      className={`text-lg bg-white/10 border border-white/30 ${className}`.trim()}>
+      <LimitContainer
+        className="min-h-svh flex flex-col justify-between 2xl:pt-30 pt-20">
         <div className="w-full">
           <img
             src="/images/logo.webp"
+            width="1290"
+            height="252"
             alt="Logo de ELBEDI"
             title="ELBEDI"
             className="w-full h-full object-contain"
@@ -476,6 +477,8 @@ export default function Footer({
                     rel="noreferrer">
                     <img
                       src={social.icon}
+                      width="24"
+                      height="24"
                       alt={social.label}
                       className="2xl:h-6 2xl:w-6 h-5 w-5 object-contain"
                     />

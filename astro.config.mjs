@@ -1,14 +1,21 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
-import tailwindcss from "@tailwindcss/vite";
-
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://elbedi.com",
+  trailingSlash: "never",
+  compressHTML: true,
   vite: {
-    plugins: [tailwindcss()],
+    // Build y servidor de desarrollo no comparten caché. Esto evita que una
+    // compilación de Vercel o una validación local invalide una sesión activa.
+    cacheDir:
+      process.env.NODE_ENV === "production"
+        ? "node_modules/.vite-build"
+        : "node_modules/.vite",
     resolve: {
       alias: {
         "lottie-web": "lottie-web/build/player/lottie_light",
@@ -42,5 +49,14 @@ export default defineConfig({
     },
   },
 
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => !page.endsWith("/404"),
+      serialize(item) {
+        item.lastmod = new Date("2026-08-11T00:00:00.000Z");
+        return item;
+      },
+    }),
+  ],
 });

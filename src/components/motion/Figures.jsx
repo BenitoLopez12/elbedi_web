@@ -198,6 +198,8 @@ export default function Figures() {
           <img
             ref={figure1ImageRef}
             src="/images/cilindro.webp"
+            width="444"
+            height="558"
             alt=""
             aria-hidden="true"
             className="figures w-full rotate-30"
@@ -208,6 +210,8 @@ export default function Figures() {
           className="absolute 2xl:w-16 w-11 bottom-45 lg:left-30/100 left-10/100 will-change-transform">
           <img
             src="/images/diamante.webp"
+            width="534"
+            height="567"
             alt=""
             aria-hidden="true"
             className="figures rotate-30 "

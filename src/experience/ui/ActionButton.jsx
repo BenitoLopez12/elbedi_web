@@ -15,14 +15,14 @@ export default function ActionButton({
   // "cool" (frío: azul→violeta→rosa). Se intercalan por sección.
   const variants = {
     solid:
-      "bg-gradient-to-r from-[#FF9ECF] via-[#ff7ab0] to-[#ffdc5b] text-slate-900 shadow-[0_10px_30px_-10px_rgba(255,122,176,0.8)] hover:shadow-[0_14px_40px_-10px_rgba(255,220,91,0.85)] hover:-translate-y-0.5",
-    cool: "bg-gradient-to-r from-[#3853F0] via-[#7d55e8] to-[#fe79bd] text-white shadow-[0_10px_30px_-10px_rgba(125,85,232,0.85)] hover:shadow-[0_14px_40px_-10px_rgba(254,121,189,0.85)] hover:-translate-y-0.5",
+      "bg-gradient-to-r from-[#FF9ECF] via-[#ff7ab0] to-[#ffdc5b] text-slate-900 shadow-[0_10px_30px_-10px_rgba(255,122,176,0.8)] hover:shadow-[0_14px_40px_-10px_rgba(255,220,91,0.85)]",
+    cool: "bg-gradient-to-r from-[#3853F0] via-[#7d55e8] to-[#fe79bd] text-white shadow-[0_10px_30px_-10px_rgba(125,85,232,0.85)] hover:shadow-[0_14px_40px_-10px_rgba(254,121,189,0.85)]",
     glass:
-      "border border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:-translate-y-0.5",
-    dark: "bg-slate-950/70 text-white border border-white/20 hover:bg-slate-950/90 hover:-translate-y-0.5",
+      "border border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20",
+    dark: "bg-slate-950/70 text-white border border-white/20 hover:bg-slate-950/90",
   };
 
-  const classes = `inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold uppercase tracking-wide transition-all duration-300 ${variants[variant] ?? variants.solid} ${className}`;
+  const classes = `inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold uppercase tracking-wide transition-[background-color,border-color,box-shadow,color] duration-300 ${variants[variant] ?? variants.solid} ${className}`;
 
   const resolvedHref = whatsappMessage ? buildWhatsAppUrl(whatsappMessage) : href;
 

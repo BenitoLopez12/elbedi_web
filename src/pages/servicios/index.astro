@@ -1,0 +1,121 @@
+---
+import SeoPageLayout from "@/layouts/SeoPageLayout.astro";
+import siteConfig from "@/config/siteConfig.js";
+import { SERVICE_PAGES } from "@/content/servicePages.js";
+import { buildWhatsAppUrl } from "@/lib/whatsapp.js";
+import {
+  buildBreadcrumbSchema,
+  buildItemListSchema,
+  buildOrganizationSchema,
+  buildSchemaGraph,
+  buildServiceSchema,
+  buildWebPageSchema,
+  buildWebsiteSchema,
+} from "@/lib/seo.js";
+
+const url = "/servicios";
+const title = "Servicios de Inteligencia Artificial para Empresas | ELBEDI";
+const description =
+  "Servicios de inteligencia artificial para empresas: agentes para WhatsApp, sistemas agénticos, analítica con IA y sitios web inteligentes en México.";
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Servicios", url },
+];
+const schema = buildSchemaGraph([
+  buildOrganizationSchema(),
+  buildWebsiteSchema(),
+  buildWebPageSchema({ url, name: title, description, pageType: "CollectionPage" }),
+  buildBreadcrumbSchema(breadcrumbs),
+  buildItemListSchema(SERVICE_PAGES, { name: "Servicios de ELBEDI", url }),
+  ...SERVICE_PAGES.map(buildServiceSchema),
+]);
+const whatsappUrl = buildWhatsAppUrl(
+  "Hola ELBEDI, quiero identificar la mejor implementación de inteligencia artificial para mi empresa.",
+);
+---
+
+<SeoPageLayout
+  title={title}
+  description={description}
+  canonicalUrl={`${siteConfig.url}${url}`}
+  schema={schema}
+  breadcrumbs={breadcrumbs}>
+  <section class="seo-hero">
+    <div class="seo-container seo-hero__content">
+      <p class="seo-eyebrow">Inteligencia artificial para empresas</p>
+      <h1 class="seo-display seo-display--compact">
+        Sistemas que conectan la IA con
+        <span class="seo-gradient-text"> la operación real.</span>
+      </h1>
+      <p class="seo-lead">
+        Diseñamos e implementamos soluciones acotadas, medibles y conectadas con
+        los procesos, datos y herramientas que ya utiliza tu empresa.
+      </p>
+      <div class="seo-actions">
+        <a class="seo-button seo-button--primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+          Evaluar un caso de uso
+        </a>
+        <a class="seo-button seo-button--secondary" href="#soluciones">Ver soluciones</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="soluciones" class="seo-section">
+    <div class="seo-container">
+      <header class="seo-section__header">
+        <h2>Cuatro entradas. Una misma disciplina de implementación.</h2>
+        <p>
+          Cada servicio parte de un objetivo empresarial y se construye con
+          información verificable, permisos mínimos, evaluación y una ruta clara
+          de supervisión humana.
+        </p>
+      </header>
+
+      <div class="seo-grid">
+        {SERVICE_PAGES.map((service, index) => (
+          <article class="seo-card">
+            <span class="seo-card__index">0{index + 1}</span>
+            <h2>{service.name}</h2>
+            <p>{service.metaDescription}</p>
+            <a href={service.url}>Conocer el servicio</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seo-section seo-section--soft">
+    <div class="seo-container">
+      <header class="seo-section__header">
+        <h2>Cómo elegimos dónde sí aplicar inteligencia artificial.</h2>
+        <p>
+          No empezamos por el modelo. Identificamos una decisión, conversación o
+          proceso concreto, el valor esperado y los riesgos que deben permanecer
+          bajo control.
+        </p>
+      </header>
+      <ol class="seo-list">
+        <li>Definir el problema, la audiencia y el resultado medible.</li>
+        <li>Validar datos, integraciones, permisos y responsables.</li>
+        <li>Construir un alcance evaluable antes de ampliar la autonomía.</li>
+        <li>Desplegar con registros, métricas, límites y revisión humana.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seo-section">
+    <div class="seo-container seo-cta-band">
+      <div>
+        <h2>Convirtamos una oportunidad de IA en un sistema operable.</h2>
+        <p>
+          Revisamos el proceso, el impacto posible y la arquitectura necesaria
+          antes de recomendar una implementación.
+        </p>
+      </div>
+      <a class="seo-button seo-button--primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+        Hablar con ELBEDI
+      </a>
+    </div>
+  </section>
+</SeoPageLayout>
+

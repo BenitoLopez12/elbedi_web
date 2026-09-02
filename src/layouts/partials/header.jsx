@@ -25,6 +25,8 @@ export default function Header({
           <a href={brandHref} className="block h-5 relative">
             <img
               src="/images/logo.webp"
+              width="1290"
+              height="252"
               alt="Logo de ELBEDI"
               title="ELBEDI"
               className="w-full h-full object-contain"
@@ -54,7 +56,12 @@ export default function Header({
             </a>
             <details className="relative md:hidden">
               <summary className="list-none cursor-pointer rounded-lg h-7 w-7 text-xs uppercase tracking-wide">
-                <img src="/images/icons/menu.svg" alt="Menú" />
+                <img
+                  src="/images/icons/menu.svg"
+                  width="28"
+                  height="28"
+                  alt="Menú"
+                />
               </summary>
               <nav
                 aria-label="Navegación móvil"

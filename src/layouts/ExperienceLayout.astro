@@ -1,9 +1,11 @@
 ---
-// Layout de la experiencia cinematográfica (index): sin scroll de documento,
-// sin header/footer clásicos — el escenario, el scroll inteligente y el
-// agente de IA son la interfaz.
+// Layout del index cinematográfico. A diferencia de /websites, este layout
+// usa un documento vertical real: Lenis suaviza el scroll nativo y GSAP lo
+// convierte en la línea de tiempo narrativa.
 import "../styles/app.css";
 import "../styles/experience.css";
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import siteConfig from "../config/siteConfig.js";
 import Head from "./partials/head.jsx";
 import Preloader from "./partials/Preloader.astro";
@@ -17,6 +19,7 @@ const {
   description = siteConfig.description,
   canonicalUrl = currentCanonical,
   ogImage = siteConfig.mainImage,
+  ogImageAlt = siteConfig.mainImageAlt,
   robots = siteConfig.robots,
   schema = [],
 } = Astro.props;
@@ -29,11 +32,15 @@ const {
     description={description}
     canonicalUrl={canonicalUrl}
     ogImage={ogImage}
+    ogImageAlt={ogImageAlt}
     robots={robots}
     schema={schema}
   />
-  <body class="text-white">
+  <body class="text-white antialiased">
+    <a class="global-skip-link" href="#main-content">Ir al contenido</a>
     <Preloader />
     <slot />
+    <Analytics />
+    <SpeedInsights />
   </body>
 </html>

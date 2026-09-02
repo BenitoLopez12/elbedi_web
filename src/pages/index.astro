@@ -4,108 +4,37 @@
 import ExperienceLayout from "@/layouts/ExperienceLayout.astro";
 import Experience from "@/experience/Experience.jsx";
 import siteConfig from "@/config/siteConfig.js";
-import site from "@/content/site.js";
 import { FAQS } from "@/content/experience.js";
+import { SERVICE_PAGES } from "@/content/servicePages.js";
+import {
+  buildFaqSchema,
+  buildItemListSchema,
+  buildOrganizationSchema,
+  buildSchemaGraph,
+  buildServiceSchema,
+  buildWebPageSchema,
+  buildWebsiteSchema,
+} from "@/lib/seo.js";
 
 const canonicalUrl = `${siteConfig.url}/`;
-
-const services = [
-  {
-    name: "Sitios web cinematográficos",
-    description:
-      "Diseño web disruptivo con animaciones cinematográficas, experiencias 3D y UX de última generación.",
-  },
-  {
-    name: "Agentes de IA para WhatsApp",
-    description:
-      "Panel profesional con agentes de inteligencia artificial que atienden, venden y administran el WhatsApp de tu empresa 24/7.",
-  },
-  {
-    name: "Sistemas agénticos empresariales",
-    description:
-      "Agentes de IA expertos y sistemas multi-agente robustos integrados a la operación de empresas.",
-  },
-  {
-    name: "Analíticas web con IA",
-    description:
-      "Dashboard de analíticas de tráfico web con un asistente de inteligencia artificial integrado al panel.",
-  },
-];
-
-const homeSchema = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${siteConfig.url}#organization`,
-    name: siteConfig.siteName,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}${siteConfig.mainImage}`,
-    email: site.email,
-    telephone: site.phone,
-    areaServed: "MX",
-    description:
-      "Estudio de desarrollo enfocado en herramientas de inteligencia artificial: sitios web cinematográficos, agentes de IA para WhatsApp, sistemas agénticos y analíticas con IA.",
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer support",
-      email: site.email,
-      telephone: site.phone,
-      areaServed: "MX",
-      availableLanguage: ["es-MX"],
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${siteConfig.url}#website`,
-    url: siteConfig.url,
-    name: siteConfig.siteName,
-    inLanguage: siteConfig.lang,
-    publisher: { "@id": `${siteConfig.url}#organization` },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${siteConfig.url}#professional-service`,
-    name: `${siteConfig.siteName} — Estudio de desarrollo e IA`,
-    url: siteConfig.url,
-    description:
-      "Desarrollo de experiencias web cinematográficas e implementación de inteligencia artificial: agentes para WhatsApp, sistemas agénticos empresariales y analíticas con IA.",
-    inLanguage: siteConfig.lang,
-    areaServed: "MX",
-    telephone: site.phone,
-    email: site.email,
-    brand: { "@id": `${siteConfig.url}#organization` },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Servicios ELBEDI Studio",
-      itemListElement: services.map((service, index) => ({
-        "@type": "Offer",
-        position: index + 1,
-        itemOffered: {
-          "@type": "Service",
-          name: service.name,
-          description: service.description,
-        },
-      })),
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${siteConfig.url}#faq`,
-    mainEntity: FAQS.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
-    })),
-  },
-];
+const title = "ELBEDI | Inteligencia Artificial para Empresas en México";
+const description =
+  "Implementamos inteligencia artificial en empresas: agentes para WhatsApp, sistemas agénticos, analítica con IA y sitios web inteligentes en México.";
+const homeSchema = buildSchemaGraph([
+  buildOrganizationSchema(),
+  buildWebsiteSchema(),
+  buildWebPageSchema({ url: "/", name: title, description }),
+  buildItemListSchema(SERVICE_PAGES, { url: "/", name: "Servicios de ELBEDI" }),
+  ...SERVICE_PAGES.map((service) =>
+    buildServiceSchema({ ...service, description: service.metaDescription }),
+  ),
+  buildFaqSchema(FAQS, "/"),
+]);
 ---
 
 <ExperienceLayout
-  title="ELBEDI | Estudio de Desarrollo Web e Inteligencia Artificial"
-  description="Estudio de desarrollo enfocado en IA: sitios web cinematográficos, agentes de inteligencia artificial para WhatsApp, sistemas agénticos para empresas y analíticas web con IA."
+  title={title}
+  description={description}
   canonicalUrl={canonicalUrl}
   schema={homeSchema}>
   <Experience client:load />

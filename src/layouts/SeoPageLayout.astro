@@ -1,0 +1,118 @@
+---
+import "../styles/app.css";
+import "../styles/seo-pages.css";
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import siteConfig from "../config/siteConfig.js";
+import site from "../content/site.js";
+import Head from "./partials/head.jsx";
+import Footer from "./partials/footer.jsx";
+
+const currentCanonical = Astro.url
+  ? new URL(Astro.url.pathname, siteConfig.url).toString()
+  : siteConfig.url;
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  canonicalUrl = currentCanonical,
+  ogImage = siteConfig.mainImage,
+  ogImageAlt = siteConfig.mainImageAlt,
+  robots = siteConfig.robots,
+  schema = [],
+  breadcrumbs = [],
+} = Astro.props;
+
+const footerLinks = [
+  { label: "Inicio", href: "/" },
+  { label: "Servicios de IA", href: "/servicios" },
+  { label: "El estudio", href: "/estudio" },
+  { label: "Websites", href: "/websites" },
+  { label: "Contacto", href: "/#contacto" },
+];
+---
+
+<!doctype html>
+<html lang={siteConfig.lang} class="dark seo-document">
+  <Head
+    title={title}
+    description={description}
+    canonicalUrl={canonicalUrl}
+    ogImage={ogImage}
+    ogImageAlt={ogImageAlt}
+    robots={robots}
+    schema={schema}
+  />
+  <body class="seo-body text-white antialiased">
+    <a class="seo-skip-link" href="#contenido-principal">Ir al contenido</a>
+
+    <header class="seo-header">
+      <div class="seo-container seo-header__inner">
+        <a class="seo-brand" href="/" aria-label="ELBEDI — Inicio">
+          <img
+            src="/images/favicon.svg"
+            width="40"
+            height="40"
+            alt=""
+          />
+          <span>
+            <strong>ELBEDI</strong>
+            <small>Estudio de IA</small>
+          </span>
+        </a>
+
+        <nav class="seo-header__nav" aria-label="Navegación principal">
+          <a href="/servicios">Servicios</a>
+          <a href="/estudio">Estudio</a>
+          <a href="/websites">Websites</a>
+        </nav>
+
+        <details class="seo-mobile-nav">
+          <summary aria-label="Abrir menú de navegación">
+            <span></span><span></span><span></span>
+          </summary>
+          <nav aria-label="Navegación móvil">
+            <a href="/">Inicio</a>
+            <a href="/servicios">Servicios</a>
+            <a href="/estudio">Estudio</a>
+            <a href="/websites">Websites</a>
+          </nav>
+        </details>
+
+        <a class="seo-header__cta" href="/#contacto">Evaluar un proyecto</a>
+      </div>
+    </header>
+
+    <main id="contenido-principal" tabindex="-1">
+      {breadcrumbs.length > 0 && (
+        <nav class="seo-container seo-breadcrumbs" aria-label="Migas de pan">
+          <ol>
+            {breadcrumbs.map((item, index) => (
+              <li>
+                {index < breadcrumbs.length - 1 ? (
+                  <a href={item.url}>{item.name}</a>
+                ) : (
+                  <span aria-current="page">{item.name}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
+      <slot />
+    </main>
+
+    <Footer
+      client:visible
+      className="seo-footer"
+      brand={site.name}
+      email={site.email}
+      phone={site.phone}
+      links={footerLinks}
+    />
+
+    <Analytics />
+    <SpeedInsights />
+  </body>
+</html>

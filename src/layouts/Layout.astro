@@ -1,5 +1,7 @@
 ---
 import "../styles/app.css";
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import siteConfig from "../config/siteConfig.js";
 import Head from "./partials/head.jsx";
 import site from "../content/site";
@@ -19,6 +21,7 @@ const {
   description = siteConfig.description,
   canonicalUrl = currentCanonical,
   ogImage = siteConfig.mainImage,
+  ogImageAlt = siteConfig.mainImageAlt,
   robots = siteConfig.robots,
   schema = [],
 } = Astro.props;
@@ -31,20 +34,22 @@ const {
     description={description}
     canonicalUrl={canonicalUrl}
     ogImage={ogImage}
+    ogImageAlt={ogImageAlt}
     robots={robots}
     schema={schema}
   />
   <body class="text-white">
+    <a class="global-skip-link" href="#main-content">Ir al contenido</a>
     <Preloader />
 
     <BgTransition client:load />
     <Figures client:load />
     <Header brand={site.name} />
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer
-      client:load
+      client:visible
       brand={site.name}
       email={site.email}
       phone={site.phone}
@@ -52,6 +57,8 @@ const {
 
     <WhatsApp phone={site.phone} client:load />
 
-    <script src="../scripts/lenis-init.js"></script>
+    <Analytics />
+    <SpeedInsights />
+    <script is:inline src="/scripts/lenis-init.js"></script>
   </body>
 </html>

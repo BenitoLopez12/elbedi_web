@@ -1,0 +1,185 @@
+---
+import SeoPageLayout from "@/layouts/SeoPageLayout.astro";
+import siteConfig from "@/config/siteConfig.js";
+import { SERVICE_PAGES } from "@/content/servicePages.js";
+import { buildWhatsAppUrl } from "@/lib/whatsapp.js";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildOrganizationSchema,
+  buildSchemaGraph,
+  buildServiceSchema,
+  buildWebPageSchema,
+  buildWebsiteSchema,
+} from "@/lib/seo.js";
+
+export function getStaticPaths() {
+  return SERVICE_PAGES.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "Servicios", url: "/servicios" },
+  { name: service.name, url: service.url },
+];
+const schema = buildSchemaGraph([
+  buildOrganizationSchema(),
+  buildWebsiteSchema(),
+  buildWebPageSchema({
+    url: service.url,
+    name: service.metaTitle,
+    description: service.metaDescription,
+  }),
+  buildBreadcrumbSchema(breadcrumbs),
+  buildServiceSchema({ ...service, description: service.metaDescription }),
+  buildFaqSchema(service.faq, service.url),
+]);
+const whatsappUrl = buildWhatsAppUrl(service.whatsappMessage);
+const relatedServices = SERVICE_PAGES.filter((item) => item.slug !== service.slug);
+---
+
+<SeoPageLayout
+  title={service.metaTitle}
+  description={service.metaDescription}
+  canonicalUrl={`${siteConfig.url}${service.url}`}
+  schema={schema}
+  breadcrumbs={breadcrumbs}>
+  <article>
+    <header class="seo-hero">
+      <div class="seo-container seo-hero__content">
+        <p class="seo-eyebrow">{service.eyebrow}</p>
+        <h1 class="seo-display seo-display--compact">{service.title}</h1>
+        <p class="seo-lead">{service.lead}</p>
+        <div class="seo-actions">
+          <a class="seo-button seo-button--primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+            Evaluar esta solución
+          </a>
+          <a class="seo-button seo-button--secondary" href={`/#${service.sectionId}`}>
+            Ver experiencia interactiva
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="seo-section">
+      <div class="seo-container">
+        <header class="seo-section__header">
+          <h2>Qué resuelve esta implementación.</h2>
+          <p>{service.summary}</p>
+        </header>
+        <div class="seo-grid">
+          {service.outcomes.map((outcome, index) => (
+            <section class="seo-card">
+              <span class="seo-card__index">0{index + 1}</span>
+              <h3>{outcome.title}</h3>
+              <p>{outcome.text}</p>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-section seo-section--soft">
+      <div class="seo-container">
+        <header class="seo-section__header">
+          <h2>Cuándo tiene sentido.</h2>
+          <p>
+            La implementación se justifica cuando existe un problema identificable,
+            información disponible y una persona responsable de validar el resultado.
+          </p>
+        </header>
+        <ul class="seo-list">
+          {service.fit.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="seo-section">
+      <div class="seo-container">
+        <header class="seo-section__header">
+          <h2>De diagnóstico a operación.</h2>
+          <p>
+            Trabajamos por fases visibles. Cada etapa reduce incertidumbre antes de
+            otorgar más alcance o autonomía al sistema.
+          </p>
+        </header>
+        <ol class="seo-list">
+          {service.process.map((item) => <li>{item}</li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="seo-section seo-section--soft">
+      <div class="seo-container">
+        <header class="seo-section__header">
+          <h2>Alcance habitual de entrega.</h2>
+          <p>
+            El alcance definitivo se define después del diagnóstico y depende de las
+            integraciones, los datos y el nivel de riesgo del proceso.
+          </p>
+        </header>
+        <ul class="seo-tag-list">
+          {service.deliverables.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="seo-section">
+      <div class="seo-container">
+        <header class="seo-section__header">
+          <h2>Preguntas frecuentes.</h2>
+          <p>Respuestas directas sobre alcance, control e implementación.</p>
+        </header>
+        <div class="seo-faq">
+          {service.faq.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-section seo-section--soft">
+      <div class="seo-container">
+        <header class="seo-section__header">
+          <h2>Otras capacidades del estudio.</h2>
+          <p>
+            Un proyecto puede empezar con un servicio y conectarse con otra capacidad
+            únicamente cuando el proceso lo necesita.
+          </p>
+        </header>
+        <div class="seo-grid seo-grid--three">
+          {relatedServices.map((item) => (
+            <article class="seo-card">
+              <h3>{item.name}</h3>
+              <p>{item.metaDescription}</p>
+              <a href={item.url}>Conocer el servicio</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-section">
+      <div class="seo-container seo-cta-band">
+        <div>
+          <h2>Validemos si este caso de uso merece construirse.</h2>
+          <p>
+            Comparte el proceso, las herramientas actuales y el resultado que esperas.
+            Te ayudamos a delimitar el siguiente paso.
+          </p>
+        </div>
+        <a class="seo-button seo-button--primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+          Iniciar diagnóstico
+        </a>
+      </div>
+    </section>
+  </article>
+</SeoPageLayout>
+

@@ -1,0 +1,122 @@
+---
+import SeoPageLayout from "@/layouts/SeoPageLayout.astro";
+import siteConfig from "@/config/siteConfig.js";
+import { buildWhatsAppUrl } from "@/lib/whatsapp.js";
+import {
+  buildBreadcrumbSchema,
+  buildOrganizationSchema,
+  buildSchemaGraph,
+  buildWebPageSchema,
+  buildWebsiteSchema,
+} from "@/lib/seo.js";
+
+const url = "/estudio";
+const title = "ELBEDI | Estudio de Inteligencia Artificial en México";
+const description =
+  "Conoce ELBEDI, estudio mexicano de implementación de inteligencia artificial para empresas: agentes, sistemas agénticos, automatización y analítica.";
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: "El estudio", url },
+];
+const schema = buildSchemaGraph([
+  buildOrganizationSchema(),
+  buildWebsiteSchema(),
+  buildWebPageSchema({ url, name: title, description, pageType: "AboutPage" }),
+  buildBreadcrumbSchema(breadcrumbs),
+]);
+const whatsappUrl = buildWhatsAppUrl(
+  "Hola ELBEDI, quiero conversar sobre una implementación de inteligencia artificial.",
+);
+---
+
+<SeoPageLayout
+  title={title}
+  description={description}
+  canonicalUrl={`${siteConfig.url}${url}`}
+  schema={schema}
+  breadcrumbs={breadcrumbs}>
+  <article>
+    <header class="seo-hero">
+      <div class="seo-container seo-hero__content">
+        <p class="seo-eyebrow">ELBEDI · México</p>
+        <h1 class="seo-display seo-display--compact">
+          Diseñamos la inteligencia
+          <span class="seo-gradient-text"> de tu negocio.</span>
+        </h1>
+        <p class="seo-lead">
+          Somos un estudio mexicano que convierte oportunidades de inteligencia
+          artificial en sistemas conectados con procesos, datos y personas.
+        </p>
+      </div>
+    </header>
+
+    <section class="seo-section">
+      <div class="seo-container">
+        <header class="seo-section__header">
+          <h2>Implementación antes que espectáculo.</h2>
+          <p>
+            Una demostración puede impresionar; una operación necesita fiabilidad.
+            Por eso empezamos con un resultado medible, información verificable y
+            límites claros para cada herramienta o agente.
+          </p>
+        </header>
+        <div class="seo-grid">
+          <section class="seo-card">
+            <span class="seo-card__index">01</span>
+            <h3>Contexto empresarial</h3>
+            <p>Entendemos el proceso y el lenguaje del negocio antes de elegir modelos o plataformas.</p>
+          </section>
+          <section class="seo-card">
+            <span class="seo-card__index">02</span>
+            <h3>Ingeniería evaluable</h3>
+            <p>Definimos pruebas, métricas, trazas y criterios de aceptación desde la arquitectura.</p>
+          </section>
+          <section class="seo-card">
+            <span class="seo-card__index">03</span>
+            <h3>Control humano</h3>
+            <p>Las decisiones sensibles, excepciones y autorizaciones conservan responsables identificables.</p>
+          </section>
+          <section class="seo-card">
+            <span class="seo-card__index">04</span>
+            <h3>Mejora continua</h3>
+            <p>Medimos el comportamiento en producción y ajustamos conocimiento, flujos y evaluaciones.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-section seo-section--soft">
+      <div class="seo-container">
+        <header class="seo-section__header">
+          <h2>Una metodología para reducir incertidumbre.</h2>
+          <p>
+            El alcance crece únicamente cuando la evidencia demuestra que el sistema
+            puede hacerlo con la calidad, el costo y el control acordados.
+          </p>
+        </header>
+        <ol class="seo-list">
+          <li>Diagnosticar el proceso y establecer el criterio de éxito.</li>
+          <li>Diseñar datos, herramientas, permisos, límites y responsables.</li>
+          <li>Construir y evaluar con escenarios representativos y casos adversos.</li>
+          <li>Desplegar por etapas con observabilidad y mejora continua.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="seo-section">
+      <div class="seo-container seo-cta-band">
+        <div>
+          <h2>Trabajamos con empresas en México y de forma remota.</h2>
+          <p>
+            Podemos colaborar con equipos en Latinoamérica y Estados Unidos cuando el
+            proyecto, los datos y las integraciones permiten una operación remota segura.
+          </p>
+        </div>
+        <a class="seo-button seo-button--primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+          Conversar con el estudio
+        </a>
+      </div>
+    </section>
+  </article>
+</SeoPageLayout>
+
