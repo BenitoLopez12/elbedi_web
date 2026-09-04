@@ -489,7 +489,6 @@ html.lenis body {
 }
 
 .cine-hero__solar {
-  --cine-solar-responsive-scale: 1;
   position: absolute;
   z-index: 3;
   top: 46%;
@@ -499,7 +498,7 @@ html.lenis body {
   opacity: 1;
   clip-path: circle(125% at 50% 50%);
   pointer-events: none;
-  transform: translateY(-50%) scale(var(--cine-solar-responsive-scale));
+  transform: translateY(-50%);
   transform-origin: center;
   will-change: opacity, clip-path;
 }
@@ -2409,13 +2408,12 @@ html.lenis body {
   }
 
   .cine-hero__solar {
-    --cine-solar-responsive-scale: 1.265;
     top: clamp(180px, 27svh, 330px);
     right: auto;
     left: 50%;
     width: 116vw;
     height: min(70svh, 680px);
-    transform: translate(-50%, -50%) scale(var(--cine-solar-responsive-scale));
+    transform: translate(-50%, -50%);
   }
 
   .cine-footer {
@@ -2602,7 +2600,7 @@ html.lenis body {
     width: 146vw;
     height: min(62svh, 520px);
     max-height: none;
-    transform: translate(-50%, -50%) scale(var(--cine-solar-responsive-scale));
+    transform: translate(-50%, -50%);
   }
 
   .cine-agent-label {
@@ -2941,13 +2939,12 @@ html.lenis body {
 
 @media (min-width: 768px) and (max-width: 1100px) {
   .cine-hero__solar {
-    --cine-solar-responsive-scale: 1.265;
     top: clamp(190px, 27svh, 330px);
     right: auto;
     left: 50%;
     width: 116vw;
     height: min(70svh, 680px);
-    transform: translate(-50%, -50%) scale(var(--cine-solar-responsive-scale));
+    transform: translate(-50%, -50%);
   }
 
   .cine-solar__signal {
@@ -2976,7 +2973,7 @@ html.lenis body {
     left: 50%;
     width: 116vw;
     height: min(68svh, 680px);
-    transform: translate(-50%, -50%) scale(var(--cine-solar-responsive-scale));
+    transform: translate(-50%, -50%);
   }
 
 }

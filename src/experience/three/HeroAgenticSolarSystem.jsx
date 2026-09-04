@@ -93,6 +93,7 @@ export default function HeroAgenticSolarSystem() {
         setRuntime({
           canRender: canRender && !motionQuery.matches && !saveData,
           quality: detectQuality(),
+          compactViewport: window.innerWidth <= 1100,
           reducedMotion: motionQuery.matches,
         });
       });
@@ -166,6 +167,7 @@ export default function HeroAgenticSolarSystem() {
             <Suspense fallback={null}>
               <AgenticSolarScene
                 quality={runtime.quality}
+                compactViewport={runtime.compactViewport}
                 reducedMotion={runtime.reducedMotion}
                 active={sceneActive}
                 onReady={() => setSceneReady(true)}

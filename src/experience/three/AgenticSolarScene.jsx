@@ -542,9 +542,11 @@ function CameraRig({ quality, reducedMotion }) {
   return null;
 }
 
-function SolarSystem({ quality, reducedMotion }) {
+function SolarSystem({ quality, compactViewport, reducedMotion }) {
   const rigRef = useRef(null);
   const lite = quality === "lite";
+  const baseScale = lite ? 0.72 : quality === "balanced" ? 1.08 : 1.18;
+  const sceneScale = baseScale * (compactViewport ? 1.265 : 1);
 
   useFrame(({ clock }, delta) => {
     if (!rigRef.current || reducedMotion) return;
@@ -589,7 +591,7 @@ function SolarSystem({ quality, reducedMotion }) {
       <group
         ref={rigRef}
         rotation={[-0.055, 0, 0.045]}
-        scale={lite ? 0.72 : quality === "balanced" ? 1.08 : 1.18}>
+        scale={sceneScale}>
         {PLANETS.map((planet, planetIndex) => (
           <group key={planet.name} rotation-z={planet.orbitTilt}>
             <OrbitPath planet={planet} lite={lite} />
@@ -620,6 +622,7 @@ function SolarSystem({ quality, reducedMotion }) {
 
 export default function AgenticSolarScene({
   quality = "high",
+  compactViewport = false,
   reducedMotion = false,
   active = true,
   onReady,
@@ -651,7 +654,11 @@ export default function AgenticSolarScene({
       }}>
       <SceneReady onReady={onReady} />
       <AdaptiveQuality quality={quality} />
-      <SolarSystem quality={quality} reducedMotion={reducedMotion} />
+      <SolarSystem
+        quality={quality}
+        compactViewport={compactViewport}
+        reducedMotion={reducedMotion}
+      />
 
       <EffectComposer multisampling={quality === "high" ? 2 : 0}>
         <Bloom
