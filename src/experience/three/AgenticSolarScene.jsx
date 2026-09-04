@@ -15,6 +15,7 @@ import {
   EffectComposer,
 } from "@react-three/postprocessing";
 import * as THREE from "three";
+import { heroSceneMotion } from "@/experience/state/experienceStore.js";
 
 const PLANETS = [
   {
@@ -515,25 +516,37 @@ function CameraRig({ quality, reducedMotion }) {
   useFrame(({ clock }, delta) => {
     if (reducedMotion) return;
     const t = clock.elapsedTime;
-    const targetY = quality === "lite" ? 10.8 : quality === "balanced" ? 11.8 : 12.5;
-    const targetZ = quality === "lite" ? 17.6 : quality === "balanced" ? 15.2 : 13.6;
+    const progress = heroSceneMotion.getProgress();
+    const dollyProgress = progress * progress * (3 - 2 * progress);
+    const baseY = quality === "lite" ? 10.8 : quality === "balanced" ? 11.8 : 12.5;
+    const baseZ = quality === "lite" ? 17.6 : quality === "balanced" ? 15.2 : 13.6;
+    const dollyDistance = 1 + dollyProgress * 2.2;
+    const idleStrength = 1 - dollyProgress;
+    const targetY = baseY * dollyDistance;
+    const targetZ = baseZ * dollyDistance;
 
     camera.position.x = THREE.MathUtils.damp(
       camera.position.x,
-      Math.sin(t * 0.16) * 0.3,
+      Math.sin(t * 0.16) * 0.3 * idleStrength,
       2.4,
       delta,
     );
     camera.position.y = THREE.MathUtils.damp(
       camera.position.y,
-      targetY + Math.cos(t * 0.13) * 0.16,
+      targetY + Math.cos(t * 0.13) * 0.16 * idleStrength,
       2.4,
       delta,
     );
     camera.position.z = THREE.MathUtils.damp(
       camera.position.z,
-      targetZ + Math.sin(t * 0.1) * 0.18,
+      targetZ + Math.sin(t * 0.1) * 0.18 * idleStrength,
       2.4,
+      delta,
+    );
+    target.current.y = THREE.MathUtils.damp(
+      target.current.y,
+      -0.08 - dollyProgress * 2.35,
+      3.2,
       delta,
     );
     camera.lookAt(target.current);

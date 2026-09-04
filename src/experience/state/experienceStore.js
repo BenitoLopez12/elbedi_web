@@ -15,6 +15,18 @@ const state = {
 
 const listeners = new Set();
 
+// Estado transitorio de alta frecuencia para la escena 3D del hero. Se mantiene
+// fuera del store observable para no volver a renderizar la interfaz en cada
+// frame de scroll; GSAP escribe y el render loop de Three.js solamente lee.
+let heroSceneProgress = 0;
+
+export const heroSceneMotion = {
+  getProgress: () => heroSceneProgress,
+  setProgress(progress) {
+    heroSceneProgress = Math.min(1, Math.max(0, Number(progress) || 0));
+  },
+};
+
 export const experienceStore = {
   get: () => state,
   set(partial) {

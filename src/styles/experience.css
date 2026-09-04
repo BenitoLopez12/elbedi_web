@@ -454,7 +454,7 @@ html.lenis body {
 
 .cine-hero {
   position: relative;
-  min-height: 200svh;
+  min-height: 125svh;
   overflow: visible;
 }
 
@@ -496,11 +496,10 @@ html.lenis body {
   width: min(1460px, 70vw);
   height: 112svh;
   opacity: 1;
-  clip-path: circle(125% at 50% 50%);
   pointer-events: none;
   transform: translateY(-50%);
   transform-origin: center;
-  will-change: opacity, clip-path;
+  will-change: opacity;
 }
 
 .cine-hero__solar-enter {
@@ -2157,6 +2156,17 @@ html.lenis body {
 
 /* Responsive -------------------------------------------------------------- */
 
+@media (max-width: 1100px) {
+  .cine-hero {
+    min-height: max(100svh, 760px);
+  }
+
+  .cine-hero__stage {
+    position: relative;
+    top: auto;
+  }
+}
+
 @media (max-width: 1279px) {
   .cine-hero__stage {
     padding-left: clamp(72px, 9vw, 110px);
@@ -2576,7 +2586,7 @@ html.lenis body {
   }
 
   .cine-hero {
-    min-height: 200svh;
+    min-height: max(100svh, 760px);
   }
 
   .cine-hero__stage {

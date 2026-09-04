@@ -6,6 +6,7 @@ import { SECTION_IDS } from "@/content/experience.js";
 import {
   bindNavigator,
   experienceStore,
+  heroSceneMotion,
 } from "@/experience/state/experienceStore.js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +15,10 @@ const SERVICE_DESKTOP_QUERY =
   "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
 const SERVICE_FLOW_QUERY =
   "(max-width: 1023px) and (prefers-reduced-motion: no-preference)";
+const HERO_DESKTOP_QUERY =
+  "(min-width: 1101px) and (prefers-reduced-motion: no-preference)";
+const HERO_FLOW_QUERY =
+  "(max-width: 1100px) and (prefers-reduced-motion: no-preference)";
 const LENIS_EASE = (progress) => 1 - Math.pow(1 - progress, 3);
 
 function serviceParts(section) {
@@ -218,14 +223,7 @@ export function useCinematicScroll(rootRef) {
       // Estados completos antes de crear los timelines. Esto evita que una
       // reconstrucción del componente o un refresh de ScrollTrigger herede una
       // máscara parcialmente cerrada.
-      gsap.set("[data-hero-solar]", {
-        autoAlpha: 1,
-        clipPath: "circle(125% at 50% 50%)",
-      });
-      gsap.set("[data-hero-solar-enter]", {
-        autoAlpha: 0,
-        clipPath: "circle(0% at 50% 50%)",
-      });
+      gsap.set("[data-hero-solar]", { autoAlpha: 1 });
 
       gsap
         .timeline({
@@ -248,42 +246,68 @@ export function useCinematicScroll(rootRef) {
           { autoAlpha: 0, y: 28, stagger: 0.08, duration: 0.66 },
           "-=0.48",
         )
-        .fromTo(
-          "[data-hero-solar-enter]",
-          {
-            autoAlpha: 0,
-            clipPath: "circle(0% at 50% 50%)",
-          },
-          {
-            autoAlpha: 1,
-            clipPath: "circle(125% at 50% 50%)",
-            duration: 1.18,
-            ease: "power3.out",
-          },
-          "-=0.78",
-        )
         .from("[data-scroll-cue]", { autoAlpha: 0, y: -10, duration: 0.52 }, "-=0.36");
 
-      const heroTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".cine-hero",
-          start: "top top",
-          end: "+=100%",
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
+      serviceMedia.add(HERO_DESKTOP_QUERY, () => {
+        gsap.set("[data-hero-solar-enter]", {
+          autoAlpha: 0,
+          clipPath: "none",
+        });
+        gsap.to("[data-hero-solar-enter]", {
+          autoAlpha: 1,
+          duration: 1.05,
+          delay: 0.46,
+          ease: "power3.out",
+        });
       });
-      heroTimeline
-        .to(
+
+      serviceMedia.add(HERO_FLOW_QUERY, () => {
+        heroSceneMotion.setProgress(0);
+        gsap.set("[data-hero-solar-enter]", {
+          autoAlpha: 0,
+          clipPath: "circle(0% at 50% 50%)",
+        });
+        gsap.to("[data-hero-solar-enter]", {
+          autoAlpha: 1,
+          clipPath: "circle(125% at 50% 50%)",
+          duration: 1.18,
+          delay: 0.38,
+          ease: "power3.out",
+        });
+      });
+
+      // El sistema solar solo permanece fijo y ejecuta su máscara de salida en
+      // escritorio. En móvil/tablet forma parte del flujo y sale naturalmente
+      // con el documento, evitando superposición con el copy durante el scroll.
+      serviceMedia.add(HERO_DESKTOP_QUERY, () => {
+        const heroTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".cine-hero",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.55,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => heroSceneMotion.setProgress(self.progress),
+          },
+        });
+
+        heroTimeline
+          .addLabel("fade", 0.58)
+          .to(
           "[data-hero-solar]",
           {
             autoAlpha: 0,
-            clipPath: "circle(0% at 50% 50%)",
-            duration: 0.78,
+            duration: 0.42,
             ease: "none",
           },
-          0.22,
+          "fade",
         );
+
+        return () => {
+          heroSceneMotion.setProgress(0);
+          gsap.set("[data-hero-solar]", { autoAlpha: 1, clearProps: "visibility" });
+        };
+      });
 
       gsap.fromTo(
         ".cine-prologue__title",
