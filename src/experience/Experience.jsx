@@ -9,7 +9,6 @@ import {
   WEBSITES,
   WHATSAPP_IA,
 } from "@/content/experience.js";
-import { SERVICE_PAGE_BY_SECTION } from "@/content/servicePages.js";
 import { useCinematicScroll } from "@/experience/motion/useCinematicScroll.js";
 import SmartScrollNav from "@/experience/navigation/SmartScrollNav.jsx";
 import ExperienceBackdrop from "@/experience/ExperienceBackdrop.jsx";
@@ -347,7 +346,6 @@ function AiOperatingNetwork() {
 
 function ServiceChapter({ id, reverse = false }) {
   const meta = SERVICE_META[id];
-  const servicePage = SERVICE_PAGE_BY_SECTION[id];
   const Visual = VISUALS[id];
   const whatsappMessage =
     id === "websites"
@@ -409,13 +407,9 @@ function ServiceChapter({ id, reverse = false }) {
                 className="cine-service__primary-action"
                 variant={reverse ? "cool" : "solid"}
                 whatsappMessage={whatsappMessage}>
-                Diseñar esta solución
+                Implementar solución
                 <Icon name="arrow" size={16} />
               </ActionButton>
-              <a className="cine-service__detail-link" href={servicePage.url}>
-                Conocer el servicio
-                <Icon name="arrow" size={14} />
-              </a>
             </div>
           </div>
         </div>

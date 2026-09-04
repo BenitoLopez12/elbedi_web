@@ -147,7 +147,7 @@ export default function ExperienceBackdrop() {
     <div
       ref={rootRef}
       aria-hidden="true"
-      className="fixed inset-0 z-0 overflow-hidden pointer-events-none"
+      className="cine-backdrop fixed inset-0 z-0 overflow-hidden pointer-events-none"
       style={{
         ...stopVars(SECTIONS[0]),
         backgroundColor: "var(--bg-center)",

@@ -16,7 +16,11 @@ export default function SmartScrollNav() {
   const itemRefs = useRef([]);
   const railRef = useRef(null);
   const viewportRef = useRef(null);
+  const mobileMenuButtonRef = useRef(null);
+  const mobileDialogRef = useRef(null);
   const [hovered, setHovered] = useState({ index: -1, top: 0 });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
   const [scrollState, setScrollState] = useState({
     canScrollUp: false,
     canScrollDown: false,
@@ -43,6 +47,133 @@ export default function SmartScrollNav() {
         : "smooth",
     });
   };
+
+  const navigateTo = (section, source) => {
+    setMobileMenuOpen(false);
+    dispatchIntent({ type: "navigate", section, source });
+  };
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+
+    const dialog = mobileDialogRef.current;
+    const pageRegions = [
+      document.querySelector(".cine-main"),
+      document.querySelector(".cine-footer"),
+    ].filter(Boolean);
+    const previousInert = pageRegions.map((region) => region.inert);
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = document.documentElement.style.overflow;
+    pageRegions.forEach((region) => {
+      region.inert = true;
+    });
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    const focusable = () =>
+      Array.from(
+        dialog?.querySelectorAll(
+          "button:not(:disabled), a[href]:not([aria-hidden='true'])",
+        ) ?? [],
+      );
+    const focusFrame = requestAnimationFrame(() => focusable()[0]?.focus());
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setMobileMenuOpen(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const items = focusable();
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      cancelAnimationFrame(focusFrame);
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousRootOverflow;
+      pageRegions.forEach((region, index) => {
+        region.inert = previousInert[index];
+      });
+      document.removeEventListener("keydown", onKeyDown);
+      mobileMenuButtonRef.current?.focus();
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = (event) => {
+      if (event.matches) setMobileMenuOpen(false);
+    };
+    desktopQuery.addEventListener?.("change", closeOnDesktop);
+    return () => desktopQuery.removeEventListener?.("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 1023px)");
+    let lastScrollY = window.scrollY;
+    let accumulatedDelta = 0;
+    let lastDirection = 0;
+    let frame = 0;
+
+    const updateHeader = () => {
+      frame = 0;
+      const currentScrollY = Math.max(0, window.scrollY);
+
+      if (!mobileQuery.matches || currentScrollY <= 32) {
+        setMobileHeaderHidden(false);
+        lastScrollY = currentScrollY;
+        accumulatedDelta = 0;
+        lastDirection = 0;
+        return;
+      }
+
+      const delta = currentScrollY - lastScrollY;
+      const direction = Math.sign(delta);
+      if (direction && direction !== lastDirection) accumulatedDelta = 0;
+      if (direction) {
+        accumulatedDelta += delta;
+        lastDirection = direction;
+      }
+      if (accumulatedDelta > 18) {
+        setMobileHeaderHidden(true);
+        accumulatedDelta = 0;
+      } else if (accumulatedDelta < -14) {
+        setMobileHeaderHidden(false);
+        accumulatedDelta = 0;
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateHeader);
+    };
+    const onBreakpointChange = () => {
+      lastScrollY = window.scrollY;
+      accumulatedDelta = 0;
+      lastDirection = 0;
+      setMobileHeaderHidden(false);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    mobileQuery.addEventListener?.("change", onBreakpointChange);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      mobileQuery.removeEventListener?.("change", onBreakpointChange);
+    };
+  }, []);
 
   useEffect(() => {
     const indicator = indicatorRef.current;
@@ -133,14 +264,15 @@ export default function SmartScrollNav() {
   }, [active, updateScrollState]);
 
   return (
-    <header className="cine-side-menu">
+    <>
+      <header className="cine-side-menu">
       <a
         href="#inicio"
         className="cine-side-menu__brand"
         aria-label="ELBEDI AI — Inicio"
         onClick={(event) => {
           event.preventDefault();
-          dispatchIntent({ type: "navigate", section: "inicio", source: "brand" });
+          navigateTo("inicio", "brand");
         }}>
         <img
           src="/images/favicon.svg"
@@ -188,13 +320,7 @@ export default function SmartScrollNav() {
                     onMouseLeave={() => setHovered({ index: -1, top: 0 })}
                     onFocus={(event) => showTooltip(index, event.currentTarget)}
                     onBlur={() => setHovered({ index: -1, top: 0 })}
-                    onClick={() =>
-                      dispatchIntent({
-                        type: "navigate",
-                        section: section.id,
-                        source: "nav",
-                      })
-                    }
+                    onClick={() => navigateTo(section.id, "nav")}
                     className={`cine-nav__item ${isActive ? "is-active" : ""}`}>
                     <Icon name={section.icon} size={24} />
                   </button>
@@ -222,6 +348,100 @@ export default function SmartScrollNav() {
         role="presentation">
         {hovered.index >= 0 ? SECTIONS[hovered.index]?.name : ""}
       </span>
-    </header>
+      </header>
+
+      <header
+        className={`cine-mobile-header ${
+          mobileHeaderHidden && !mobileMenuOpen ? "is-hidden" : ""
+        }`}
+        aria-hidden={mobileMenuOpen || mobileHeaderHidden ? "true" : undefined}
+        inert={mobileMenuOpen || mobileHeaderHidden ? true : undefined}>
+        <a
+          href="#inicio"
+          className="cine-mobile-header__brand"
+          aria-label="ELBEDI AI — Inicio"
+          onClick={(event) => {
+            event.preventDefault();
+            navigateTo("inicio", "mobile-brand");
+          }}>
+          <img
+            src="/images/favicon.svg"
+            width="38"
+            height="38"
+            alt="Isotipo ELBEDI AI"
+          />
+        </a>
+        <button
+          ref={mobileMenuButtonRef}
+          type="button"
+          className="cine-mobile-header__toggle"
+          aria-label="Abrir menú de navegación"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="cine-mobile-navigation"
+          onClick={() => setMobileMenuOpen(true)}>
+          <span />
+          <span />
+          <span />
+        </button>
+      </header>
+
+      {mobileMenuOpen ? (
+        <div
+          ref={mobileDialogRef}
+          id="cine-mobile-navigation"
+          className="cine-mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navegación del sitio"
+          data-lenis-prevent>
+          <div className="cine-mobile-menu__topbar">
+            <a
+              href="#inicio"
+              className="cine-mobile-menu__brand"
+              aria-label="ELBEDI AI — Inicio"
+              onClick={(event) => {
+                event.preventDefault();
+                navigateTo("inicio", "mobile-menu-brand");
+              }}>
+              <img
+                src="/images/favicon.svg"
+                width="42"
+                height="42"
+                alt="Isotipo ELBEDI AI"
+              />
+            </a>
+            <button
+              type="button"
+              className="cine-mobile-menu__close"
+              aria-label="Cerrar menú de navegación"
+              onClick={() => setMobileMenuOpen(false)}>
+              <Icon name="close" size={25} />
+            </button>
+          </div>
+
+          <nav className="cine-mobile-menu__navigation" aria-label="Secciones">
+            <p>Explorar la experiencia</p>
+            <div className="cine-mobile-menu__grid">
+              {SECTIONS.map((section, index) => {
+                const isActive = index === active;
+                return (
+                  <button
+                    key={section.id}
+                    type="button"
+                    className={`cine-mobile-menu__item ${isActive ? "is-active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                    disabled={transitioning}
+                    onClick={() => navigateTo(section.id, "mobile-nav")}>
+                    <Icon name={section.icon} size={27} />
+                    <span>{section.name}</span>
+                    <small>{String(index + 1).padStart(2, "0")}</small>
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
+        </div>
+      ) : null}
+    </>
   );
 }

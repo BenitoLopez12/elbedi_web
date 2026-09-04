@@ -399,7 +399,7 @@ export default function Footer({
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="flex justify-between md:flex-row flex-col gap-10">
+        <div className="footer-navigation-grid flex justify-between md:flex-row flex-col gap-10">
           <nav aria-label="Enlaces del sitio en footer">
             <p className="font-bold 2xl:text-lg lg:text-sm">Navegación</p>
             <ul className="2xl:mt-3 lg:mt-0 2xl:space-y-2 lg:space-y-0">
