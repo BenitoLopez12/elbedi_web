@@ -489,6 +489,7 @@ html.lenis body {
 }
 
 .cine-hero__solar {
+  --cine-solar-responsive-scale: 1;
   position: absolute;
   z-index: 3;
   top: 46%;
@@ -498,7 +499,7 @@ html.lenis body {
   opacity: 1;
   clip-path: circle(125% at 50% 50%);
   pointer-events: none;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(var(--cine-solar-responsive-scale));
   transform-origin: center;
   will-change: opacity, clip-path;
 }
@@ -2408,6 +2409,7 @@ html.lenis body {
   }
 
   .cine-hero__solar {
+    --cine-solar-responsive-scale: 1.15;
     top: clamp(180px, 27svh, 330px);
     right: -8vw;
     width: 116vw;
@@ -2598,7 +2600,7 @@ html.lenis body {
     width: 146vw;
     height: min(62svh, 520px);
     max-height: none;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(var(--cine-solar-responsive-scale));
   }
 
   .cine-agent-label {
@@ -2937,6 +2939,7 @@ html.lenis body {
 
 @media (min-width: 768px) and (max-width: 1100px) {
   .cine-hero__solar {
+    --cine-solar-responsive-scale: 1.15;
     top: clamp(190px, 27svh, 330px);
     right: -8vw;
     width: 116vw;
@@ -2969,7 +2972,7 @@ html.lenis body {
     left: auto;
     width: 116vw;
     height: min(68svh, 680px);
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(var(--cine-solar-responsive-scale));
   }
 
 }
